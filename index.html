@@ -13,13 +13,5160 @@
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css">
 	</head>
+
 	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<div>Major: <div class="fragment strike">Advanced mobile... blah blah blah</div><div class="fragment fade-in">Building SPA React app</div></dir></div>
+			</section>
+
+			<section>
+				<h2>Agenda</h2>
+				<ul>
+					<li>tech stack</li>
+					<li>react basics</li>
+					<li>JS refresher</li>
+					<li>ES6 intro</li>
+					<li>starting real project</li>
+					<li>[...work work work...]</li>
+					<li>functional programming</li>
+					<li>redux</li>
+					<li>deployment (somewhere :D )</li>
+				</ul>
+			</section>
+
+
+			<section>
+				<h4>tech stack:</h4>
+				<ul>
+					<li>JS</li>
+					<li>HTML</li>
+					<li>CSS</li>
+					<li>commandline</li>
+					<li>github</li>
+				</ul>
+			</section>
+
+			<section>
+				<h4>learning materials</h4>
+				<ul>
+					<li><a target="_new" href="https://www.w3schools.com/js/default.asp"> JS @w3schools</a></li>
+					<li><a target="_new" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript">re-introduction to JS @mozilla</a></li>
+					<li><a target="_new" href="https://codetower.github.io/es6-features/"> ES6 features</a></li>
+					<li><a target="_new" href="https://en.reactjs.org/docs/react-component.html">API reference @react</a>
+						<ul>
+							<li><a target="_new" href="https://redux.js.org/api/api-reference">redux</a> (+ <a target="_new" href="https://github.com/erikras/ducks-modular-redux">ducks</a>)		
+							<li><a target="_new" href="https://www.npmjs.com/package/json-server">json-server</a></li>
+							<li><a target="_new" href="https://github.com/axios/axios">axios</a></li>
+							<li><a target="_new" href="https://lodash.com/">lodash</a></li>
+							<li><a target="_new" href="https://prettier.io/">prettier</a></li>
+							<li><a target="_new" href="https://immutable-js.github.io/immutable-js/">Immutable JS</a></li>
+							<li><a target="_new" href="https://reactrouter.com/">react router</a></li>
+							<li><a target="_new" href="https://formik.org/">formik</a></li>							
+							<li><a target="_new" href="https://reactrouter.com/">react router</a></li>
+
+							</li>
+
+						</ul>
+					</li>
+					<li><a href="https://jestjs.io/">JEST testing library</a></li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>How to pass</h2>
+				<img src="./img/panda3.jpg">
+			</section>
+
+			<section>
+
+				<h1 >What is react?</h1>
+				<div>A JS library for building user interfaces</div>
+				<div class="fragment fade-in">
+					<script type="text/javascript" src="https://ssl.gstatic.com/trends_nrtr/2152_RC02/embed_loader.js"></script> <script type="text/javascript"> trends.embed.renderExploreWidget("TIMESERIES", {"comparisonItem":[{"keyword":"React","geo":"","time":"today 5-y"},{"keyword":"angular","geo":"","time":"today 5-y"},{"keyword":"vue","geo":"","time":"today 5-y"}],"category":0,"property":""}, {"exploreQuery":"date=today%205-y&q=React,angular,vue","guestPath":"https://trends.google.com:443/trends/embed/"}); </script>
+				</div>
+			</section>
+			<section>
+				<h4>Main idea: Components</h4>
+				<pre>
+						<code class="hljs" data-trim>
+							<x>
+							...
+							</x>
+						</code>
+					</pre>
+				<div class="fragment fade-in">
+					<ul>
+						<li>isolated</li>
+						<li>everything as JS object</li>
+						<li>parameterized</li>
+						<li>Immutable</li>
+					</ul>
+				</div>
+			</section>
+			<section>
+				<h4>Idea: <span class="fragment highlight-red">State</span> and <span class="fragment highlight-blue">props</span></h4>
+				<p class="fragment fade-in">react reacts to state changes</p>
+				<pre><code class="hljs fragment fade-in" data-trim>
+						class Tweet {
+							state = {};
+							render() {
+							}
+						}
+					</code></pre>
+					<pre><code class="hljs fragment fade-in" data-trim>
+						const Tweet = () => {
+							return() 
+						}
+					</code></pre>
+			</section>
+			<section>
+				<h4>virtual DOM</h4>
+				<img src="img/virtualDOM.png">
+			</section>
+			<section><h4>react vs angular </h4>
+				<img width="80%" src="img/reactvsangular.png">
+				<div>in react every application can use different tech stack (libraries for every purpose)</div>
+			</section>
+			<section>
+				<ul><h3>Requirements [TODO :) ]:</h3>
+					<li><a target="new" href="https://nodejs.org/en/"> node.js</a> </li>
+					<li><a target="new" href="https://www.npmjs.com/get-npm" >npm</a> (should be within node package)</li>
+					<li><a target="new" href="https://code.visualstudio.com/" >Visual studio code</a> || <a href="https://www.jetbrains.com/webstorm/"> webstorm</a> (<a target="_new" href="https://www.jetbrains.com/community/education/#students">student's licence</a>)</li>
+					<li><a target="new" href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi"> React developer tools</a></li>
+					<li><a target="new" href="https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd"> redux devtools</a></li>
+				</ul>
+
+			</section>
+			<section>
+				Building the framework
+				<pre><code class="js" data-trim>
+					// former way
+			 	npm i -g create-react-app
+			 	create-react-app my-app
+
+			 	// modern way
+			 	npx create-react-app my-app
+
+			 	cd my-app
+			 	npm start
+					</code></pre>
+				<small>http://localhost:3000/</small>
+				<div>
+<pre><code class="js" data-trim>
+// npm alternative
+npm install --global yarn</code></pre>
+					</small></div>
+			</section>
+			<section>
+				<h4>dir structure:</h4>
+				<div>
+					<p class="fragment fade-in"><dfn>node-modules:</dfn> 3rd party libs</p>
+					<p class="fragment fade-in"><dfn>public:</dfn> public assets</p>
+					<p class="fragment fade-in"><dfn>src:</dfn> real deal</p>
+				</div>
+			</section>
+			<section><h4>package.json</h4>
+				<div> plain JSON(Java Script Object Notation) text file which contains all metadata information about the app.</div>
+			</section>
+			<section>
+				<h4>basics:</h4>
+				<p>ES6 classes to begin with</p>
+				<p><em>index.js</em> calls <strong>App</strong> component and puts it in <strong>root</strong> div</p>
+				<p>&nbsp; </p>
+				<p>Two types of components
+				<ul>
+					<li>functional</li>
+					<li>class component</li>
+				</ul>
+				</p>
+			</section>
+			<section>
+				<h3>class vs functional components</h3>
+				<section>
+					<h4>basic class component</h4>
+					<pre><code class="hljs" data-trim>
+import React, {Component} from 'react';
+import './App.css';
+
+class App extends Component {
+  state = {}
+  render() {
+    return (
+        <div className="App">
+        </div>
+    );
+  }
+}
+
+export default App;
+				</code></pre>
+
+				</section>
+				<section>
+					<h4>basic functional component</h4>
+					<pre><code class="hljs" data-trim>
+import React from 'react';
+import './App.css';
+
+function App() {
+  return (
+      <div className="App">
+      </div>
+  );
+}
+
+export default App;
+				</code></pre>
+				</section>
+			</section>
+
+			<section>
+				<h4>class vs function</h4>
+				<section>
+					<h3 class="fragment highlight-blue">state</h3>
+					<div class="fragment strike">If you need a state in your component, you will either need to create a class component or you lift the state up to the parent component and pass it down to the functional component via props</div>
+					<div>&nbsp;</div>
+					<div class="fragment fade-up">changed with the React 16.8 Hooks update!
+						You can now use the <em><u>useState</u></em> hook to use state in your functional components</div>
+				</section>
+
+				<section>
+					<h3 class="fragment highlight-blue">class lifecycle methods</h3>
+					<ul>
+						<li>render()</li>
+						<li>componentDidMount()</li>
+						<li>componentDidUpdate()</li>
+						<li>componentWillUnmount()</li>
+					</ul>
+					<div>&nbsp;</div>
+					<div class="fragment fade-up">EDIT: You can now use the <em><u>useEffect</u></em> hook to use lifecycle events in your functional components.</div>
+				</section>
+			</section>
+			<section>
+				<h4>why functional</h4>
+				<div>
+					<ul>
+						<li>easier to read and test</li>
+						<li>less code</li>
+						<li>They help you to use best practices</li>
+						<li>there may be a performance boost <span class="fragment fade-in"> ... in future React versions :P </span></li>
+					</ul>
+				</div>
+			</section>
+
+			<section data-background-color="#391F67">
+				<section>
+					<h4>starting slow and steady</h4>
+					vanilla JS (ES?)
+				</section>
+				<section>
+					JS / ES / ECMAScript?
+					<small>
+						<ol>
+							<li>JavaScript was originally named JavaScript in hopes of capitalizing on the success of Java</li>
+							<li>Netscape submitted JavaScript to "ECMA International" for Standardization.</li>
+							<li>This results in a new language standard, known as ECMAScript</li>
+						</ol>
+						<div> &nbsp;</div>
+						<pre>
+<p>
+	<div>
+		ES1: June 1997
+		ES2: June 1998
+		ES3: Dec. 1999
+		ES4: Abandoned
+	</div>
+	<div>
+		ES5: Dec 2009
+		ES6: Jun 2015. ES6 was the popularized name prior to release.
+		    With this change, the edition was RENAMED to ES 2015 to reflect the year of release)
+	</div>
+	<div>
+		ES2016 (ES7), ES2017 (ES8),
+		ES.Next - dynamic name that refers to whatever the next version is at the time of writing
+	</div>
+							</p>
+	</pre>
+					</small>
+				</section>
+
+				<section>
+					<pre><code>document.getElementById("demo").innerHTML = "Hello JavaScript";</code></pre>
+				</section>
+				<section>
+					<a target="new" href="https://www.w3schools.com/js/tryit.asp?filename=tryjs_intro_lightbulb"> https://www.w3schools.com/js/tryit.asp?filename=tryjs_intro_lightbulb </a>
+				</section>
+				<section>
+					<h4>variables</h4>
+					<pre><code>
+	// function scope
+	var x;
+	x = 6;
+
+	// block scope
+	let y = 7;
+
+	const z = 8;
+	z = 9; // syntax error
+		</code></pre>
+				</section>
+				<section>
+					<h4> var vs let</h4>
+					<pre><code class="hljs">
+function sayHello() {
+  for (var i = 0; i < 5; i++) {
+    console.log("in: ", i);
+  }
+  console.log("out: ", i);
+}
+
+sayHello();
+		</code></pre>
+				</section>
+				<section>
+					<h4>rule of thumb:</h4>
+					<img src="https://i.pinimg.com/originals/5d/94/8b/5d948bacebfaa922251260122303d2f4.png">
+				</section>
+
+				<section>
+					<h4>basics</h4>
+					<img src="img/operators.png">
+				</section>
+				<section>
+	<pre><code class="hljs" data-trim>
+// functions
+function myFunction(p1, p2) {
+  return p1 * p2;
+}
+
+// arrays
+var cars = ["Saab", "Volvo", "BMW"];
+var cars = new Array("Saab", "Volvo", "BMW");
+// accessing element
+var name = cars[0];
+
+// objects
+var person = {firstName:"John", lastName:"Doe", age:50};
+// accessing properties
+objectName.propertyName
+
+// OR
+objectName["propertyName"]
+
+	</code></pre>
+				</section>
+				<section>
+	<pre><code class="hljs" data-trim>
+  // object methods
+  var person = {
+    firstName: "John",
+    lastName : "Doe",
+    id       : 5566,
+    fullName : function() {
+      return this.firstName + " " + this.lastName;
+    }
+  };
+
+  // calling the method
+  let name = person.fullName();
+  // what's the difference?
+  let name2 = person.fullName;
+
+	</code></pre>
+				</section>
+				<section>
+					<h4>'this' keyword</h4>
+					<div><em>this</em> refers to the context in which it was invoked i.e. current object</div>
+					e.g.
+					<pre></pre><code class="hljs" data-trim>
+					< button onclick="this.style.display='none'">
+					Click to Remove Me!
+					</button>
+
+					<button onclick="this.style.display='none'">
+						Click to Remove Me!
+					</button></code></pre>
+				</section>
+				<section>
+
+	<pre><code>
+// classes
+class Car {
+  constructor(brand) {
+    this.carname = brand;
+  }
+  present(x) {
+    return x + ", I have a " + this.carname;
+  }
+}
+
+mycar = new Car("Ford");
+document.getElementById("demo").innerHTML = mycar.present("Hello");
+
+	</code></pre>
+				</section>
+			</section>
+
+
+			<section data-background-color="#491F67">
+				<h4> tryout (18 tasks)</h4>
+				<section>
+					1. Create a variable called z, assign x + y to it, and display the result in an alert box
+					<pre><code>
+x = 10;
+y = 5;
+		</code></pre>
+					<pre><code class="fragment fade-in">
+var z = x + y;
+alert (z);
+			</code></pre>
+				</section>
+
+
+				<section>
+					2. Use the correct assignment operator that will result in x being 15 (same as x = x + y).
+					<pre><code>
+x = 10;
+y = 5;
+		</code></pre>
+					<pre><code class="fragment fade-in">
+x += y;
+		</code></pre>
+				</section>
+
+				<section>
+					3. Create and execute function that makes 'alert X' (x is a variable value)
+					<pre><code class="fragment fade-in">
+function myFunction( x ) {
+  alert("Hello "+ x +" !");
+}
+myFunction("world");
+		</code></pre>
+				</section>
+
+				<section>
+					4. Create an object called person with name = John, age = 50.
+					Then, access the object to alert("John is 50").
+					<pre><code  class="fragment fade-in">
+var person = {
+  name: "John", age : 50
+};
+alert( person.name + " is " + person.age );
+		</code></pre>
+				</section>
+
+				<section>
+					5. When the button is clicked, the function "myFunction" should be executed.
+					<pre><code class="fragment fade-in">
+< button onclick="myFunction()">Click me.< /button>
+		</code></pre>
+				</section>
+
+				<section>
+					6. The < div> element should turn red when someone moves the mouse over it.
+					<pre><code class="fragment fade-in">
+<div onmouseover="this.style.backgroundColor='red'">myDIV.</div>
+		</code></pre>
+					<div onmousemove="this.style.backgroundColor='red'">myDIV.</div>
+				</section>
+
+				<section>
+					7. Use the <a href="https://www.w3schools.com/jsref/jsref_slice_string.asp" target="new" >slice</a> method to return the word "bananas".
+					<pre><code>var txt = "I can eat bananas all day";</code></pre>
+					<pre><code class="fragment fade-in">
+var x = txt.slice(10, 17);
+		</code></pre>
+				</section>
+
+				<section>
+					8. Convert the value of txt to lower case.
+					<pre><code>var txt = "Hello World";</code></pre>
+					<pre><code class="fragment fade-in">
+txt = txt.toLowerCase();
+		</code></pre>
+				</section>
+
+				<section>
+					9. Change the first item of cars to "Ford".
+					<pre><code>var cars = ["Volvo", "Jeep", "Mercedes"];</code></pre>
+					<pre><code class="fragment fade-in">
+			cars[0] = "Ford";
+		</code></pre>
+				</section>
+
+				<section>
+					10. Alert the number of items in an array, using the correct Array method.
+					<pre><code>var cars = ["Volvo", "Jeep", "Mercedes"];</code></pre>
+					<pre><code class="fragment fade-in">
+alert(cars.length);
+		</code></pre>
+				</section>
+
+				<section>
+					11. Use the correct Array method (<a target="new" href="https://www.w3schools.com/jsref/jsref_push.asp">maybe this one?</a>) to add "Kiwi" to the fruits array.
+					<pre><code>var fruits = ["Banana", "Orange", "Apple", "Mango"];</code></pre>
+					<pre><code class="fragment fade-in">
+fruits.push("Kiwi");
+		</code></pre>
+				</section>
+
+				<section>
+					12. Use the correct Array method to sort the fruits array alphabetically.
+					<pre><code>var fruits = ["Banana", "Orange", "Apple", "Mango"];</code></pre>
+					<pre><code class="fragment fade-in">
+			fruits.sort();
+		</code></pre>
+				</section>
+
+				<section>
+					13. Create a Date object and alert the current date and time.
+					<pre><code class="fragment fade-in">
+var d = new Date();
+alert(d);
+		</code></pre>
+				</section>
+
+				<section>14. Choose the correct comparison operator to alert true, when x is NOT equal to y (alert contents can be evaluated)
+					<pre><code>
+x = 10;
+y = 5;
+			</code></pre>
+					<pre><code class="fragment fade-in">
+alert(x != y);
+		</code></pre>
+				</section>
+
+				<section>
+					15. Create a loop that runs from 0 to 9.
+					<pre><code class="fragment fade-in">
+var i;
+for(i = 0; i < 10; i++) {
+  console.log(i);
+}
+		</code></pre>
+				</section>
+
+				<section>
+					16. Change the text of the first element that has the class name "test" (not the <a target="new" href="https://www.w3schools.com/jsref/met_document_getelementbyid.asp"> ID </a>)
+					<pre><code>
+< p class="test"></p>
+< p class="test"></p>
+			</code></pre>
+					<pre><code class="fragment fade-in">
+
+document.getElementsByClassName("test")[0].innerHTML = "Hello";
+		</code></pre>
+				</section>
+
+				<section>
+					17. Change the text color of the <p> element to "red".
+					<pre><code><p id="demo"></p></code></pre>
+					<pre><code class="fragment fade-in">
+document.getElementById("demo").style.color= "red";
+		</code></pre>
+				</section>
+
+				<section>
+					18. Use the <em>'eventListener'</em> to assign an onclick event to the < button> element.
+					<pre><code>< button id="demo">Click me!< /button></code></pre>
+					<pre><code class="fragment fade-in">
+document.getElementById("demo").addEventListener("click", myFunction);
+		</code></pre>
+				</section>
+
+			</section>
+
+
+
+			<section>
+				<h4> resume building project</h4>
+				- [scripts] section in package.json
+				- install ESlint and prettier <small>(+ enable watcher in webstorm)</small>
+				<pre><code>
+// either
+yarn add --dev prettier
+yarn add --dev eslint-plugin-prettier
+
+// or
+npm install --save-dev prettier
+npm i -D eslint-plugin-prettier
+	</code></pre>
+			</section>
+			<section>
+				<h4>JSX - javascript XML</h4>
+				<pre><code class="hljs" data-trim>
+import React, {Component} from 'react';
+import logo from './logo.svg';
+import './App.css';
+
+class App extends Component {
+  render() {
+    return (
+        <div className="App">
+          <header className="App-header">
+            <img src={logo} className="App-logo" alt="logo"/>
+            <p>
+              Edit <code>src/App.js</code> and save to reload.
+            </p>
+            <a
+					className="App-link"
+					href="https://reactjs.org"
+					target="_blank"
+					rel="noopener noreferrer"
+			>
+              Learn React
+            </a>
+          </header>
+        </div>
+    );
+  }
+}
+
+export default App;
+		</code></pre>
+			</section>
+
+			<section>
+				<h4>babel</h4>
+				<small><a target="new" href="https://babeljs.io/repl#?browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=MYewdgzgLgBA5gJwKZKgSzHGBeGAeACwEYA-ApAGwpBgHcQEKATPAemJKA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2&prettier=true&targets=&version=7.8.7&externalPlugins=">try it out</a></small>
+				<img src="img/babel.png">
+
+			</section>
+
+			<section>
+				<h4>fresh start </h4>
+				<small>index.js</small>
+				<pre><code>
+import React from "react";
+import ReactDom from "react-dom";
+
+const element = <h1>Hello world</h1>;
+
+console.log(element);
+	</code></pre>
+				<small>...check the console output (cmd+option+j)</small>
+
+				<pre><code class="fragment fade-up">
+ReactDom.render(element, document.getElementById("root"));
+</code></pre>
+			</section>
+
+			<section data-background-color="#fbfbfb">
+				<section>
+					<div> <small>ES6:</small> objects</div>
+					<pre><code> walk: function () {}</code></pre>
+					<img src="img/objects.png">
+				</section>
+
+				<section>
+					<div> <small>ES6:</small> this</div>
+					<pre><code class="hljs" data-trim>
+let person = {
+  name: "Mosh",
+  talk() {
+    console.log("this", this);
+  }
+};
+
+// via direct call
+person.talk();
+
+//creating a reference (not calling () )
+let talk = person.talk;
+console.log(talk);
+talk();
+
+// window as a global object
+		</code></pre>
+					<small> difference between direct call vs reference</small>
+				</section>
+
+				<section>
+					<div> <small>ES6:</small> binding this</div>
+					<pre><code data-line-numbers="13">
+let person = {
+  name: "Mosh",
+  talk() {
+    console.log("this", this);
+  }
+};
+
+// via direct call
+person.talk();
+
+//creating a reference (not calling () )
+let talk = person.talk.bind(person);
+console.log(talk);
+talk();
+		</code></pre>
+					<small>Functions are objects</small>
+				</section>
+
+				<section>
+					<div> <small>ES6:</small> arrow functions</div>
+					<pre><code>const square = function(number) {
+  return number * number;
+};
+
+const square = number => number * number;</code></pre>
+
+					<pre><code>const jobs = [
+  { id: 1, isActive: true },
+  { id: 2, isActive: true },
+  { id: 3, isActive: false }
+];
+
+const activeJobs = jobs.filter(function(job) { return job.isActive; });
+
+// what's the difference between this:
+const activeJobs = jobs.filter(job => job.isActive );
+// and this?
+const activeJobs = jobs.filter(job => { job.isActive });
+// and this?
+const activeJobs = jobs.filter(job => ( job.isActive ));
+// and this?
+const activeJobs = jobs.filter(job => ( {job.isActive} ));
+
+
+		</code></pre>
+				</section>
+
+				<section>
+					<div> <small>ES6:</small> arrow functions and this 1</div>
+					<pre><code>
+const person = {
+  talk() {
+    console.log("this", this);
+  }
+};
+
+person.talk();
+		</code>
+		<code>const person = {
+  talk() {
+    setTimeout(function() {
+      console.log("this", this);
+    }, 1000);
+  }
+};
+
+person.talk();
+</code> </pre>
+				</section>
+
+				<section>
+					<div> <small>ES6:</small> arrow functions and this 2</div>
+					<pre>
+			<code data-line-numbers="3, 5">const person = {
+  talk() {
+    var self = this;
+    setTimeout(function() {
+      console.log("self", self);
+    }, 1000);
+  }
+};
+person.talk();
+			</code>
+			<code data-line-numbers="4">
+const person = {
+  talk() {
+    setTimeout(() => {
+      console.log("this", this);
+    }, 1000);
+  }
+};
+person.talk();
+			</code>
+		</pre>
+				</section>
+
+				<section>
+					<div> <small>ES6:</small> array.map</div>
+					<pre><code>const colors = ["red", "green", "blue"];
+const items = colors.map(color => `<li> ${color} </li>`);</code></pre>
+					<small>+ template literals</small>
+				</section>
+
+				<section>
+					<div> <small>ES6:</small> object destructuring</div>
+					<img src="img/obdesc1.png">
+					<img src="img/obdesc2.png">
+				</section>
+
+				<section>
+					<div> <small>ES6:</small> spread</div>
+					<img src="img/spread1.png">
+					<img src="img/spread2.png">
+				</section>
+
+				<section>
+					<div> <small>ES6:</small> classes</div>
+					<img src="img/classes.png">
+				</section>
+
+				<section>
+					<div> <small>ES6:</small> inheritance</div>
+					<img src="img/inheritance.png">
+				</section>
+
+				<section>
+					<div> <small>ES6:</small> modules </div>
+					<p>Objects in a module are private by default</p>
+					<img src="img/modules1.png">
+				</section>
+
+				<section>
+					<div> <small>ES6:</small> modules </div>
+					<p>Objects in a module are private by default</p>
+					<img src="img/modules2.png">
+
+				</section>
+
+
+				<section>
+					<div> <small>ES6:</small> named exports </div>
+					<img src="img/nex1.png"><img src="img/nex2.png">
+				</section>
+
+				<section>
+					<div> <small>ES6:</small> default exports </div>
+					<img src="img/dex1.png">
+					<img src="img/dex2.png">
+				</section>
+
+			</section>
+
+			<section data-background-color="#b1a786">
+			<section><h4>dad's jokes section</h4></section>
+			<section><img src="img/options1.png"></section>
+			<section><img src="img/options2.png"></section>
+			<section><pre><code class="js">// pls check
+'3' + 1;
+'3' - 1;
+</code></pre></section>
+			<section><pre><code class="js">// pls check
+('b'+'a'+ +'a'+'a').toLowerCase()
+</code></pre></section>
+
+			</section>
+
+			<section data-background-color="#018786">
+				<section>
+					<h4>task <small>(time: 30min+)</small></h4>
+					<div>Create a dummy js app for the purpose of storing buyers data</div>
+					<br>
+					<ul>
+						<li>module 1 - buyers (in general) storing a name of a buyer</li>
+						<li>module 2 - buyers (as a company) additionally storing a NIP</li>
+						<li>module 3 - buyers (as a person) additionally storing a PESEL</li>
+						<li>root module shall have also a named export (e.g. 'description')</li>
+					</ul>
+					<small>...ES6 syntax, exports etc</small>
+				</section>
+				<section>
+					<h4>steps:</h4>
+					<ul>
+						<li>new react app</li>
+						<li>clean index.js file with custom contents only</li>
+						<li>components folder with 3 JS modules</li>
+						<li>each module exports a class object</li>
+					</ul>
+					<div><br>
+						<small>create one instance of corporate and personal buyer, console.log its data on the screen (+ console.log the named export (e.g. description) </small>
+					</div>
+				</section>
+				<section><h4>solution</h4>
+					<div><a target="_new" href="https://github.com/jesiolowski-wsb/buyers">https://github.com/jesiolowski-wsb/buyers</a></div>
+				</section>
+			</section>
+
+			<section>
+				<h4>let's begin</h4>
+				<img src="img/starting.gif">
+			</section>
+
+			<section>
+				<section>
+					<h4> aim </h4>
+					<img src="img/aim.png">
+				</section>
+				<section>
+					<h4> aim </h4>
+					<ul>
+						<li>How to render content dynamically</li>
+						<li>How to apply CSS classes dynamically</li>
+						<li>removing components</li>
+						<li>resetting values</li>
+						<li>adding counter combining states</li>
+
+					</ul>
+				</section>
+
+				<section>
+					<h4>Creating new app</h4>
+					<pre><code class="js">npx create-react-app counter-app
+cd counter-app
+
+// npm syntax
+npm install --save-dev prettier
+npm i -D eslint-plugin-prettier
+npm i bootstrap@4.1.1
+npm start
+
+// yarn syntax
+yarn add --dev prettier
+yarn add --dev eslint-plugin-prettier
+yarn add bootstrap@4.1.1
+yarn start
+		</code></pre>
+
+				</section>
+
+				<section>
+					<h4>add bootstrap</h4>
+					open <code>index.js</code>
+					<pre><code>import 'bootstrap/dist/css/bootstrap.css'</code></pre>
+
+					<small>add file watcher for prettier (<em><strong>cmd</strong> + <strong>' , '</strong></strong></em> in webstorm, search for 'prettier')</small>
+				</section>
+
+				<section>
+					<h4>creating first component</h4>
+					<ul>
+						<li>create folder 'components'</li>
+						<li>create component file 'counter.jsx' </li>
+						<pre> <code>
+import React, { Component } from "react";
+
+class Counter extends Component {
+  render() {
+    return <h1>Hello World</h1>;
+  }
+}
+
+export default Counter;
+</code>
+</pre>
+						<li>import file in index.js</li>
+						<pre><code>import Counter from "./components/counter";
+
+</code></pre>
+					</ul>
+				</section>
+
+				<section>
+					<h4>Embedding expressions</h4>
+					Why this does not work?
+					<pre><code>
+	...
+		return <h1>Hello World</h1><button> Increment </button>;
+	...</code></pre>
+
+					<pre><code class="fragment fade-in"> React.createElement('h1');</code></pre>
+
+					<pre><code  class="fragment fade-in" data-line-numbers="6">
+import React, { Component } from "react";
+
+class Counter extends Component {
+  render() {
+      return <div><h1>Hello World</h1><button>Increment</button></div>;
+  }
+}
+
+export default Counter;
+</code></pre>
+				</section>
+
+				<section>
+					<h4>Automatic semicolon insertion
+					</h4>
+					<pre><code>
+		return
+	</code></pre>
+					equals
+					<pre><code>
+		return ;
+	</code></pre>
+					so
+					<pre><code>
+		return (
+		   ...
+		)
+	</code></pre>
+				</section>
+
+				<section>
+					<h4>react.fragment < > < /&nbsp;&nbsp;&nbsp;></h4> &
+					<h4>multi-cursor editing</h4>
+					<small>@phpStorm / webstorm (mac): ctrl + G / optn + click<br>
+						@vscode (mac): cmd + D
+					</small>
+					<pre><code>
+    return (
+      <React.Fragment>
+        <h1>Hello World</h1>
+        <button>Increment</button>
+      </React.Fragment>
+    );
+	</code></pre>
+
+				</section>
+
+
+				<section>
+					<h4>Embedding expressions</h4>
+					<p>let's make a dynamic value out of a hello world</p>
+					<pre><code data-line-numbers="4-6, 10">  import React, { Component } from "react";
+
+class Counter extends Component {
+  state = {
+    count: 0,
+  };
+  render() {
+    return (
+      <React.Fragment>
+        <span>{this.state.count}</span>
+        <button>Increment</button>
+      </React.Fragment>
+    );
+  }
+}
+
+export default Counter;
+	</code></pre>
+				</section>
+
+				<section>
+					<h4>...and format it</h4>
+					<pre><code data-line-numbers="5, 11-15">...
+  render() {
+    return (
+      <React.Fragment>
+        <span>{this.formatCount()}</span>
+        <button>Increment</button>
+      </React.Fragment>
+    );
+  }
+
+  formatCount() {
+    // object destructuring in action
+    const { count } = this.state;
+    return count === 0 ? <h1>Zero</h1> : count;
+  }
+}
+
+export default Counter;
+
+	</code></pre>
+				</section>
+
+				<section>
+					<h4>Setting CSS attributes</h4>
+
+					<pre><code class="hljs" data-line-numbers="6, 9-12, 17-18, 21">import React, { Component } from "react";
+
+class Counter extends Component {
+  state = {
+    count: 0,
+    imageUrl: "https://picsum.photos/200",
+  };
+
+  styles = {
+    fontSize: 20,
+    fontWeight: "bold",
+  };
+
+  render() {
+    return (
+      < React.Fragment>
+        < img src={this.state.imageUrl} />
+        < span style={this.styles} className="badge badge-primary m-2">
+          {this.formatCount()}
+        < /span>
+        < button style={{ fontSize: 50 }} className="btn btn-secondary btn-sm">
+          Increment
+        < /button>
+      < /React.Fragment>
+    );
+  }
+
+  formatCount() {
+    // object destructuring in action
+    const { count } = this.state;
+    return count === 0 ? "Zero" : count;
+  }
+}
+
+export default Counter;
+
+
+	</code></pre>
+				</section>
+
+				<section>
+					<h4>CSS dynamically</h4>
+					<pre><code class="hljs" data-line-numbers="9,10, 14">import React, { Component } from "react";
+
+class Counter extends Component {
+  state = {
+    count: 0,
+  };
+
+  render() {
+    let classes = "badge m-2 badge-";
+    classes += this.state.count === 0 ? "warning" : "primary";
+
+    return (
+      <React.Fragment>
+        <span className={classes}>{this.formatCount()}</span>
+        <button className="btn btn-secondary btn-sm">Increment</button>
+      </React.Fragment>
+    );
+  }
+
+  formatCount() {
+    // object destructuring in action
+    const { count } = this.state;
+    return count === 0 ? "Zero" : count;
+  }
+}
+
+export default Counter;
+
+
+	</code></pre>
+				</section>
+				<section>
+					<h4>extracting method...</h4>
+					<img src="img/refactor.png">
+				</section>
+				<section>
+					<h4>extracting method</h4>
+					<img src="img/refactor2.png">
+				</section>
+
+				<section>
+					<h4>Rendering lists</h4>
+					<pre><code>
+  state = {
+    count: 0,
+    tags: ["tag1", "tag2", "tag3"],
+  };
+	</code></pre>
+					<pre><code class="fragment fade-in">...
+  render() {
+    return (
+	...
+        < ul>
+          {this.state.tags.map((tag) => (
+            < li>{tag}< /li>
+          ))}
+        < /ul>
+						</React.Fragment>
+						);
+  }
+	</code></pre>
+					<p class="fragment fade-in">BUT: take a look at the JS console:)
+					</p>
+				</section>
+
+				<section><h4>conditional rendering</h4>
+					<pre>
+	<code data-line-numbers="6, 11-19">  render() {
+    return (
+      <React.Fragment>
+        <span className={this.getClassNames()}>{this.formatCount()}</span>
+        <button className="btn btn-secondary btn-sm">Increment</button>
+        {this.renderTags()}
+      </React.Fragment>
+    );
+  }
+
+  renderTags() {
+    if (this.state.tags.length === 0) return <p>There are no tags</p>;
+    return (
+      <ul>
+        {this.state.tags.map((tag) => (
+          <li key={tag}>{tag}</li>
+        ))}
+      </ul>
+    );
+  }</code>
+</pre>
+
+				</section>
+
+				<section><h4>Alternative approach - truthy / falsy</h4>
+					<pre><code class="js">// in 'render()'
+{this.state.tags.length === 0 && "Please create a new tag!"}</code></pre>
+					<img src="img/truthy.png"></section>
+
+				<section><h4>Events handling</h4>
+					<small>IMPORTANT: Passing a reference i.e. no <em>'...()'</em> (different in vanillaJS)</small>
+					<pre><code class="hljs" data-line-numbers="4-6, 13">class Counter extends Component {
+...
+
+  handleIncrement() {
+    console.log("Increment Clicked");
+  }
+
+  render() {
+    return (
+      < React.Fragment>
+        < span className={this.getClassNames()}>{this.formatCount()}< /span>
+        < button
+          onClick={this.handleIncrement}
+          className="btn btn-secondary btn-sm"
+        >
+          Increment
+        < /button>
+        {this.state.tags.length === 0 && "Please create a new tag!"}
+        {this.renderTags()}
+      < /React.Fragment>
+    );
+  }
+</code></pre>
+					<small>...and also case sensitive - onClick</small>
+					<div class="fragment fade-in">BUT... there is a problem with THIS</div>
+				</section>
+
+				<section><h4>
+				</h4>
+					<pre><code>  handleIncrement() {
+    console.log("Increment Clicked", this.state.count);
+    // obj.method()
+    // function
+  }
+</code></pre>
+					<div class="fragment fade-in">solution
+						<pre><code>  constructor() {
+    super();
+    this.handleIncrement = this.handleIncrement.bind(this);
+  }</code></pre>
+					</div>
+
+					<pre><code class="fragment fade-in">handleIncrement = () => {
+    console.log("Increment Clicked", this.state.count);
+  };
+</code></pre>
+				</section>
+
+				<section><h4>updating the state
+				</h4>
+					<pre><code data-line-numbers="3, 11, 14">
+  state = {
+    count: 0,
+    tags: ["tag1", "tag2", "tag3"],
+  };
+
+
+  handleIncrement = () => {
+  	// won't work
+  	// updating the count, but not forwarding to react
+    	this.state.count++;
+
+    	// correct way (provide an object)
+        this.setState({ count: this.state.count + 1 });
+
+  };
+</code></pre></section>
+
+				<section><h4> what happens when state changes</h4>
+					<small>inspect the div</small>
+					<img src="img/changingState.png">
+					<pre><code>
+</code></pre></section>
+
+				<section><h4>passing event arguments
+				</h4><small>react requires passing the reference, not the call. One solution could be:</small>
+					<pre><code>  handleIncrement = (product) => {
+    console.log(product);
+    this.setState({ count: this.state.count + 1 });
+  };
+
+  doHandleIncrement = () => {
+    this.handleIncrement({ id: 1 });
+  };
+
+  render() {
+    return (
+      <React.Fragment>
+        <span className={this.getClassNames()}>{this.formatCount()}</span>
+        <button
+				onClick={this.doHandleIncrement}
+				className="btn btn-secondary btn-sm"
+		>
+          Increment
+        </button>
+</code></pre></section>
+
+				<section><h4>better solution - inline function call
+				</h4>
+					<pre><code>        < button
+          onClick={() => this.handleIncrement({ id: 1 })}
+          className="btn btn-secondary btn-sm"
+        >
+</code></pre>
+					<pre><code>        < button
+          onClick={() => this.handleIncrement(product)}
+          className="btn btn-secondary btn-sm"
+        >
+</code></pre></section>
+			</section>
+
+
+			<section data-background-color="#018786">
+				<section><h4>Exercise:
+				</h4>
+					<div><ul>
+						<li>Create a new app called 'vidly'</li>
+						<li>add prettier, bootstrap@4.1.1, font-awesome@4.7.0 (font-awesome/css/font-awesome.css)</li>
+						<li>remove default page with bootstrap starter template (the part that starts with < main classname="container")</li>
+						<li>get fake services files <a target="new" href="https://1drv.ms/u/s!Ativ-SN5iV-SntFrJS__ilicP4iRbw?e=9v57Zt" >from here </a></li>
+						<li>copy 'services' folder to your 'src' directory</li>
+					</ul> </div>
+				</section>
+
+				<section><h4>
+				</h4>exercise:
+					create an app listing the movies, counting them and giving the ability to remove single movie
+					<img src="img/vidly1.png">
+				</section>
+
+				<SECTION>
+					<h4>tips: </h4>
+					<ul>
+						<li>getting the movies <pre><code>state = { movies: getMovies() };
+	...
+const { length: count } = this.state.movies;
+</code></pre>
+						</li><li>see bootstrap <a href="https://getbootstrap.com/docs/4.4/content/tables/" target="new">table</a> documentation</li>
+						<li>perform delete using <em>.filter</em> method</li></ul>
+				</SECTION>
+
+
+			</section>
+			<section>
+
+				<section><h4>composing components
+				</h4>
+					so far we have only one counter, we need more
+					<ul>
+						<li>create counterS component</li>
+						<li>change call in index.js to resolve counters</li>
+						<li>import and return counter in counters</li>
+						<li>add state to maintain the counters</li>
+					</ul>
+					<pre><code class="js">// counters.jsx
+state = {
+    counters: [
+      { id: 1, value: 0 },
+      { id: 2, value: 0 },
+      { id: 3, value: 0 },
+      { id: 4, value: 0 },
+    ],
+  };
+</code></pre></section>
+
+				<section><h4>
+				</h4>
+					Instead of 4x < Counter />
+					<pre><code class="js">// counters.jsx
+    return (
+      <>
+        {this.state.counters.map((counter) => (
+          < Counter key={counter.id} />
+        ))}
+      < />
+    );
+</code></pre>
+					<div class="fragment fade-in">Problem: initial state does not work. <strong>Why?</strong> </div></section>
+
+				<section><h4>
+				</h4>counters.jsx
+					<pre>  <code> < Counter key={counter.id} value={counter.value} selected={true} />
+</code></pre>
+					...still does not work<br>
+					counter.jsx
+					<pre><code>render() {
+    console.log("props", this.props);
+</code></pre></section>
+
+				<section><h4>
+				</h4>in counter.jsx
+					<pre><code>  state = {
+    count: this.props.value,
+  };
+</code></pre>
+					nice: rename 'count' to 'value'</section>
+
+				<section><h4>passing children
+				</h4>sometimes we want to pass a child (eg. dialog box)
+					<pre><code class="js">// counters.jsx
+<>
+        {this.state.counters.map((counter) => (
+          < Counter key={counter.id} value={counter.value}>
+            < h4>Counter no: {counter.id}< /h4>
+          < /Counter>
+        ))}
+< />
+</code></pre>
+					have a look at props in counter.jsx - 'children' appears (we can also put <em>{this.props.children})</em> in render</section>
+
+			</section>
+			<section>
+
+				<section><h4>React developer tools
+				</h4>
+					<a href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi" target="new"> @chrome</a>,
+					<a href="https://addons.mozilla.org/pl/firefox/addon/react-devtools/"> @firefox</a>,
+					<a href="https://www.npmjs.com/package/react-devtools"> standalone app</a>
+					<pre><code>				$r vs $0
+</code></pre></section>
+
+				<section><h4> props vs state
+				</h4>
+					<div><span class="fragment highlight-blue">PROPS</span> - data that we give to the component *<small>(read-only from inside)</small><br>
+						<span class="fragment highlight-green">STATE</span> - data local / private to the component *<small>(unreachable from outside)</small> </div>
+					<br>
+					<pre><code data-line-numbers="3">//try to asign a value to props
+handleIncrement = () => {
+    this.props.value = "99";
+    this.setState({ count: this.state.count + 1 });
+  };</code> </pre>
+				</section>
+
+				<section><h4>Raising and handling events
+				</h4>
+					Add delete button in counter.jsx
+					<pre><code>< /button>
+// emmet syntax. Add it after existing button
+button.btn.btn-danger.btn-sm.m-2
+</code></pre>
+					<pre><code>onClick={this.handleDelete}
+</code></pre>
+					problem: counter doesn't own its ID (there is only 'count' parameter in a state). How to remove it then?
+					<p class="fragment fade-in">answer: from outside! (counters.jsx)</p></section>
+
+				<section><img src="img/rot1.png"></section>
+
+				<section><img src="img/rot-counters.png"></section>
+
+				<section>counters.jsx
+					<pre><code data-line-numbers="1, 10-11">handleDelete = () => {console.log("handle Delete triggered")};
+
+  render() {
+    return (
+      < >
+        {this.state.counters.map((counter) => (
+          < Counter
+            key={counter.id}
+            value={counter.value}
+            id={counter.id}
+            onDelete={this.handleDelete}
+          />
+        ))}
+      < />
+    );
+  }
+}
+</code></pre></section>
+
+				<section>counter.jsx
+					<pre><code data-line-numbers="3">...
+	< button
+          onClick={this.props.onDelete}
+          className="btn btn-danger btn-sm m-2"
+        >
+        Delete
+        < /button>
+</code></pre>
+					NEXT: updating the state</section>
+
+				<section>
+					<h4>Updating the state</h4>counter.jsx
+					<pre><code>onClick={() => this.props.onDelete(this.props.id)}
+</code></pre>counters.jsx
+					<pre><code class="hljs">  handleDelete = (counterId) => {
+ # react's rule of thumb  - to be immutable
+    const counters = this.state.counters.filter((c) => c.id !== counterId);
+ # since 'key' and 'values' are the same, we can simplify 'counters: counters'
+    this.setState({ counters });
+  };</code></pre></section>
+
+				<section><h4>
+				</h4>tiny problem - too much redundancy
+					<small>Q: Why we have to provide counter.id 2 times (as a 'key' and 'id')?</small>
+					<pre><code class="js">// counters.jsx
+        {this.state.counters.map((counter) => (
+          < Counter
+            key={counter.id}
+            value={counter.value}
+            id={counter.id}
+            selected={counter.selected}
+            onDelete={this.handleDelete}
+          />
+        ))}
+</code></pre>
+					to:
+					<pre><code>	< Counter
+            key={counter.id}
+            counter={counter}
+            onDelete={this.handleDelete}
+          />
+</code></pre>
+				</section>
+
+				<section>and in counter.jsx
+					<pre><code>this.props.XXX => this.props.counter.XXX
+</code></pre></section>
+
+				<section><h4>single source of truth
+				</h4>add button in counters.jsx
+					<pre><code>  handleReset = () => {
+    const counters = this.state.counters.map((c) => {
+      c.value = 0;
+      return c;
+    });
+    this.setState({ counters });
+  };
+	...
+	< button
+          onClick={this.handleReset}
+          className="btn btn-primary btn-sm m-2"
+        >
+          Reset
+        < /button>
+</code></pre>doesn't work!</section>
+
+				<section><img src="img/ssot.png" /></section>
+				<section><img src="img/ssot2.png" /></section>
+				<section>
+	<span>Reason: local state is instantiated only on a component render / page load, and by local state changes</span><img src="img/ssot3.png" />
+				</section>
+
+				<section><h4>single source of truth</h4>
+					<small>remove local state making the component managable only from the outside</small>
+					<img src="img/ssot_.png" />
+				</section>
+
+
+
+				<section><div>TODO:</div><ul>
+					<li>Remove state from [counter.jsx]</li>
+					<li>Modify 'state' references:
+						<ul>
+							<li>change 'state' calls to 'props.counter' [counter.jsx]</li>
+							<li>change handleIncrement call to reflect 'delete' way of data manipulation
+								(arrow function, new prop etc.)
+						</ul>
+					</li>
+					<br>
+					<small>NOTE: pass the whole 'counter' object to the iterator, not just its ID (makes further manipulations easier)</small>
+				</ul></section>
+
+				<section>
+	<span><div>1. Get all the counters</div><div>2. Find place of a counter in an array</div>3. change the desired value<br>4. setState with new data</span>
+		<pre><code>handleIncrement = (counter) => {
+    const counters = [...this.state.counters];
+    const index = counters.indexOf(counter);
+    counters[index] = { ...counter };
+    counters[index].value++;
+    this.setState({ counters });
+  };
+	</code></pre>
+	<span>NOTE: bear in mind the IMMUTABILITY requirement, altering the state directly (<em>this.state.counter[index].value++</em>) is not an option</span>
+				</section>
+
+				<section><div>well ok, but why immutability is so important in the first place?</div>
+					<ol>
+						<li class="fragment fade-in">Predictability<br><small>Mutation hides change, which create (unexpected) side effects</small></li>
+						<li class="fragment fade-in">Performance<br><small>Nothing is going to beat mutating an array at an index, but the overhead of immutability isn't large, and makes use of 'structural sharing' (Objects can make use of structural sharing to reduce memory overhead)</small></li>
+						<li class="fragment fade-in">Mutation Tracking<br><small>makes it really easy to see if anything has changed. A state change in a component - you can use 'shouldComponentUpdate' hook to check if the state is identical by comparing state Objects and prevent unnecessary rendering.</small></li>
+					</ol>
+					<aside class="fragment fade-in">Additnionally, redux enforces the use of immutability</aside>
+				</section>
+
+			</section>
+
+			<section data-background-color="#660f56">
+				<section>
+					<h4>Multiple components in sync</h4>
+					<ul><div>Let's reorganize our app.</div>
+						<li>add a navigation bar on top (bootstrap basic template)</li>
+						<li>add additional counter aggregating all counter values</li>
+					</ul>
+					<small>requirement: add another component (App compoment) acting as a root of our app</small>
+				</section>
+				<section><img src="img/multipleComponents.png"></section>
+				<section><h4>1. Enable App component as a root component</h4><pre><code class="fragment fade-in js">// index.js - counters => App
+import App from "./App";
+...
+ReactDOM.render(
+  <React.StrictMode>
+    < App />
+  </React.StrictMode>,
+  document.getElementById("root")
+);
+</code></pre>
+					<h4 class="fragment fade-in">2. create a new component 'navbar'
+						(see <a target="new" href="https://getbootstrap.com/docs/4.0/components/navbar/">navbar</a>)
+					</h4>
+					<pre><code class="js fragment fade-in">// Navbar.jsx
+import React, { Component } from "react";
+
+class Navbar extends Component {
+  state = {};
+  render() {
+    return <>< />;
+  }
+}
+export default Navbar;
+</code></pre>
+				</section>
+
+				<section>
+					<h4>modify App.js triggering the Navbar & counters generation using <a target="new" href="https://getbootstrap.com/docs/4.0/examples/starter-template/">bootstrap starter template</a></h4>
+					<pre><code class="fragment fade-in js">// App.jsx
+import React from "react";
+import "./App.css";
+import Navbar from "./components/navbar";
+import Counters from "./components/counters";
+
+function App() {
+  return (
+    <>
+      < Navbar />
+      <main className="container" role="main">
+        < Counters />
+      </main>
+    < />
+  );
+}
+
+export default App;
+</code></pre>
+				</section>
+
+				<section>
+					Q: how to share counters[] with the navbar? <small>(without the parent-child relationship)</small>
+					<img src="img/lifting1.png" />
+				</section>
+
+				<section>
+					A: Lift it up to App component
+					<img src="img/lifting2.png" />
+				</section>
+
+				<section>
+					<ul>
+						<li>convert App component to class component <small><a target="new" href="https://stackoverflow.com/questions/60985759/functional-component-renders-once-class-component-renders-twice"> err... wait, but why my class component is rendered twice?</a></small></li>
+						<li>cut state and all state-mutators from counters and paste them into App component</li>
+						<li>provide handling methods to the counters component</li>
+						<li>change 'state' references in Counters to props references (inc. 'this')</li>
+					</ul>
+				</section>
+
+				<section>
+					...and finally
+					<pre><code>< Navbar totalCounters={this.state.counters.length} /></code></pre>
+					<span class="fragment fade-in">...or better
+	<pre><code>< Navbar totalCounters={this.state.counters.filter((c) => c.value > 0).length} /></code></pre></span>
+					<span class="fragment fade-in">...and adding the prop to the navbar itself<pre><code>Navbar <span className="badge badge-pill badge-secondary">{this.props.totalCounters}</span></code></pre></span>
+				</section>
+
+			</section>
+
+
+			<section><h4>Stateless functional component</h4>
+				<div>Navbar.jsx doesn't have a state, so we can transform it into functional component</div>
+				<pre><code>// Stateless Functional Component
+const Navbar = () => {};</code></pre>
+				+ move the 'render' function body inside the {}<br>
+				+ take care about the 'props' (remove 'this' and provide props variable in () )
+			</section>
+			<section><h4>Destructuring arguments</h4>
+				<pre><code>const Navbar = (props) => {
+...
+{props.totalCounters}	</code></pre>
+				to
+				<pre><code>const Navbar = ({ totalCounters }) => {
+...
+{totalCounters}</code></pre>
+
+				<div class="fragment fade-in"> task: destructure props in counters.jsx</div>
+				<pre><code class="fragment fade-up">render() {
+const { onReset, counters, onDelete, onIncrement } = this.props;</code></pre>
+			</section>
+
+			<section>
+
+				<section><h4>Lifecycle hooks - class</h4>
+					<img target="new" src="img/lhooks.png" /></section>
+				<section><h4>mounting phase</h4>
+					<pre><code class="js">  // invoked only once, during class initialization.
+  // Props not required as a parameter but often used
+  constructor(props) {
+    super(props);
+    console.log("App - Constructor", this.props);
+    // e.g.
+    // this.state = this.props.something;
+    // this.setState();  // wont work, component is not rendered yet
+  }</code></pre>
+
+					<pre><code class="js">  // after the component is rendered into the DOM
+  componentDidMount() {
+    // perfect place for ajax calls to the server
+    this.setState();
+    console.log("App - mounted");
+  }</code></pre>
+
+					<pre><code class="js">  // rendering phase. If parent component is rendered, all of its children are also rendered
+  render() {
+    console.log("App - rendered");
+    return (
+      <>...< />
+    )
+  }
+</code></pre></section>
+
+
+				<section><h4>updating phase</h4>
+					<div>Add '<code>console.log("[component] - rendered")'</code> to each component;</div>
+					<div><br>What's going on? <br><span class="fragment fade-up">After clicking 'increment', whole component tree is rendered. What it does NOT imply, is that entire DOM is updated <span class="fragment highlight-blue">(old virtual DOM vs new virtual DOM vs real DOM)</span></span></div>
+				</section>
+				<section>
+			<pre><code class="js">  //counter.jsx // triggered after the component is updated
+  componentDidUpdate(prevProps, prevState) {
+    console.log("prevProps", prevProps);
+    console.log("prevState", prevState);
+
+    if (prevProps.counter.value !== this.props.counter.values) {
+      // make the ajax call getting new data from the server
+    }
+  }</code></pre>
+				</section>
+
+
+				<section><h4>unmounting phase</h4>
+					<pre><code>  // just before the component is removed from the DOM
+  componentWillUnmount() {
+    console.log("Counter - unmount");
+  }
+</code></pre>
+					<div>The whole component tree is re-rendered, React compares virtual DOM with the real one - knows that something is removed thus giving us a possibility to do a cleanup <small>(prohibits memory leaks)</small></div></section>
+
+			</section>
+
+			<section>
+				<section>
+					<h4>lifecycle methods - functional</h4>
+					<pre><code class="js">
+		// state manipulation
+		[state, setState]  = useState(initialValue)
+
+		// lifecycle
+		useEffect()
+
+		// others
+		// useCallback(), useMemo(), useRef()
+	</code></pre>
+				</section>
+
+
+				<section>
+					<h4>use State</h4>
+					<pre><code class="js">
+		// state manipulation
+		[state, setState]  = useState(initialValue)
+	</code></pre>
+					<ul><li>we can have multiple instances of useState</li>
+						<li>works slightly different when merging state (objects!)</li>
+						<li>initialValue can be a function (reason: rendered only once)</li></ul>
+				</section>
+				<section>
+					Create 'counterFunc' component with useState implemented
+
+					<pre><code class="js fragment fade-up">import React, { useState } from "react";
+
+function CounterFunc(props) {
+  const [count, setCount] = useState(() => {
+    // triggered only once
+    console.log("run function");
+    return 0;
+  });
+
+  const increment = () => {
+    // not entirely correct way
+    setCount(count + 1);
+
+    // proper way
+    setCount((prevCount) => prevCount + 1);
+  };
+
+  return (
+    <div className="badge m-2 badge-success" onClick={increment}>
+      {count}
+    </div>
+  );
+}
+
+export default CounterFunc;
+	</code></pre>
+				</section>
+				<section>
+					<h4>if initialState = object</h4>
+					<pre><code data-line-numbers="10">
+import React, { useState } from "react";
+
+function CounterFunc(props) {
+  const [count, setCount] = useState({ value: 0, color: "blue" });
+
+  const increment = () => {
+    setCount((prevState) => {
+      return {
+        ...prevState,
+        value: prevState.value + 1,
+      };
+    });
+  };
+
+  return (
+    <div className="badge m-2 badge-success" onClick={increment}>
+      {count.value} {count.color}
+    </div>
+  );
+}
+
+export default CounterFunc;
+
+	</code></pre>
+				</section>
+				<section>
+					<h4>use Effect</h4>
+					<pre><code>
+		useEffect(() => {}, [])
+	</code></pre>
+					<ul><li>[] stands for dependancies array</li>
+						<li>when empty, stands for 'initial mount'</li></ul>
+				</section>
+				<section><h4>use Effect</h4>
+					<pre><code class="js">  // only when count value will change
+  useEffect(() => {
+    console.log("useEffect rerender");
+  }, [count.value]);</code></pre>
+
+					<pre><code class="js" data-line-numbers="4">// clearing memory
+  useEffect(() => {
+    console.log("useEffect rerender");
+    return console.log("unmount");
+  }, [count.value]);</code></pre>
+
+				</section>
+
+
+			</section>
+
+
+
+			<section data-background-color="#DBFFD6">
+				<section>Exercise: decrement button
+					<img src="img/decrementB.png" />
+				</section>
+
+				<section><h4>Solution</h4></section>
+				<section>
+<pre><code class="js" >// counter.jsx - new button
+< button
+  onClick={() => this.props.onDecrement(this.props.counter)}
+  className="btn btn-secondary btn-sm"
+>
+  -
+< /button></code></pre>
+					<pre><code data-line-numbers="2,9" class="js">// counters.jsx - new props
+const { onReset, counters, onDelete, onIncrement, onDecrement } = this.props;
+...
+< Counter
+    key={counter.id}
+    counter={counter}
+    onDelete={onDelete}
+    onIncrement={onIncrement}
+    onDecrement={onDecrement}
+ />
+</code></pre>
+				</section>
+
+				<section><pre><code data-line-numbers="2-8, 13" class="js">// App.js - new props & handler
+  handleDecrement = (counter) => {
+    const counters = [...this.state.counters];
+    const index = counters.indexOf(counter);
+    counters[index] = { ...counter };
+    counters[index].value--;
+    this.setState({ counters });
+  };
+...
+  < Counters
+    counters={this.state.counters}
+    onIncrement={this.handleIncrement}
+    onDecrement={this.handleDecrement}
+    onDelete={this.handleDelete}
+    onReset={this.handleReset}
+  />
+	</code></pre></section>
+
+				<section>
+					layout mod (<a target="new" href="https://getbootstrap.com/docs/4.0/layout/grid/">botstrap's grid</a>)
+					<pre><code class="js">// counter.jsx
+    return (
+      < div className="row">
+      div.col-1+div.col [tab] // emmet syntax
+      // move span inside the first column, and the buttons to the second one
+      // m-2 class added to the 'decrement' btn, removed from the 'delete' btn
+		</code></pre>
+
+					<span class="fragment fade-up">
+		...and the 'disable' logic
+		<pre><code class="js" data-line-numbers="4">          < button
+            onClick={() => this.props.onDecrement(this.props.counter)}
+            className="btn btn-secondary btn-sm m-2"
+            disabled={this.props.counter.value === 0 ? "disabled" : ""}
+          >
+            -
+          < /button></code></pre>
+		</span>
+				</section>
+			</section>
+
+			<section data-background-color="#FFF5BA">
+				<section><h4>Exercise: 'like' button</h4>
+					<img src="img/likebtn.png" />
+				</section>
+				<section><h4>Think about interface of this component</h4><ul>
+					<li>What input should it receive?</li>
+					<li>What events should it raise?</li>
+					<li>what props are we going to have in this object</li>
+				</ul><br><br>
+					<div>HINT: The icon is part of 'font-awesome' package we already installed (in <a href="https://fontawesome.com/v4.7.0/icons/" target="new">version 4.7</a>). Search for 'heart' and click it to see its usage</div>
+				</section>
+				<section><h4>Solution</h4></section>
+				<section><ul>
+					<li>Create 'common' directory to store general-use data (furher use: pagination, forms etc)</li>
+					<li>like.jsx inside (input: boolean - clicked or not?, output - 'onClick' event)</li>
+					<li>copy usage code from fontawesome docs into the return of a Like component</li>
+					<li>use it in 'movies' component</li>
+				</ul></section>
+				<section>
+					<ul><li>icon must have a behavior, let's call it 'liked'
+						<pre><code class="js">// movies.jsx
+< Like liked={true} /></code></pre></li>
+						<li class="fragment fade-up">and handle the prop <pre><code data-line-numbers="7-9">// like.jsx
+import React, { Component } from "react";
+
+class Like extends Component {
+  state = {};
+  render() {
+    let classes = "fa fa-heart";
+    if (!this.props.liked) classes += "-o";
+    return <i className={classes} aria-hidden="true"></i>;
+  }
+}
+export default Like;</code></pre></li>
+					</ul>
+				</section>
+				<section>
+					<ul><li>
+						lets make it dynamic<pre><code class="js">// movies.jsx
+< Like liked={movies.liked} /></code></pre>
+					</li>
+						<li class="fragment fade-up">add responsible parameter to our fake data provider
+							<pre><code data-line-numbers="9" class="js">// fakeMovieService.js
+...
+  {
+    _id: "5b21ca3eeb7f6fbccd471816",
+    title: "Die Hard",
+    genre: { _id: "5b21ca3eeb7f6fbccd471818", name: "Action" },
+    numberInStock: 5,
+    dailyRentalRate: 2.5,
+    liked: true,
+  },
+ ...</code></pre></li>
+					</ul>
+				</section>
+				<section>
+					<ul><li>one last thing - click event</li>
+						<pre><code class="js">// movies.jsx
+<Like liked={movie.liked} onClick={this.handleLike} /></code></pre>
+						<pre><code class="js">  handleLike = () => {
+    console.log("Like Clicked");
+  };</code></pre>
+						<pre><code class=" fragment fade-in js">// like.jsx
+    return (
+      <i
+			  className={classes}
+			  onClick={this.props.onClick}
+			  aria-hidden="true"
+	  ></i>
+    );
+  }
+</code></pre>
+					
+						<li class="fragment fade-up">eye candy: cursor icon
+							<pre><code class="js">// like.jsx
+  style={{ cursor: "pointer" }}</code></pre></li></ul>
+				</section>
+
+				<section>
+					<ul><li>finally, change the state
+						<pre><code class="js">// movies.jsx
+  < Like
+    liked={movie.liked}
+    onClick={() => this.handleLike(movie)}
+  />
+</code></pre>
+						<pre><code class="js" data-line-numbers="9">  handleLike = (movie) => {
+    const movies = [...this.state.movies];
+    const index = movies.indexOf(movie);
+    movies[index] = { ...movies[index] };
+    movies[index].liked = !movies[index].liked;
+    this.setState({ movies });
+  };
+</code></pre>
+					</li></ul>
+					<div>Q: why line 4 is needed?</div>
+				</section>
+
+				<section><h4>Really one last thing - stateless functional component</h4>
+					<div>'Like' doesn't have a state and is fully controlled by 'movies' component - no need to keep it as class</div><br>
+					<div> We have two ways of making the 'convert'
+						<ol>
+							<li><pre><code>const Like = () =>{}</code></pre><ul>
+								<li>move contents of a 'render' function to {}</li>
+								<li>remove 'this.' and provide props as a parameter to the function call</li>
+								<li>get rid of <code>, { Component }</code></li>
+							</ul></li>
+							<li class="fragment fade-up"> or... right mouse click on class name and 'refactor'</li></ol></div>
+				</section>
+
+
+			</section>
+
+
+			<section>
+				<section><h4>next: pagination, filtering and sorting</h4></section>
+			</section>
+			<section>
+				<section><h4>Pagination</h4>
+					<ul><li>Pagination.jsx in 'common'<br><small>make it a functional component - no local state needed</small>
+						<pre><code class="js">// pagination.jsx
+import React from "react";
+
+const Pagination = (props) => {
+  return <>test< />;
+};
+
+export default Pagination;</code></pre></li>
+						<li>import it in movies.jsx after the 'table'</li>
+						<li>Q: What input should it receive?<br><small class="fragment fade-in">(total number of items and a page size)<br>HINT: it's a good practice to start implementing the pattern before its creation</small></li></ul>
+				</section>
+				<section>
+					<h4>defining the interface</h4>
+					<pre><code class="js">// movies.jsx
+import Pagination from "./common/pagination";
+...
+// {this.state.movies.length} decomposed to {count} earlier
+< Pagination itemsCount={count} /> </code></pre>
+					<pre><code class="fragment fade-up hljs">state = { movies: getMovies(), pageSize: 4 };
+...
+< Pagination ... pageSize={this.state.pageSize} /></code></pre>
+					<pre><code class="fragment fade-up hljs">handlePageChange = (page) => {
+  console.log(page + " clicked");
+};
+< Pagination ... onPageChange={this.handlePageChange}/></code></pre>
+				</section>
+				<section>
+					<h4>implementation</h4>
+					<h4>bootstrap pagination <a href="https://getbootstrap.com/docs/4.0/components/pagination/" target="new"> -> here</a></h4>
+					<pre><code class="js">const Pagination = (props) => {
+  return nav>ul.pagination>li.page-item>a.page-link; // + hit [tab] key
+};</code></pre>
+					<ul><li>add '1' as a link label</li><li>remove "href" & check the console</li><li class="fragment fade-up">substitute 'a' with 'button'</li>
+					</ul><br><br>
+					<small class="fragment fade-in">next task: making pagination button elements dynamic</small>
+				</section>
+
+				<section>
+					<div>requirement: each LI should have its own representation</div>
+					<pre><code class="hljs">  //  pagination.jsx
+  const { itemsCount, pageSize } = props;
+  const pagesCount = itemsCount / pageSize;
+
+  // [1.. pagesCount].map()</code></pre>
+					<div class="fragment fade-in"><a href="https://lodash.com/" target="new">here comes the lodash </a>
+						<pre><code> > npm i lodash</code></pre>
+						<pre><code>// pagination.jsx
+import _ from "lodash";</code></pre></div>
+				</section>
+
+				<section>
+	<pre><code class="hljs" data-line-numbers="3, 8-12">  const { itemsCount, pageSize } = props;
+  const pagesCount = itemsCount / pageSize;
+  const pages = _.range(1, pagesCount + 1);
+
+  return (
+    <nav>
+      <ul className="pagination">
+        {pages.map((page) => (
+          <li key={_.uniqueId("pagination-")} className="page-item">
+            <button className="page-link">{page}</button>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+</code></pre>
+					<div class="fragment fade-up">What with the edge case? Let's change pageSize to 10 (movies.jsx)<br><small>in case of only one page, we do not need pagination at all!</small></div>
+				</section>
+				<section>Why it doesn't work?
+					<pre><code class="hljs" data-line-numbers="4">// pagination.jsx
+  const { itemsCount, pageSize } = props;
+  const pagesCount = itemsCount / pageSize;
+  if (pagesCount === 1) return null;
+  const pages = _.range(1, pagesCount + 1);	</code></pre>
+					<pre><code class="fragment fade-up">  console.log(pagesCount); // === 0.9</code></pre>
+					<pre><code class="fragment fade-up">  const pagesCount = Math.ceil(itemsCount / pageSize);</code></pre>
+				</section>
+
+				<section>
+					<h4>raising 'click' event</h4><small>(but first let's revert pageSize state back to 4)</small>
+					<pre><code class="hljs">//pagination.jsx
+< button
+  className="page-link"
+  onClick={() => props.onPageChange(page)} >{page}< /button>	</code></pre>
+					<div>...but we can also destructure props.onPageChange</div>
+					<pre><code>  const { itemsCount, pageSize, onPageChange } = props;
+...
+< button
+  className="page-link"
+  onClick={() => onPageChange(page)}
+>
+  {page}
+< /button></code></pre>
+				</section>
+
+				<section>
+					<h4>highlighting active page <small>i.e. adding 'active' class to 'LI'</small></h4>
+					<div>Q: what's the problem here?</div><div>A: the component doesn't know what page it is on</div>
+					<pre><code class="hljs">// pagination.jsx
+  const { itemsCount, pageSize, currentPage, onPageChange } = props;
+</code></pre>
+					<pre><code>// movies.jsx
+state = { movies: getMovies(), pageSize: 4, currentPage: 1 };
+...
+<Pagination
+		itemsCount={count}
+		pageSize={this.state.pageSize}
+		onPageChange={this.handlePageChange}
+		currentPage={this.state.currentPage}
+/>
+</code></pre>
+					<div>...and object destructuring :)</div>
+					<pre><code>// movies.jsx
+  render() {
+    const { length: count } = this.state.movies;
+    const { pageSize, currentPage } = this.state;
+</code></pre>
+					<small>dont forget to remove <em>'this.state.'</em> from the calls</small>
+				</section>
+
+				<section>
+					<div>one last thing - handleClick</div>
+					<pre><code class="hljs">// movies.jsx
+  handlePageChange = (page) => {
+    this.setState({ currentPage: page });
+  };
+	</code></pre>
+					<div> so we can check it by 'console.log'</div>
+					<pre><code data-line-numbers="4">// pagination.jsx
+  const Pagination = (props) => {
+  const { itemsCount, pageSize, currentPage, onPageChange } = props;
+  console.log(currentPage);</code></pre>
+				</section>
+				<section> <h4>WRAP UP:</h4>
+					<ul>
+						<li>Whenever we click a page, <em>onPageChange(page)</em> is raised (pagination.jsx)</li>
+						<li class="fragment fade-in">we handle that event in movies.jsx, updating the state</li>
+						<li class="fragment fade-in">when a state of a component is changed, this component and all of its children are re-rendered</li>
+						<li class="fragment fade-in">movies.jsx gets re-rendered, hits the pagination.jsx sending new props, renders it</li>
+						<li class="fragment fade-in">...and we get a new page</li>
+					</ul>
+				</section>
+				<section>
+					<h4>last but not least</h4>
+					<pre><code class="hljs" data-line-numbers="7">// pagination.jsx
+< nav>
+  < ul className="pagination">
+    {pages.map((page) => (
+      < li
+        key={_.uniqueId("pagination-")}
+        className={currentPage === page ? "page-item active" : "page-item"}
+      >
+        < button className="page-link" onClick={() => onPageChange(page)}>
+          {page}
+        < /button>
+      < /li>
+    ))}
+  < /ul>
+< /nav>
+	</code></pre>
+				</section>
+
+				<section>
+					<h4>paginating the data <br><small>(remark: it can be also done by backend, but here for simplicity reasons we stay on the frontend)</small></h4>
+					<ul><li>we do not want to alter the 'movies' in any way, we should only <em class="fragment highlight-blue">slice</em> the set providing new data to the component</li>
+						<li>we might want to reuse that function somewhere else, so the logic cannot happen in 'movies' component</li></ul>
+				</section>
+				<section>
+					<ul><li>let's create new directory 'utils' (outside components) and a file called paginate.js</li>
+						<li>the easiest way to perform the task is to use lodash</li></ul>
+					<pre><code class="hljs">// paginate.js
+import _ from "lodash";
+
+export function paginate(items, pageNumber, pageSize) {
+  // formula to get the starting point
+  const startIndex = (pageNumber - 1) * pageSize;
+  // we will use:
+  //_.slice()
+  //_.take()
+}	</code></pre>
+					<pre><code class="hljs fragment fade-in">  return _(items).slice(startIndex).take(pageSize).value();
+</code></pre>
+					<small class="fragment fade-up">fun fact: _ is a fork of <a href="https://underscorejs.org/" target="new">'underscore.js'</a> (name Lo-dash finally makes sense)</small>
+				</section>
+				<section>
+	<pre><code class="hljs" data-line-numbers="2, 6, 10">  // movies.jsx
+  import { paginate } from "../utils/paginate";
+...
+  render() {
+    const { length: count } = this.state.movies;
+    const { pageSize, currentPage, movies: allMovies } = this.state;
+
+    if (count === 0) return <p>There are no movies in the database</p>;
+
+    const movies = paginate(allMovies, currentPage, pageSize);
+
+    return (
+	</code></pre>
+					<pre><code class="js" data-line-numbers="3"> < tbody>
+// changing 'state.movies' to local movies
+ {movies.map((movie) => (
+      < tr key={movie._id}>
+        < td>{movie.title}< /td>   </code></pre>
+				</section>
+				<section>
+					<h4>but what if...</h4>
+					<div>prop contents are malformed?<pre><code class="hljs" data-line-numbers="3">// movies.jsx
+< Pagination
+  itemsCount="abc"
+  pageSize={pageSize}
+  onPageChange={this.handlePageChange}
+  currentPage={currentPage}
+/>	</code></pre></div>
+
+					<ul><li class="fragment fade-up">The count is still 9</li>
+						<li class="fragment fade-up">4 entries on a page and one page only</li>
+						<li class="fragment fade-up">no errors in the console</li>
+						<li class="fragment fade-up">we have a bug :) </li></ul>
+				</section>
+				<section>
+					<h4><a href="https://reactjs.org/docs/typechecking-with-proptypes.html#proptypes" target="new">prop types</a> to the rescue!</h4>
+					<div>we need type checking</div>
+					<pre><code class="hljs">npm i prop-types</code></pre>
+					<pre><code class="hljs">// pagination.jsx
+import PropTypes from "prop-types";
+
+...
+
+Pagination.propTypes = {
+  itemsCount: PropTypes.number.isRequired,
+  pageSize: PropTypes.number.isRequired,
+  currentPage: PropTypes.number.isRequired,
+  onPageChange: PropTypes.func.isRequired,
+};
+
+export default Pagination;		</code></pre>
+					<strong class="fragment highlight-red">note: console warnings available in development mode only</strong>
+
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h4>Filtering</h4>
+					<img src="img/filtering1.png" />
+				</section>
+				<section>
+					<h4>setting up the interface</h4>
+					<ul><li>new file <code>listGroup.jsx</code> in 'common' folder</li>
+						<li>ListGroup as a functional component</li></ul><br><br>
+					<div>The best way to create a component is to use it before really creating it</div>
+				</section>
+
+				<section>
+					<ul><li>import <code>ListGroup</code> in <code>Movies</code></li>
+						<li>change the layout substituting <code>React.Fragment</code> with bootstrap's row and two columns </li></ul>
+					<pre><code class=hljs>
+< div className="row">
+	div.col-2+div.com
+< /div>
+		</code></pre>
+					<ul><li>move 'movies' markup to second column</li><li>in the first column, embed <code>ListGroup</code></li></ul>
+				</section>
+				<section>
+					<div>Q: What do we need to pass to the component?</div>
+					<div>A: the list of genres</div>
+				</section>
+				<section><pre><code class="js">// movies.jsx
+import { getGenres} from "../services/fakeGenreService"
+...
+< ListGroup items={this.state.genres} />
+</code></pre>
+					<pre><code class="js">// movies.jsx
+  state = { movies: [], genres: [], pageSize: 4, currentPage: 1 };
+
+  componentDidMount() {
+    this.setState({ movies: getMovies(), genres: getGenres() });
+  }
+</code></pre>
+					<div>in real world, data provider might need some time to load the data, so trusting in having the data during <code>render()</code>, might result in 'undefined' data set</div>
+				</section>
+				<section>
+	<pre><code class="hljs">//movies.jsx
+< ListGroup
+  items={this.state.genres}
+  onItemSelect={this.handleGenreSelect}
+/>
+
+...
+
+handleGenreSelect = (genre) => {
+  console.log("genre select clicked");
+};</code></pre>
+					<div>+ bootstrap's <a target="new" href="https://getbootstrap.com/docs/4.0/components/list-group/">List Group</a> markup</div>
+				</section>
+				<section>
+	<pre><code class="js">// listGroup.jsx
+import React from "react";
+
+const ListGroup = (props) => {
+  const { items } = props;
+
+  return (
+    < ul className="list-group">
+      {items.map((item) => (
+        < li key={item._id} className="list-group-item">
+          {item.name}
+        < /li>
+      ))}
+    < /ul>
+  );
+};
+
+export default ListGroup;</code></pre>
+
+					<div>however what if 'name' is not called a 'name' and 'id' an '_id'?<br>To make it more flexible, we introduce another two props</div>
+				</section>
+				<section>
+	<pre><code class="hljs" data-line-numbers="4-5">// movies.jsx
+  < ListGroup
+    items={this.state.genres}
+    textProperty="name"
+    valueProperty="_id"
+    onItemSelect={this.handleGenreSelect}
+  / >
+	</code></pre>
+					<pre><code class="js" data-line-numbers="5, 10-11">// listGroup.jsx
+import React from "react";
+
+const ListGroup = (props) => {
+  const { items, textProperty, valueProperty } = props;
+
+  return (
+    < ul className="list-group">
+      {items.map((item) => (
+        < li key={item[valueProperty]} className="list-group-item">
+          {item[textProperty]}
+        < /li>
+      ))}
+    < /ul>
+  );
+};
+
+export default ListGroup;
+	</code></pre>
+				</section>
+
+				<section><h4>default props</h4>
+					<div><code>Listgroup</code> interface starts to look complex because of 2 new props.<br>Since 'the easier the better', we can introduce <span class="fragment highlight-green">'default props'</span> and change the defaults only if there is a need for doing so</div></section>
+				<section>
+	<pre><code class="hljs" data-line-numbers="2">// listGroup.jsx
+ListGroup.defaultProps = { textProperty: "name", valueProperty: "_id" };
+export default ListGroup;</code></pre>
+					<pre><code class="js">// movies.jsx
+// removing textProperty and valueProperty
+<ListGroup
+		items={this.state.genres}
+		onItemSelect={this.handleGenreSelect}
+/></code></pre>
+				</section>
+				<section><h4>handling selection</h4>
+					<pre><code class="hljs">// listGroup.jsx
+// extract onItemSelect from a props
+const { items, textProperty, valueProperty, onItemSelect } = props;
+...
+// provide this prop to onClick event
+< li
+      onClick={() => {
+        onItemSelect(item);
+      }}
+      key={item[valueProperty]}
+      className="list-group-item"
+    >
+</code></pre>
+					<div>next: setting clicked element to 'active'</div></section>
+
+				<section>
+					<div>seems we need currentItem</div>
+					<pre><code data-line-numbers="8" class="hljs">// listGroup.jsx
+< li
+  onClick={() => {
+    onItemSelect(item);
+  }}
+  key={item[valueProperty]}
+  className={
+    item === selectedItem ? "list-group-item active" : "list-group-item"
+  }
+>
+</code></pre><pre><code class="hljs" data-line-numbers="8">// listGroup.jsx
+// destructure currentItem from props
+  const {
+    items,
+    textProperty,
+    valueProperty,
+    onItemSelect,
+    selectedItem,
+  } = props;
+
+	</code></pre>
+				</section>
+				<section><div>supply selectedItem</div>
+					<pre><code class="hljs" data-line-numbers="5, 11, 15">// movies.jsx
+  < ListGroup
+    items={this.state.genres}
+    onItemSelect={this.handleGenreSelect}
+    selectedItem={this.state.selectedGenre}
+  />
+  ...
+  state = {
+    movies: [], genres: [],
+    pageSize: 4, currentPage: 1,
+    selectedGenre: 1,
+  };
+  ...
+  handleGenreSelect = (genre) => {
+    this.setState({ selectedGenre: genre });
+  };
+	</code></pre>
+				</section>
+				<section><h4>implementing filtering</h4><div>in movies.jsx:49 we're paginating the data, so filtering should take place before the pagination</div>
+					<pre><code class="hljs" data-line-numbers="4-5, 7-11, 13-15">// movies.jsx
+  render() {
+    const { length: count } = this.state.movies;
+    // add selectedGenre
+    const { pageSize, currentPage, movies: allMovies, selectedGenre } = this.state;
+  ...
+    // filtering the set
+    const filtered = selectedGenre
+  ? allMovies.filter((m) => m.genre._id === selectedGenre._id) : allMovies;
+  // provide filtered set to the pagination
+  const movies = paginate(filtered, currentPage, pageSize);
+  ...
+  // provide proper value to the pagination
+  < Pagination
+    itemsCount={filtered.length}
+    pageSize={pageSize}
+    onPageChange={this.handlePageChange}
+    currentPage={currentPage}
+  />
+</code></pre></section>
+
+				<section><div>seems we have a bug (if no selection is made, list is empty). Why?</div>
+					<pre><code class="js" data-line-numbers="2">// movies.jsx
+console.log(selectedGenre, filtered);
+const movies = paginate(filtered, currentPage, pageSize);
+</code></pre>
+					<span class="fragment fade-in">
+<pre><code class="js" data-line-numbers="7">// movies.jsx
+  state = {
+    movies: [],
+    genres: [],
+    pageSize: 4,
+    currentPage: 1,
+    selectedGenre: null,
+  };</code></pre>
+<small>+ change another instance of a <code>{count}</code> to <code>{filtered.length}</code></small></span></section>
+				<section><h4>adding 'all genres' button</h4>
+					<pre><code class="hljs">// movies.jsx
+componentDidMount() {
+  const genres = [{ name: "All genres" }, ...getGenres()];
+  this.setState({ movies: getMovies(), genres });
+}</code></pre>
+					<span class="fragment fade-in"><div>another problem is 'all genres' not having proper ID</div>
+<pre><code class="js" data-line-numbers="2">// movies.jsx
+const filtered = selectedGenre && selectedGenre._id
+  ? allMovies.filter((m) => m.genre._id === selectedGenre._id)
+  : allMovies;
+</code></pre></span>
+				</section>
+				<section><h4>bug: pagination reset</h4>
+					<div>go to 2nd page while on 'all genres' and change the genre. What's happening?</div>
+					<pre><code class="js fragment fade-up">// movies.jsx
+  handleGenreSelect = (genre) => {
+    this.setState({ selectedGenre: genre, currentPage: 1 });
+  };</code></pre></section>
+				<section><h4>final bug: 'all genres' not having proper 'key'</h4>
+					<div>Q: how to solve that?</div>
+					<div>A: lodash :)</div>
+					<pre><code class="hljs" data-line-numbers="2, 8">// listGroup.jsx
+import _ from "lodash";
+...
+< li
+  onClick={() => {
+    onItemSelect(item);
+  }}
+  key={_.uniqueId()}
+  className={
+    item === selectedItem ? "list-group-item active" : "list-group-item"
+  }
+>
+</code></pre>
+				</section>
+
+			</section>
+
+			<section>
+				<section>
+					<h4>cleanup</h4>
+					<div> currently we're mixing up levels of abstraction of our components (movies - low level vs pagination & filtering - high level)<br><br>let's clean it up...</div>
+				</section>
+				<section>
+					<ul><li>extract <code>moviesTable.jsx</code> fo functional Component</li>
+						<li>provide props, destructure it</li>
+						<li>embed <code>MoviesTable</code> in Movies</li>
+						<li>remove unused <code>Like</code> from Movies</li>
+						<li>elevate handleDelete & handleLike functions to be provided via props (onDelete & onLike)</li>
+					</ul>
+					<pre><code class="hljs">//moviesTable.jsx
+import React from "react";
+import Like from "./common/like";
+
+const MoviesTable = (props) => {
+  const { movies, onDelete, onLike } = props;
+
+  return (
+    < table className="table">
+      < thead>
+        < tr>
+          < th>Title< /th>
+          < th>Genre< /th>
+          < th>Stock< /th>
+          < th>Rate< /th>
+          < th>&nbsp;< /th>
+          < th>&nbsp;< /th>
+        < /tr>
+      < /thead>
+      < tbody>
+        {movies.map((movie) => (
+          < tr key={movie._id}>
+            < td>{movie.title}< /td>
+            < td>{movie.genre.name}< /td>
+            < td>{movie.numberInStock}< /td>
+            < td>{movie.dailyRentalRate}< /td>
+            < td>
+              < Like liked={movie.liked} onClick={() => onLike(movie)} />
+            < /td>
+            < td>
+              < button
+                onClick={() => onDelete(movie)}
+                className="btn btn-danger btn sm"
+              >
+                Delete
+              < /button>
+            < /td>
+          < /tr>
+        ))}
+      < /tbody>
+    < /table>
+  );
+};
+
+export default MoviesTable;
+
+
+// movies.jsx
+import MoviesTable from "./moviesTable";
+...
+  < MoviesTable
+    movies={movies}
+    onDelete={this.handleDelete}
+    onLike={this.handleLike}
+  />
+      </code></pre>
+				</section>
+
+			</section>
+
+			<section>
+				<section>
+					<h4>sorting</h4>
+				</section>
+				<section>
+					<h4>raising the sort event</h4>
+					<ul><li>mock new prop 'onSort' in moviesTable <pre><code class="js">const { movies, onDelete, onLike, onSort } = props;</code></pre></li>
+						<li>on each TH create a cursor (OPTN + click) and add onClick event
+							<pre><code class="js">// moviesTable.jsx
+< th onClick={() => onSort()}>Genre< /th></code></pre>
+							<span class="fragment fade-in"> <pre><code>< th onClick={() => onSort('title')}>Title< /th>
+< th onClick={() => onSort('genre.name')}>Genre< /th>
+< th onClick={() => onSort('numberInStock')}>Stock< /th>
+< th onClick={() => onSort('dailyRentalRate')}>Rate< /th>
+</code></pre><div>let's be consistent in naming (1:1 with 'fakeMovieService.js') </div></span></li></ul>
+				</section>
+				<section>
+					<ul><li>in movies.jsx arm the 'moviesTable' component
+						<pre><code data-line-numbers="6">// movies.jsx
+< MoviesTable
+  movies={movies}
+  onDelete={this.handleDelete}
+  onLike={this.handleLike}
+  onSort={this.handleSort}
+/>
+
+...
+
+handleSort = (path) => {
+  console.log(path);
+};
+</code></pre></li></ul>	</section>
+
+				<section>
+					<h4>Implementing sorting</h4>
+					<pre><code class="hljs" data-line-numbers="8, 12">// movies.jsx
+  state = {
+    movies: [],
+    genres: [],
+    pageSize: 4,
+    currentPage: 1,
+    selectedGenre: null,
+    sortColumn: { path: "title", order: "asc" },
+  };
+...
+  handleSort = (path) => {
+    this.setState({ sortColumn: { path, order: "asc" } });
+  };
+	</code></pre>
+				</section>
+
+				<section>
+					<div>we should sort the data before pagination but after the filtering</div>
+					<pre><code class="js" data-line-numbers="2, 8, 13">//movies.jsx
+import _ from "lodash"
+...
+render(){
+...
+const {
+  pageSize, currentPage, movies: allMovies, selectedGenre,
+  sortColumn,
+} = this.state;
+...
+const filtered = selectedGenre && selectedGenre._id ? allMovies.filter((m) => m.genre._id === selectedGenre._id) : allMovies;
+
+const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);
+const movies = paginate(sorted, currentPage, pageSize);
+</code></pre>
+				</section>
+
+				<section><div>reversing the sort order</div>
+					<pre><code class="js">//movies.jsx
+  handleSort = (path) => {
+    const sortColumn = { ...this.state.sortColumn };
+    if (sortColumn.path === path) {
+      sortColumn.order = sortColumn.order === "asc" ? "desc" : "asc";
+    } else {
+      sortColumn.path = path;
+      sortColumn.order = "asc";
+    }
+    this.setState({ sortColumn });
+  };
+</code></pre>
+					<div>but as usual, there's a problem. What if we copy the 'moviesTable' component to somewhere else? The sorting functionality would have to be duplicated then</div></section>
+
+				<section><div>technically, sorting is part of the movies component. Let's promote the component to a class with sort method </div>
+					<pre><code>// moviesTable.jsx
+import React, { Component } from "react";
+
+class MoviesTable extends Component {
+  render() {
+  // whole copied file contents
+  }
+}</code></pre>
+					<ul><li>change props to this.props</li></ul></section>
+				<section>
+					<div>move 'handlSort' body to new 'raiseSort' function (without 'setState')</div><pre><code class="js">
+// moviesTable.jsx
+  raiseSort = (path) => {
+    const sortColumn = { ...this.state.sortColumn };
+    if (sortColumn.path === path) {
+      sortColumn.order = sortColumn.order === "asc" ? "desc" : "asc";
+    } else {
+      sortColumn.path = path;
+      sortColumn.order = "asc";
+    }
+  };
+</code></pre>
+					<ul><li>change 'this.state' to 'this.props'</li></ul>
+					<pre><code>// last line of the method
+this.props.onSort(sortColumn);</code></pre></section>
+				<section><pre><code class="js">// change the call from onSort to this.raiseSort in moviesTable.jsx
+    < th onClick={() => onSort("title")}>Title</th>
+					< th onClick={() => onSort("genre.name")}>Genre</th>
+					< th onClick={() => onSort("numberInStock")}>Stock</th>
+					< th onClick={() => onSort("dailyRentalRate")}>Rate</th></code></pre>
+					<pre><code>// movies.jsx - handleSort no longer Acceps path but sortColumn object
+  handleSort = (sortColumn) => {
+    this.setState({ sortColumn });
+  };
+...
+// add sortColumn to the component
+  < MoviesTable
+    movies={movies}
+    sortColumn={sortColumn}
+    onDelete={this.handleDelete}
+    onLike={this.handleLike}
+    onSort={this.handleSort}
+  /></code></pre></section>
+
+
+			</section>
+
+<section data-background-color="#433fba">
+	<section><h4>forms</h4></section>
+	<section><div>react doesn't care...</div>
+		</section>
+		<section>
+		<pre><code class="jsx">handleChange = e => {
+  this.setState({ value: e.target.value });
+};
+
+handleSubmit = e => {
+  alert("An essay was submitted: " + this.state.value);
+  e.preventDefault();
+};
+
+return (
+  <form onSubmit={this.handleSubmit}>
+    <input value={this.state.value} onChange={this.handleChange} />
+    <input type="submit" value="Submit" />
+  </form>
+);</code></pre>
+  </section>
+
+   <section><img src="img/forms-multiple.png" width="60%"></section>
+
+
+  <section><blockquote>In HTML, a < textarea> element defines its text by its children:</blockquote>
+  	<blockquote>In React, a < textarea> uses a 'value' attribute instead</blockquote>
+  	<blockquote>React, when accessing < select> instead of using this 'selected' attribute, uses a 'value' attribute on the root select tag </blockquote></section>
+
+  	<section>
+  		<div>Multiple problems here:</div>	
+  			<ul>
+  				<li>wiring up state</li>
+  				<li>validation</li>
+  				<li>error messages</li>
+  				<li>staying organized</li>
+  				<li>testing</li>
+  			</ul>
+  	</section>
+
+  	<section data-background-color="#018786"><h4>TASK:</h4>
+  		<div>create a form component with one field that can be submitted. After submitting, console.log the value</div> </section>
+  	<section data-background-color="#018786"><h4>solution</h4><pre><code class="jsx">import React, { useState } from "react";
+ 
+const Form = () => {
+  const [kaczka, setKaczka] = useState("");
+  const handleSubmit = (e) => {
+    console.log("sent handleSubmit with:", kaczka);
+    setKaczka("");
+    e.preventDefault();
+  };
+
+  const handleChange = (e) => {
+    setKaczka(e.target.value);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        name="kaczka"
+        onChange={handleChange}
+        placeholder="kaczka"
+        value={kaczka}
+      />
+    </form>
+  );
+};
+
+export default Form;
+</code></pre></section>
+<section><h4>formik</h4></section>
+<section>Basics: <pre><code>import { Formik, Field, Form } from 'formik';</code></pre>
+	<ul>
+		<li>suround everything with < Formik></li>
+		<li>use < Form> instead of < form></li>
+		<li>substitute all HTML fields with < Field></li>
+	</ul><br><br>
+<small><a target="_new" href="https://codesandbox.io/s/github/formik/formik/tree/master/examples/basic?from-embed">example here</a></small></section>
+
+<section data-background-color="#018786"><h4>TASK:</h4>
+	Migrate previous task to FORMIK
+	</section>
+
+</section>
+
+<section data-background-color="#28733d" >
+	<section><h4>routing</h4></section>
+	<section><ul>
+		<li>create new project 'router'</li>
+		<li>create 3 components 'About', 'Shop', 'Nav'</li>
+		<li>Nav should contain < nav> with h3 logo and < ul> containing 'about', 'shop'</li>
+		<li>import all 3 files to App.js clearing file's return and putting the components one afther another</li>
+		<li>clear the CSS adding</li>
+	</ul>
+	<pre><code class="css">nav{
+  display: flex;
+  justify-content:space-around;
+  align-items:center;
+  min-height: 10vh;
+  background-color: #28733d;
+  color: white;
+}</code></pre>
+</section>
+
+<section>
+	<ul><li>style the navlinks (add class to the < ul>)</li></ul>
+	<pre><code class="css">.nav-links {
+  width: 40%;
+  display: flex;
+  justify-content:space-around;
+  align-items:center;
+  list-style: none;
+}</code></pre>
+	<ul><li>import react router</li></ul>
+	<pre><code class="jsx">// App.js
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+</code></pre>
+</section>
+
+<section>
+	<pre><code class="js" data-line-numbers="4, 10">//App.js
+function App() {
+  return (
+    < Router>
+      < div className="App">
+        < Nav />
+        < About />
+        < Shop />
+      < /div>
+    < /Router>
+  );
+}	</code></pre>
+</section>
+
+<section>
+	<pre><code class="js" data-line-numbers="7-8">//App.js
+function App() {
+  return (
+    < Router>
+      < div className="App">
+        < Nav />
+        < Route path="/about" component={About} />
+        < Route path="/shop" component={Shop} />
+      < /div>
+    < /Router>
+  );
+}	</code></pre>
+</section>
+
+<section>
+	<div>problem to tackle:</div>
+	<pre><code class="js" data-line-numbers="7, 15-18">//App.js
+function App() {
+  return (
+    < Router>
+      < div className="App">
+        < Nav />
+        < Route path="/" component={Home} />
+        < Route path="/about" component={About} />
+        < Route path="/shop" component={Shop} />
+      < /div>
+    < /Router>
+  );
+}
+
+const Home = () => (
+  <div>
+    <h1>Homepage</h1>
+  </div>
+);		
+	</code></pre>
+</section>
+
+<section>
+	<div>Solution: Switch. ( read: when a match is found, stop executing)</div>
+	<pre><code class="js" data-line-numbers="7,11">//App.js
+function App() {
+  return (
+    < Router>
+      < div className="App">
+        < Nav />
+        < Switch>
+          < Route path="/" component={Home} />
+          < Route path="/about" component={About} />
+          < Route path="/shop" component={Shop} />
+        < /Switch>
+      < /div>
+    < /Router>
+  );
+}		
+	</code></pre>
+</section>
+
+<section>
+	<div>this however introduces another problem with '/'<br>Solution: EXACT match</div>
+	<pre><code class="js" data-line-numbers="8">//App.js
+function App() {
+  return (
+    < Router>
+      < div className="App">
+        < Nav />
+        < Switch>
+          < Route path="/" exact component={Home} />
+          < Route path="/about" component={About} />
+          < Route path="/shop" component={Shop} />
+        < /Switch>
+      < /div>
+    < /Router>
+  );
+}	</code></pre>
+</section>
+
+<section>
+	now, the navigation links
+	<pre><code class="js" data-line-numbers="3, 10, 12, 13, 15">//Nav.js
+import React from "react";
+import { Link } from "react-router-dom";
+
+const Nav = () => {
+  return (
+    < nav>
+      < h3>Logo< /h3>
+      < ul className="nav-links">
+        < Link to="/shop">
+          < li>Shop< /li>
+        < /Link>
+        < Link to="/about">
+          < li>About< /li>
+        < /Link>
+      < /ul>
+    < /nav>
+  );
+};
+
+export default Nav;
+	</code></pre>
+</section>
+
+<section>
+	<div>ok, and CSS for the Link</div>
+	<pre><code class="js" data-line-numbers="6-8, 14, 17">//Nav.js
+import React from "react";
+import { Link } from "react-router-dom";
+
+const Nav = () => {
+  const navStyle = {
+    color: "white",
+  };
+
+  return (
+    <nav>
+      <h3>Logo</h3>
+      <ul className="nav-links">
+        <Link style={navStyle} to="/shop">
+          <li>Shop</li>
+        </Link>
+        <Link style={navStyle} to="/about">
+          <li>About</li>
+        </Link>
+      </ul>
+    </nav>
+  );
+};
+
+export default Nav;
+
+	</code></pre>
+</section>
+
+<section><div>Adding dynamic routes</div>
+	<pre><code class="js">//Shop.js
+import React, { useState, useEffect } from "react";
+
+const Shop = () => {
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    fetchItems();
+  }, []);
+
+  const fetchItems = async () => {
+    const data = await fetch("https://jsonplaceholder.typicode.com/users");
+
+    const users = await data.json();
+    // console.log(users);
+    setUsers(users);
+  };
+
+  return (
+    <div>
+      {users.map((user) => (
+        <div key={user.id}>{user.name}</div>
+      ))}
+    </div>
+  );
+};
+
+export default Shop;
+	</code></pre>
+</section>
+
+<section>
+	<pre><code class="js" data-line-numbers="2, 7, 9">//Shop.js
+import { Link } from "react-router-dom";
+...
+  return (
+    <div>
+      {users.map((user) => (
+        < Link to={`/shop/${user.id}`}>
+          <div key={user.id}>{user.name}</div>
+        < /Link>
+      ))}
+    </div>
+  );		
+	</code></pre>
+</section>
+
+<section>
+
+	<pre><code class="js">//App.js
+...		
+< Route path="/shop" exact component={Shop} />
+< Route path="/shop/:id" />		
+...
+	</code></pre>
+	Then, create another component 'userDetails' and conect it with this route (note: EXACT in the shop)
+</section>
+
+<section>
+	clean plate
+	<pre><code class="js">//userDetails.js
+import React, { useState, useEffect } from "react";
+
+const UserDetails = () => {
+  const [user, setUser] = useState([]);
+  useEffect(() => {}, []);
+
+  return <div>User</div>;
+};
+
+export default UserDetails;
+	</code></pre>
+</section>
+
+<section>calling the api
+	<pre><code class="js">//userDetails.js
+import React, { useState, useEffect } from "react";
+
+const UserDetails = () => {
+  const [user, setUser] = useState([]);
+  useEffect(() => {
+    fetchItem();
+  }, []);
+
+  const fetchItem = async () => {
+    const fetchItem = await fetch(
+      "https://jsonplaceholder.typicode.com/users/4"
+    );
+    const item = await fetchItem.json();
+    console.log(item);
+  };
+
+  return <div>User</div>;
+};
+
+export default UserDetails;
+	</code></pre>
+</section>
+
+<section>cool thing: when we put something to the Link, we get in in a prop
+	<pre><code class="js" data-line-numbers="2,6">//userDetails.js
+const UserDetails = ({ match }) => {
+  const [user, setUser] = useState([]);
+  useEffect(() => {
+    fetchItem();
+    console.log(match);
+  }, []);	</code></pre>
+</section>
+
+<section>
+	<pre><code class="js">//userDetails.js
+    const fetchItem = await fetch(
+      `https://jsonplaceholder.typicode.com/users/${match.params.id}`
+    );	</code></pre>
+</section>
+
+<section>
+	<pre><code class="js" data-line-numbers="17, 20">//userDetails.js
+import React, { useState, useEffect } from "react";
+
+const UserDetails = ({ match }) => {
+  const [user, setUser] = useState([]);
+  useEffect(() => {
+    fetchItem();
+    //console.log(match);
+  }, []);
+
+  const fetchItem = async () => {
+    const fetchItem = await fetch(
+      `https://jsonplaceholder.typicode.com/users/${match.params.id}`
+    );
+    const user = await fetchItem.json();
+    console.log(user);
+    setUser(user);
+  };
+
+  return <div>{user.name}</div>;
+};
+
+export default UserDetails;
+
+	</code></pre>
+</section>
+
+</section>
+
+			<section data-background-color="#957dad" >
+				<section><h4>advanced topics</h4>
+				</section>
+				<section><h5>overview</h5>
+					<ul><li>Higher order component</li>
+						<li>hooks (useState, useEffect, custom)</li>
+						<li>context (in class component, in functional component)</li>
+					</ul>
+				</section>
+				<section><h4>setting up the environment</h4>
+					<pre><code class="js">
+// no need to store it globally
+npm uninstall - g create-react-app
+
+// node package runner that can run packages on demand (no global installation required)
+npx create-react-app react-advanced
+cd react-advanced
+npm i prettier
+
+</code></pre>
+				</section>
+
+				<section><h4>Higher order components</h4>
+					<div>WHY?<br>To reuse logic across components eg. showing tooltip on mousehover, or displaying a 'loader' animation during each component load</div>
+				</section>
+
+				<section>
+					<div>HOW?</div>
+					<img src="img/hoc1.png" />
+				</section>
+
+				<section><div>structure:</div>
+					<pre>
+	HOC
+	|-- movie.jsx ('rcc' using <a href="https://plugins.jetbrains.com/plugin/10113-react-snippets" target="new">code snippets</a>)
+	|-- withTooltip.jsx
+	</pre>
+				</section>
+				<section><div>HOC skeleton</div>
+					<pre><code class="hljs">// withTooltip.jsx
+import React from "react";
+
+function withTooltip(Component) {}
+return class WithTooltip extends React.Component {
+  render() {
+    return (
+      < div>
+        < Component />
+      < /div>
+    );
+  }
+};
+
+export default withTooltip;	</code></pre>
+				</section>
+				<section><ul><li>import Movie in App.js (feel free to clear the rest) </li><li>return withToolip from movie.jsx</li></ul><pre><code class="hljs" data-line-numbers="3, 11">// movie.jsx
+import React, { Component } from "react";
+import withTooltip from "./withTooltip";
+
+class Movie extends Component {
+  render() {
+    return < div> Movie < /div>;
+  }
+}
+
+export default withTooltip(Movie);
+</code></pre>
+					<div>...check react console</div>
+				</section>
+				<section><div>define props to handle the state</div>
+					<pre><code class="hljs">// withTooltip.jsx
+import React from "react";
+
+function withTooltip(Component) {
+  return class WithTooltip extends React.Component {
+    state = { showTooltip: false };
+    mouseOver = () => { this.setState({ showTooltip: true }); };
+    mouseOut = () => { this.setState({ showTooltip: false }); };
+
+    render() {
+      return (
+        < div onMouseOver={this.mouseOver} onMouseOut={this.mouseOut}>
+          < Component showTooltip={this.state.showTooltip} />
+        < /div>
+      );
+    }
+  };
+}
+export default withTooltip;</code></pre></section>
+
+				<section><dir>adding the tooltip</dir>
+					<pre><code class="hljs" data-line-numbers="10">// movie.jsx
+import React, { Component } from "react";
+import withTooltip from "./withTooltip";
+
+class Movie extends Component {
+  render() {
+    return (
+      < div>
+        Movie
+        {this.props.showTooltip && < div> some tooltip < /div>}
+      < /div>
+    );
+  }
+}
+
+export default withTooltip(Movie);
+</code></pre>
+					<small>...but there's a problem</small>
+				</section>
+				<section>
+					<div>props added to '< Movie />' are gone</div>
+					<pre><code>// App.js
+< Movie id={1}/></code></pre>
+					<div>how to solve this?</div>
+					<pre><code class="fragment fade-up">// withTooltip.jsx
+< Component {...this.props} showTooltip={this.state.showTooltip} /></code></pre>
+				</section>
+
+				<section><h4>Hooks <small>(starting react 16.8)</small>
+				</h4></section>
+
+				<section><img src="img/cvsf.png" /></section>
+
+
+				<section>
+					<h4>WHY functional?</h4>
+					<ul><li>Classes are a bit difficult for people without OOP background</li>
+						<li>classes in JS are not really classes it's only a syntaxtic sugar over constructor functions</li>
+						<li>THIS keyword is confusing with its changing scope</li>
+						<li>boilerplate code</li>
+					</ul>
+				</section>
+
+				<section><h4>functional vs class</h4>
+					<pre><code class="js">// counter1.jsx
+import React, { Component } from "react";
+
+class Counter1 extends Component {
+  state = { count: 0 };
+  increaseClick = () => {
+    this.setState({ count: this.state.count + 1 });
+  };
+  render() {
+    return (
+      < >
+        < div>Count: {this.state.count}< /div>
+        < button onClick={this.increaseClick}>increment< /button>
+      < />
+    );
+  }
+}
+
+export default Counter1;
+</code></pre></section>
+				<section><h4>functional vs class</h4>
+					<pre><code class="js">// counter2.jsx
+import React, { useState } from "react";
+
+function Counter2(props) {
+  const [count, setCount] = useState(0);
+
+  return (
+    < >
+      < div>Count: {count}< /div>
+      < button onClick={() => setCount(count + 1)}> increments< /button>
+    < />
+  );
+}
+
+export default Counter2;
+</code></pre></section>
+				<section><div>useState hook</div>
+					<pre><code class="js">// useState takes 2 arguments, initialValue & setState function
+// eg:
+const [count, setState] = useState(0)
+const [name, setName] = useState('') </code></pre>
+
+					<pre><code class="fragment fade-in js">// counter2.jsx
+import React, { useState } from "react";
+
+function Counter2(props) {
+  const [count, setCount] = useState(0);
+  const [name, setName] = useState("");
+
+  return (
+    < >
+      < input type="text" onChange={(e) => setName(e.target.value)} />
+      < div>
+        {name} clicked {count} times
+      < /div>
+      < button onClick={() => setCount(count + 1)}> increments< /button>
+    < />
+  );
+}
+
+export default Counter2;
+</code></pre>
+				</section>
+
+				<section><div>hooks limitation: You cannot use hooks inside:</div>
+					<ul><li>loops</li>
+						<li>conditions</li>
+						<li>nested functions</li>
+					</ul>
+					<div><br>WHY?</div>
+				</section>
+				<section><div>useEffect</div>
+					<img src="img/cvsf2.png" /><small>logic all over the place</small></section>
+				<section>
+					<div>triggered each render (when receives new props or state changes)</div>
+					<pre><code>//counter2.jsx
+  useEffect(() => {
+    document.title = `${name} has clicked ${count} times!`;
+  });
+
+  // componentDidMount
+  // componentDidUpdate</code></pre>
+				</section>
+
+				<section><div>second parameter acts as an array of dependancies</div><pre><code>// counter2.jsx
+  // [count] means that only when count changes, hook is triggered
+  useEffect(() => {
+    document.title = `${name} has clicked ${count} times!`;
+  }, [count]);
+
+  // componentDidMount
+  // componentDidUpdate
+</code></pre></section>
+
+				<section><div>where's the componentWillUnmount? </div><pre><code>// counter2.jsx
+  useEffect(() => {
+    document.title = `${name} has clicked ${count} times!`;
+    return () => {
+      console.log("cleanup");
+    };
+  }, [count]);
+
+  // componentDidMount
+  // componentDidUpdate
+
+  // componentWIllUnmount
+</code></pre></section>
+
+				<section><h4>custom reusable hooks</h4><div>we can encapsulate custom logic storing it in a single place and then share it among many components<br><br>create hooks/useDocumentTitle.jsx </div><pre><code>// useDocumentTitle.jsx
+import { useEffect } from "react";
+
+export default function useDocumentTitle(title) {
+  useEffect(() => {
+    document.title = title;
+  });
+}
+</code></pre><pre><code>// counter2.jsx
+import useDocumentTitle from "./hooks/useDocumentTitle";
+...
+useDocumentTitle(`${name} clicked ${count} times!`);
+</code></pre></section>
+
+				<section><h4>getching data with hooks</h4><div>Let's get the list of users from <a href="https://jsonplaceholder.typicode.com/" target="new">jsonplaceholder</a> using <a href="https://github.com/axios/axios" target="">axios</a> (npm i axios)</div>
+					<pre><code class="hljs">// hooks/users.jsx (rsf code snippet for stateless functional component)
+import React from "react";
+import axios from "axios";
+
+function Users(props) {
+  return <div></div>;
+}
+
+export default Users;
+</code></pre></section>
+				<section><div>we want to load axios componentDidMount, so while in functional -> useEffect</div><pre><code data-line-numbers="5-7">import React, { useEffect } from "react";
+import axios from "axios";
+
+function Users(props) {
+  useEffect(() => {
+    axios("https://jsonplaceholder.typicode.com/users");
+  });
+  return <div></div>;
+}
+
+export default Users;
+</code></pre></section>
+
+				<section><div>axios returns promise, so await-async ()</div><pre><code>  useEffect(() => {
+    // additional function since useEffect doesn't support 'async() =>{}'
+    async function getUsers() {
+      const result = await axios("https://jsonplaceholder.typicode.com/users");
+    }
+    getUsers()
+  });
+</code></pre><div>one more step - getting the result and changing the state</div>
+					<pre><code class="hljs" data-line-numbers="5, 10, 15-19">import React, { useEffect, useState } from "react";
+import axios from "axios";
+
+function Users(props) {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    async function getUsers() {
+      const result = await axios("https://jsonplaceholder.typicode.com/users");
+      setUsers(result.data);
+    }
+    getUsers();
+  });
+  return (
+    < ul>
+      {users.map((user) => (
+        < li key={user.id}>{user.name}< /li>
+      ))}
+    < /ul>
+  );
+}
+
+export default Users;
+</code></pre></section>
+
+				<section><h4>context</h4>
+				</section>
+				<section>
+					<img src="img/propDrilling.png" />
+				</section>
+				<section>
+					<img src="img/redux.png" />
+				</section>
+				<section>
+					<img src="img/context1.png" />
+				</section>
+
+				<section><h4>context in class components</h4>
+				</section>
+				<section><div>structure</div><pre>
+context
+|-- MovieList.jsx (rcc)
+|-- MoviePage.jsx (rcc implementing < MovieList />)
+|-- userContext.jsx (we can have multiple contexts in one app)
+
+in App.js cmd+a, rcc implementing < MoviePage />
+</pre>
+					<div>Let's assume App.js stores user data, and we want to access it in Movielist</div><pre><code class="js">// App.js
+state = { currentUser: {name: "John"}}</code></pre></section>
+				<section>1. creating a context<pre><code class="js">// UserContext.jsx
+import React from "react";
+
+const UserContext = React.createContext();
+
+export default UserContext;
+</code></pre></section>
+				<section>provide the context to the TOP component<pre><code class="js">// App.js
+import UserContext from "./context/UserContext"</code></pre>
+					Wrap the context inside a provider component<pre><code class="js">    render() {
+        return (
+            < UserContext.Provider>
+                < div>
+                    < MoviePage />
+                < /div>
+            < /UserContext.Provider>
+        );
+    }</code></pre><div>NOTE: Provider object only has 3 properties (<span class="fragment highlight-green">Provider</span>, <span class="fragment highlight-green">Consumer</span> and <span class="fragment highlight-green">displayName</span>)</div></section>
+				<section>Provide desired object to the provider component
+					<pre><code class="js" data-line-numbers="3">// App.js
+ 	    return (
+        < UserContext.Provider value={this.state.currentUser}>
+            < div>
+                < MoviePage />
+            < /div>
+        < /UserContext.Provider>
+    );
+ 	</code></pre></section>
+				<section>to consume, go to MovieList.jsx, import context and wrap the component with consumer component
+					<pre><code class="js" data-line-numbers="3, 8, 10">// MovieList.jsx
+import React, { Component } from "react";
+import UserContext from "./UserContext";
+
+class MovieList extends Component {
+  render() {
+    return (
+      < UserContext.Consumer>
+        < div>MovieList< /div>
+      < /UserContext.Consumer>
+    );
+  }
+}
+
+export default MovieList;
+ 	</code></pre><h4>...BUT :)</h4></section>
+				<section>...comsumer expects a function as a child<pre><code class="js">// MovieList.jsx
+    return (
+  < UserContext.Consumer>
+    {(userContext) => < div> MovieList < /div>}
+  < /UserContext.Consumer>
+);
+</code></pre></section>
+
+				<section><div>final result needs renaming</div>
+					<img src="img/context.png" />
+					<pre><code>// UserContext.jsx
+import React from "react";
+
+const UserContext = React.createContext();
+UserContext.displayName = "UserContext";
+
+export default UserContext;</code></pre></section>
+				<section>usage in render:
+					<pre><code class="js">// MovieList.jsx
+    {(userContext) => < div>MovieList {userContext.name}< /div>}</code></pre>
+				</section>
+				<section>
+					usage outside render (e.g. to be used in a hook)<pre><code class="js" data-line-numbers="1, 2,8,13">// we have no access to Comsumer component
+// so we have to set a STATIC PROPERTY of a class
+import React, { Component } from "react";
+import UserContext from "./UserContext";
+
+class MovieList extends Component {
+  componentDidMount() {
+    console.log("context ", this.context);
+  }
+  render() {}
+}
+
+MovieList.contextType = UserContext;
+
+export default MovieList;
+</code></pre>
+					usage outside render alternative <pre><code class="js" data-line-numbers="2">class MovieList extends Component {
+  static contextType = UserContext;
+
+  componentDidMount() {
+    console.log("context ", this.context);
+  } </code></pre>
+				</section>
+
+
+			</section>
+
+			<section data-background-color="#0F6F61">
+				<section><h4>redux</h4></section>
+				<section>REDUX - state management library for JS apps (react, angular, vue, vanillaJS)</section>
+				<section><h4>problem - state sync</h4><img src="img/redux-idea1.png"></section>
+				<section><h4>store</h4><img src="img/redux-idea2.png"></section>
+				<section><h4>tracking</h4><img src="img/redux-idea3.png"></section>
+				<section><img src="img/redux-idea4.png"></section>
+				<section><a target="new" href="https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd"> redux devtools</a> gives the possibility to 'time travel' debugging</section>
+				<section><h4>Course structure:</h4>
+					<ul>
+						<li>Functional programming<br><small>(higher order functions, compositions, curryinig, immutability)</small></li>
+						<li>redux fundamentals<br><small>(reducers, actions, action creators)</small></li>
+						<li>building redux from scratch</li>
+						<li>using redux in react</li>
+					</ul></section>
+
+
+				<!-- 		<section><div>
+                            <ol>
+                                <li>download <a href="redux.zip">redux example project</a> learning materials.</li>
+                                <li>unpack, enter <code>redux-starter</code> directory</li>
+                                <li><code>npm install</code></li>
+                                <li><code>npm start</code></li>
+                            </ol></div>
+                            <small>(http://localhost:9000)</small>
+                        </section>-->
+			</section>
+			<section >
+				<section><h4>functional programming</h4></section>	<section><h4>main principle</h4><div>Functional programming is about decomposing a problem into small and reusable functions that takes an input and returns a result.<br><strong class="fragment highlight-green">They don't mutate or change data.</strong></div><br><div>With that functions we can compose more complex functions</div></section>
+
+
+
+				<section><h4>JS refresher</h4><div>Functions in JS can be treated as variables i.e. we can:</div>
+					<ul>
+						<li>assign them to a variable</li>
+						<li>pass as an argument</li>
+						<li>return from other functions</li>
+					</ul></section>
+
+				<section><h4>assigning function to a variable</h4><pre><code class="js">
+function hello(){
+  return "Hello World!";
+}
+
+let fn = hello;
+// fn() === hello()
+
+</code></pre></section>
+				<section><h4>passing a function as an argument</h4>
+					<pre><code class="js">
+function hello(){
+  return "Hello World!";
+}
+
+function greet(fnName){
+  console.log(fnName())
+}
+
+greet(hello);
+
+</code></pre></section>
+				<section><h4>returning a function</h4><pre><code>
+function hello(){
+  return function(){
+    return "Hello World!"
+  }
+}
+
+// will return a function
+let fn = hello()
+let message = fn()
+</code></pre>
+					What is the reason for that? <br>...stay tuned:) </section>
+				<section><h4>HOF</h4><div>Higher order function is a function that takes a function as an argument or returns it</div><div class="fragment fade-in">or both</div>
+					<pre><code class="fragment fade-up">// examples
+let numbers = [1, 2, 3]
+numbers.map(n => n * 2)
+
+setTimeout(() => console.log("hello"), 1000)
+</code></pre></section>
+				<section><h4>function composition</h4><div>task: to get the variable, trim it and put inside a div element</div><pre><code class="js">let input = "   JavaScript   "</code></pre><pre><code  class="fragment fade-up js">// non functional approach:
+let output = "<div>" + input.trim() + "</div>"</code></pre>
+					<pre><code class="fragment fade-up js">// functional approach:
+const trim = str => str.trim()
+const wrapInDiv = str => `<div>${str}</div>`
+
+// function composition in action
+const output = wrapInDiv(trim(input))
+
+// two potential problems to solve:
+// const output = wrapInDiv(toLowercase(trim(input)))
+//
+// 1. necessity to read from right to left e.g.
+// 2. to many parethesis
+
+</code></pre></section>
+				<section>
+					<h4>Lodash in functional programming (<a target="new" href="https://github.com/lodash/lodash/wiki/FP-Guide">docs</a>)</h4>
+					<pre><code class="js">cd redux/redux-starter
+npm i lodash
+</code></pre>
+					<pre><code>import {compose, pipe} from "lodash/fp"
+
+// let's change this
+const output = wrapInDiv(toLowercase(trim(input)))
+
+// ...by getting rid of parenthesis
+const transform = compose(wrapInDiv, toLowercase, trim)
+// ... and also reversing calls order
+const transform = pipe(trim, toLowercase, wrapInDiv)
+
+const output = transform(input)
+
+</code></pre>
+				</section>
+				<section><h4><a href="https://en.wikipedia.org/wiki/Haskell_Curry" target="new">currying</a> </h4>
+					<pre><code class="js">const trim = str => str.trim();
+// problem: almost the same functions
+	const wrapInDiv = str => `<div>${str}</div>`;
+	const wrapInSpan = str => `<span>${str}</span>`;
+const toLowercase = str => str.toLowerCase();
+
+// solution attempt:
+const wrap = (type, str) => `<${type}>${str}< /${type}>`
+
+const transform = pipe(trim, toLowercase, wrap)
+console.log(transform(input))
+</code></pre>
+					result: <pre><small>< javascript > undefined< /javascript ></small></pre>
+					why?
+				</section>
+
+				<section>
+	<pre><code class="js">const wrap = (type, str) => `<${type}>${str}< /${type}>`
+const transform = pipe(trim, toLowercase, wrap)</code></pre>
+					Output from one function becomes an input to the other, so wrap gets type=[data], str=undefined
+					<pre><code class="js">// won't work, result is a string (via function call),
+// while function reference is expected
+const transform = pipe(trim, toLowercase, wrap('div'))</code></pre>
+				</section>
+
+				<section><h4>currying in action</h4>
+					Currying allows us to take a function having N arguments, and convert it to a function with one argument
+					<pre><code class="js">function add(a, b) {
+  return a + b
+}
+
+function add(a){
+  return function(b) {
+    return a + b
+  }
+}
+// instead of separating arguments using comma, we can use parenthesis
+add(1)(5)
+
+// ...and rewriting the example using arrow function
+const add2 = a => b => a + b  // (a, b) => a + b
+
+</code></pre></section>
+				<section>
+	<pre><code class="js">const wrap = (type, str) => `<${type}>${str}< /${type}>`
+// solution
+const wrap = type => str => `<${type}>${str}< /${type}>`
+
+// fun part, wrap('div') returns a function now ;d
+const transform = pipe(trim, toLowercase, wrap('div'))
+
+</code></pre>
+				</section>
+
+				<section><h4>pure functions</h4><img src="img/pure.png" />
+				</section>
+				<section>
+	<pre><code class="js">// not pure
+function myFunction(number){
+    return number * Math.random();
+}
+
+// pure
+function myFunction(number){
+    return number * 2;
+}
+	</code></pre></section>
+				<section><img src="img/pure2.png" /></section>
+				<section>Q: so... how to update the DOM?
+					<div>A: in redux, only functions called REDUCERs must be pure</div>
+				</section>
+
+				<section><pre><code class="js">//not pure
+function isEligible(age){
+  return age > minAge
+}
+
+// pure
+function isEligible(age, minAge){
+  return age > minAge
+}
+</code></pre></section>
+				<section><img src="img/pure3.png"></section>
+
+				<section><h4>Immutability</h4><img src="img/imu1.png" /></section>
+				<section>
+	<pre><code class="js">// immutable strings
+let name = "John"
+let newName = name.toUpperCase()
+
+// in JS, objects and arrays are not immutable
+let book = {};
+book.title = "...";
+
+// but what if
+const book = {};
+// unfortunately this still works...
+book.title = "...";
+
+// 'const' prevents reassignments only
+	</code></pre>
+				</section>
+				<section><img src="img/imu2.png" /> </section>
+				<section><h4>updating objects</h4>
+					<pre><code class="js">// HOWTO: first, copy the object, and then update new object
+const person = {name: "John"}
+// old way
+const updated = Object.assign({}, person, {name:"Bob", age:30})
+// new way - spread operator
+const updated = {...person, name: Bob}
+</code></pre>
+				</section>
+				<section>
+					caveat: spread opeartor performs a shallow copy only (structural sharing)
+					<pre><code class="js">  const person ={
+    name: "John",
+    address: {country: "USA", city: "Utah"}
+  };
+
+  const updated = {...person, name: "Bob"}
+  updated.address.city = "New York"
+  console.log(person)
+</code></pre>
+					<span class="fragment fade-up">FIX:
+<pre><code class="js">
+const updated = {...person, address: {...person.address, city: "New York"}, name: "Bob"}
+
+</code></pre></span>
+					<span class="fragment fade-in">indeed, this solution is too verbose. That's why we have libraries for immutability</span>
+
+				</section>
+				<section><h4>updating arrays</h4>
+					<pre><code class="js">const numbers = [1, 2, 3];
+// Adding '4' in a position of '2'
+const index = numbers.indexOf(2);
+const added = [...numbers.slice(0, index), 4, ...numbers.slice(index)];
+console.log(added);
+
+// Removing '2'
+const removed = numbers.filter((n) => n !== 2);
+console.log(removed);
+
+// Updating
+const updated = numbers.map((n) => (n === 2 ? 20 : n));
+console.log(updated);
+</code></pre></section>
+
+				<section><h4>Enforcing immutability</h4>
+					<div>JS does not prevent object mutations since it's not a pure functional programming language. <br><br>Fortunately, immutable data structures can be emulated using:</div>
+					<ul>
+						<li><a href="https://immutable-js.github.io/immutable-js/" target="new" >Immutable.js</a> (developed by Facebook)</li>
+						<li><a href="https://immerjs.github.io/immer/docs/introduction" target="new">Immer</a></li>
+						<li><a href="https://swannodette.github.io/mori/" target="new">Mori</a></li>
+					</ul>
+				</section>
+				<section><h4>example code</h4>
+					<pre><code class="js">let book = { title: "Harry Potter" };
+
+function publish(book) {
+  book.isPublished = true;
+}
+publish(book);
+
+console.log(book);</code></pre>
+				</section>
+				<section>
+					<h4>immutable.js</h4><pre><code>npm i immutable</code></pre>
+
+					<pre><code class="js">// MAP is immutable object (stores key-value pairs)
+import {Map} from "immutable"
+
+let book = Map({ title: "Harry Potter" });
+console.log(book.get("title"));</code></pre>
+					<div>Problems: </div><ul><li>Necessity to learn new API</li>
+					<li>migration from vanillaJS hard and tiresome</li>
+					<li>not so easy integration with libraries that expect plain JS e.g.<pre>console.log(book.toJS())</pre></li>
+				</ul>
+				</section>
+				<section>
+					<h4>whole example:</h4>
+					<pre><code class="js">import {Map} from "immutable"
+
+let book = Map({ title: "Harry Potter" });
+
+function publish(book){
+    return book.set("isPublished", true)
+}
+book = publish(book)
+
+console.log(book.toJS());</code></pre>
+					<div>Bottom line: it spreads like cancer :) getters, setters, toJS conversions everywhere</div>
+				</section>
+
+				<section>
+					<a href="https://www.npmtrends.com/immutable-vs-immer" target="new"> Immer vs immutable</a> NPM trends
+					<img src="img/immerimmutable.png" />
+				</section>
+
+				<section>
+					<h4>immer</h4>
+					<pre><code>npm i immer</code></pre>
+					<pre><code class="js">import { produce } from "immer"
+
+let book = { title: "Harry Potter" };
+
+function publish(book) {
+    return produce(book, draftBook =>{
+        draftBook.isPublished=true
+    })
+}
+
+let updated = publish(book);
+console.log(book);
+console.log(updated)
+</code></pre>
+				</section>
+
+			</section>
+			<section data-background-color="#0F6F61">
+				<section>
+					<h4>Redux fundamentals</h4>
+				</section>
+				<section>
+					'Store' as a Single Source of Truth
+					<img src="img/rax1.png" />
+				</section>
+				<section>
+					We cannot directly modify / mutate the store - it's being build on top of functional programming principles.<br><br><ul><li>store is immutable object</li> <li>to update it, we need to create a function that takes a store as a parameter, alters it (via spread / immutability library) and returns an updated store.</li> <li>This function is called <strong>a reducer</strong></li>	</ul>
+				</section>
+				<section><h4>redux building blocks</h4>
+					<img src="img/rax2.png" />
+				</section>
+				<section><pre><code class="js">// action - plain JS obj that describes what just happened
+// (login logout, adding to shopping cart etc)
+function reducer(store, action){
+    const updated = {...store}
+
+    // based on the type of action, reducer knows which properties
+    // of the state it should update
+    updated.parameter = ???
+}
+
+// store may have many slices / reducers responsible for
+// various sections of the app</code></pre>
+				</section>
+
+				<section><img src="img/rax3.png" /><pre><ol><li>User performs an action</li><li>the action creates an action object and dispatches it</li><li>store obj takes action object and dispatches it forwarding to the reducer</li><li>reducer computes the new state and returns it</li><li>store sets the state internally notifying the UI component about the update</li><li>UI pulls out updated data and refreshes itself</li></ol></pre></section>
+				<section>Why do we have to do it this way? Why do we need to dispatch actions
+					<img src="img/rax4.png">
+					<pre>Dispatch is like an entry point to the store. While dispatching actions, we're
+sending each request to the same entry point, thus we have one central point
+controlling what should happen if user performs an action (so we can log/undo/redo
+every action - vide redux devtools) </pre>
+				</section>
+
+			</section>
+			<section>
+				<section>
+					<h4>vanilla redux - hands on</h4>
+					<div>based on a <a href="https://www.youtube.com/channel/UCW5YeuERMmlnqo4oq8vwUpg">The Net Ninja</a> course</div><br>
+					<div><small>Let's use <a href="https://codepen.io/">codepen.io</a> as a sandbox</small></div>
+				</section>
+				<section>
+					<img src="img/redux-idea.png">
+				</section>
+				<section>
+					<img src="img/redux-flow.png">
+				</section>
+				<section>
+					<h4>store</h4><img src="img/redux-flow.png" width=50%>
+					<small><ul>
+						<li><em>Store</em> is a central warehouse for the data (whole app state)</li>
+						<li>The warehouse is having a robot guard / worker. Only the guard can get into the warehouse</li>
+						<li>The guard checks access rights of the guests asking for something from the store and obeys only those that he knows</li>
+						<li>what it means, is that store is tightly coupled with reducer - we have to pass a reducer function as a parameter to the store</li>
+					</ul></small>
+				</section>
+				<section>
+					but first...
+					<img src="img/codepen-redux-config.png">
+				</section>
+				<section>
+		<pre><code class="js">const {createStore} = Redux
+
+const store = createStore()</code></pre>
+				</section>
+				<section><pre><code class="js" data-line-numbers="3,4">const {createStore} = Redux
+
+const myReducer = (state, action) => {}
+const store = createStore(myReducer)</code></pre></section>
+
+				<section><pre><code class="js" data-line-numbers="3,4">const {createStore} = Redux
+
+const initState = {todos:[], posts:[]}
+const myReducer = (state = initState, action) => {}
+
+const store = createStore(myReducer)</code></pre></section>
+
+				<section><h4>actions</h4>
+					<pre><code class="js" data-line-numbers="5, 10-12">const {createStore} = Redux
+
+const initState = {todos:[], posts:[]}
+const myReducer = (state = initState, action) => {
+  console.log(action, state)
+}
+
+const store = createStore(myReducer)
+
+const todoAction = {type: "ADD_TODO", todo: "adding todo"}
+
+store.dispatch(todoAction)
+</code></pre></section>
+
+				<section><h4>reducer</h4>
+					<pre><code class="js" data-line-numbers="5-9">const {createStore} = Redux
+
+const initState = {todos:[], posts:[]}
+const myReducer = (state = initState, action) => {
+  if (action.type="ADD_TODO"){
+    // whatever we return will become the new state of a store
+    return {
+      ...state,
+      todos: [...state.todos, action.todo]
+    }
+  }
+}
+
+const store = createStore(myReducer)
+
+const todoAction = {type: "ADD_TODO", todo: "adding todo"}
+
+store.dispatch(todoAction)
+</code></pre></section>
+				<section><h4>store subscription</h4>
+					<pre><code class="js" data-line-numbers="5-7">
+
+const store = createStore(myReducer)
+
+store.subscribe(() =>{
+  console.log(store.getState());
+})
+
+const todoAction = {type: "ADD_TODO", todo: "adding todo"}
+
+store.dispatch(todoAction)
+
+</code></pre></section>
+
+				<section><h4>quick task:</h4>
+					<div>Add POST item (not the todo) and handle it appropriately</div></section>
+
+			</section>
+			<section>
+				<section><h4>Redux & React</h4></section>
+				<section><h4>setting up</h4>
+					<pre><code>
+			npx create-react-app my_redux_app
+			yarn add redux react-redux
+			# npm install redux react-redux
+		</code></pre>
+				</section>
+				<section><pre><code class="js">// index.js
+import { createStore } from "redux";
+
+const store = createStore()
+	</code></pre>
+					<div class="fragment fade-in">React wrapper
+						<pre><code class="jsx" data-line-numbers="2, 6,8">// index.js
+import { Provider } from "react-redux";
+// (...)
+ReactDOM.render(
+  < React.StrictMode>
+     < Provider store={store}>
+       < App />
+     < /Provider>
+  < /React.StrictMode>,
+  document.getElementById('root')
+);
+</code></pre></div>
+				</section>
+				<section><h4>Reducer</h4>
+					<pre><code class="js">// create a new directory + file /src/reducers/rootReducer.jsx
+const initState = {
+    posts: []
+}
+
+const rootReducer = (state = initState, action) => {
+    return state;
+}
+
+export default rootReducer;
+	</code></pre>
+				</section>
+
+				<section>
+	<pre><code class="js">// index.js
+import rootReducer from "./reducers/rootReducer";
+const store = createStore(rootReducer)
+	</code></pre>
+				</section>
+				<section><h4>connecting component to the store</h4><pre><code class="js">// rootReducer.js
+const initState = {
+    posts: [
+        { id:1, title: "title 1", body: "Lorem ipsum..."},
+        { id:2, title: "title 2", body: "Lorem ipsum..."},
+        { id:3, title: "title 3", body: "Lorem ipsum..."},
+        { id:4, title: "title 4", body: "Lorem ipsum..."}
+    ]
+}
+</code></pre></section>
+				<section><pre><code class="js">// App.js
+// 'connect' is a function that returns HOC
+import { connect } from "react-redux";
+
+export default connect()(App);
+
+</code></pre></section>
+				<section><h4>map state to props</h4>
+					<img src="img/redux-flow.png" width=80%>
+				</section>
+				<section><h4>map state to props</h4>
+					<pre><code class="js">// App.js
+const mapStateToProps = (state) => {
+  return {
+    posts: state.posts
+  }
+}
+
+export default connect(mapStateToProps)(App);
+</code></pre></section>
+
+				<section><h4>let's see props in action</h4><pre><code class="js">// App.js
+function App(props) {
+  console.log(props);
+  return (
+</code></pre></section>
+
+				<section><h4>bonus: 2nd param to 'mapstatetoprops'</h4><pre><code class="js">const mapStateToProps = (state, ownProps) => {}
+</code></pre>
+
+					<div class="fragment fade-in">example
+						<pre><code class="js">const mapStateToProps = (state, ownProps) => {
+  const id = ownProps.params.post_id
+  return {
+    posts: state.posts.find(post => post.id === id)
+  }
+}</code></pre>
+					</div>
+				</section>
+
+				<section><h4>map dispatch to props</h4>			<img src="img/redux-flow.png" width=80%>
+				</section>
+
+				<section><h4>map dispatch to props</h4><pre><code class="js">// App.js
+// vanilla JS approach:
+// store.dispatch({type:'', payload:''})
+
+const mapDispatchToProps = (dispatch) => {
+  return {}
+}
+</code></pre></section>
+				<section><pre><code class="js">// App.js
+const mapDispatchToProps = (dispatch) => {
+  return {
+    deletePost: (id) => { dispatch({type:"DELETE_POST", id: id})}
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);</code></pre></section>
+				<section>let's add a button to delete the post<pre><code class="jsx">// App.js
+< button onClick={() => props.deletePost(1)}> delete Post< /button>
+
+// note, it's a good practice to extract inline logic so
+// const handleClick = () => {
+// 	props.deletePost(props.id)
+// }
+// ...
+// < button onClick={handleClick}> delete Post< /button>
+</code></pre>
+				</section>
+				<section><pre><code class="js">// rootReducer.js
+const rootReducer = (state = initState, action) => {
+    console.log(action)
+    if (action.type === "DELETE_POST"){
+        const newPosts = state.posts.filter(p => p.id !== action.id)
+        return {...state, posts: newPosts}
+    }
+    return state;
+}
+</code></pre></section>
+
+				<section><h4>action creators</h4>
+					basically, it's a function that creates an action
+					<pre><code class="js">// actions/postActions.js
+export const deletePost = (id) => {
+    return {
+        type: "DELETE_POST",
+        id
+    }
+}			</code></pre>
+
+					<pre><code class="fragment fade-in js" data-line-numbers="2, 6">// App.js
+import {deletePost} from "./actions/postActions";
+...
+const mapDispatchToProps = (dispatch) => {
+  return {
+    deletePost: (id) => { dispatch(deletePost(id))}
+  }
+}
+
+</code></pre>
+				</section>
+
+				<section>
+					in real world app, typing action type in reducer and action creator is a potential pitfall.
+				</section>
+			</section>
+
+			<section>
+				<section><h4>ducks pattern</h4>
+					<small><a target="_new" href="https://github.com/erikras/ducks-modular-redux">https://github.com/erikras/ducks-modular-redux</a></small>
+				</section>
+				<section><pre><code>//duck.js
+// Actions
+export const DELETE_POST = 'posts/DELETE_POST';
+
+// Reducer
+const rootReducer = (state = {}, action) => {
+    if (action.type === DELETE_POST){
+        const newPosts = state.posts.filter(p => p.id !== action.id)
+        return {...state, posts: newPosts}
+    }
+    return state;
+}
+
+// Action Creators
+export const deletePost = (id) => {
+    return {
+        type: DELETE_POST,
+        id
+    }
+}
+
+export default rootReducer;	</code></pre></section>
+			</section>
+
+
+			<!-- <section>
+                <section><h4>buildning bugtracker app in redux</h4><img src="img/redux_1.png" /></section>
+                <section><div>Assumtions:</div><ul>
+                    <li>We don't care about UI focusing only on state management</li>
+                    <li>we need a textbox for describing the bug,</li>
+                    <li>button for adding bug to the list,</li>
+                    <li>we must provide a way to remove a bug,</li>
+                    <li>and also resolve it (+ change status to inprogress etc)</li>
+                </ul></section>
+                <section><img src="img/rbug1.png" /></section><section>
+                    but first
+                    <pre><code>npm i redux</code></pre></section>
+                    <section><h4>designing the store</h4>
+                        <div>Q: What do we have to maintain in the store?</div><div>A: The list of bugs</div>
+                        <pre><code class="js">// final structure (2 reducers):
+            {
+            // basic structure
+              bugs: [
+                      {
+                        id: 1,
+                        description: "",
+                        resolved: false
+                      },
+                    ]
+              currentUser: {}
+            }
+            </code></pre>
+                    </section>
+                    <section><h4>defining the actions</h4>
+                        Action is a plain JS object. Let's assume we need following actions:
+                        <img src="img/actdef1.png" />
+                    </section>
+                    <section>defining the actions <pre><code class="js">// basic action structure
+            {
+              type: "ADD_BUG", // should be descriptive. Capital letters and _ as a common convention
+              description: "..." // data associated with this action.
+            }</code></pre>
+            <pre><code class="js">// redux derives from a FLUX, where the structure looks slightly different
+            {
+              type: "ADD_BUG",
+              payload: { // should have the minimum information required to perform the action
+                id:1
+              }
+            }</code></pre>
+            </section>
+
+            <section><h4>creating a reducer</h4>
+            <pre><code class="js">// reducer.js
+            let lastId = 0
+
+            // store MUST have initial state, or it returns 'undefined' during app start
+            function reducer (state = [], action){
+                if (action.type === "BUG_ADD"){
+                    // based on basic store structure defined while ago
+                    return [
+                        ...state,
+                        {
+                            // reducer must be provided minimum information to perform its action
+                            description: action.payload.description,
+                            resolved: false,
+                            // first add 1, then use the value
+                            id: ++lastId
+                        }
+                    ]
+                }else if (action.type === "BUG_REMOVE"){
+                    return state.filter(bug => bug.id !== action.payload.id)
+                }
+                // covers unknown actions
+                return state
+            }</code></pre></section>
+            <section>
+                alternative approach using 'switch'
+                <pre><code class="js">// reducer.js
+            function reducer (state = [], action){
+                switch (action.type) {
+                    case "BUG_ADD": {...}
+                    case "BUG_REMOVE": {...}
+                    default: return state;
+                }
+            }
+                </code></pre>
+                IMPORTANT: reducer is a PURE function (each time it receives the same input, gives back the same output. It's a small function in a very isolated world).<br><br>
+                We cannot make API calls or modify global state using redux. Reducers must be pure.
+            </section>
+
+            <section><h4>creating a store</h4>
+            <pre><code class="js">// store.js
+            import {createStore} from "redux";
+            // REMINDER: export default function from a reducer first
+            import reducer from "./reducer.js";
+
+            // createStore is another example of higher order function
+            // i.e. takes a function as a parameter
+            const store = createStore(reducer)
+
+            export default store</code></pre></section>
+
+            <section><h4>Dispatching actions</h4>
+                <pre><code class="js">// index.js
+            import store from "./store";
+            console.log(store)
+
+            // there is no setState method, only getState.
+            // dispatch -> we have to dispatch the action to make any changes
+            // subscribe -> we can be notified each time the store changes
+
+            console.log(store.getState())
+
+            store.dispatch({
+                type: "BUG_ADD",
+                payload: {
+                    description: "Bug1"
+                }
+            })
+
+            console.log(store.getState())
+
+            store.dispatch({
+                type: "BUG_REMOVE",
+                payload: {
+                    id: 1
+                }
+            })
+
+            console.log(store.getState())
+            </code></pre>
+            </section>
+
+            <section><h4>subscribing to the store</h4>
+            <pre><code class="js">// index.js
+            store.subscribe(() => {
+                // this function is called each time the store is changed
+                // UI components should subscribe to the store to get notified when the store changes
+                console.log("Store changed", store.getState())
+            })
+            </code></pre>
+            <pre><code>// subscribe returns a function for unsubscribing from the store
+            // important to prevent memory leaks when user nawvigates away from the page
+            // so if UI component is not to be visible on the page, we can unsubscribe
+            const unsubscribe = store.subscribe(() => {
+            ...
+            }
+
+            // put it after the 'bug added' to stop being notified
+            unsubscribe()
+
+            </code></pre></section>
+
+            <section>redux workflow once more :)
+            <ul>
+                <li>When we dispatch an action (index.js)</li>
+                <li>the store will call a reducer (reducer.js) - it needs a current state, and the action do dispatch</li>
+                <li>internal state gets changed (state = reducer(state, action))</li>
+                <li>and then we notify the subscribers</li>
+            </ul></section>
+
+            <section>
+                Problem: redundancy in naming the actions (index and reducer)<br>
+                Solution: action types
+            <pre><code class"js">// actionTypes.js
+            export const ADD_BUG = "ADD_BUG"
+            export const REMOVE_BUG = "REMOVE_BUG"
+            </code></pre>
+            <pre><code class="js">// reducer.js & index.js
+            // named import
+            import {ADD_BUG, REMOVE_BUG} from "./actionTypes";
+
+            //or better
+            import * as actions from "./actionTypes";
+            ...
+            // and then using the actions
+            if (action.type === actions.ADD_BUG){}
+
+            </code></pre>
+            </section>
+
+            <section>
+                Problem: Dispatching actions means writing certain amount of code each time<br>
+                Solution: Action creators
+            <pre><code class="js">// actions.js
+            import * as actions from "./actionTypes";
+
+            export function addBug(description){
+            // in 'return' copy-paste the contents of dispatch (index.js) body
+                return {
+                    type: actions.ADD_BUG,
+                    payload: {
+                        description: "Bug1"
+                    }
+                }
+            }</code></pre>
+
+            <pre><code class="js">// index.js
+            import {addBug} from "./actions";
+            ...
+            store.dispatch(addBug("Bug1"))
+            </code></pre>
+
+            </section>
+            <section>
+                action creator using arrow function
+                <pre><code class="js">// actions.js
+            // plus 'description' shortened
+            export const addBug = description => ({
+                type: actions.ADD_BUG,
+                payload: {
+                    description
+                }
+            })
+                </code></pre>
+            </section>
+
+            </section>
+            <section>
+                <section><h4>exercise: implement "resolve a bug" functionality</h4></section>
+                <section>SOLUTION</section>
+                <section><pre><code class="js">// actionTypes.js
+            export const RESOLVE_BUG = "RESOLVE_BUG"</code></pre>
+            <pre><code class="js">// actions.js
+            export const resolveBug = id => ({
+                type: actions.RESOLVE_BUG,
+                payload: {
+                    id
+                }
+            })	</code></pre>
+            <pre><code class="js">// reducer.js
+                }else if(action.type === actions.RESOLVE_BUG){
+                    // having immutability in mind
+                    return state.map(bug => bug.id !== action.payload.id ? bug : {...bug, resolved: true})
+                }
+            </code></pre>
+            <pre><code class="js">// index.js
+            import {addBug, resolveBug} from "./actions";
+            ...
+            store.dispatch(resolveBug(1))
+            </code></pre>
+            </section>
+            </section> -->
+
+
+
+
+
+			<section>
+				<section><h4>debugging redux</h4>
+					get the <a href="https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd" target="new"> redux devtools (chrome)</a><br>
+					follow the 'basic store' steps in <a href="https://github.com/zalmoxisus/redux-devtools-extension" target="new">docs</a> adding the line below to the store init<br>
+					<pre><code class="js">window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()</code></pre>
+					if required, click 'reload this frame' in chrome extension
+				</section>
+				<section>
+					<h4>Tracing tab</h4> Finds out in which place in the source code certain action was triggered
+					<pre><code class="js">// to enhance / simplify store configuraton
+npm i redux-devtools-extension</code></pre>
+					<pre><code class="js">// store.js
+import {devToolsEnhancer} from "redux-devtools-extension";
+...
+const store = createStore(reducer, devToolsEnhancer({trace: true}))
+</code></pre>
+					<pre><code class="js">// webpack-config.js
+  mode: "development",
+  // add the following
+  devtool: "source-map"</code></pre>
+				</section>
+				<section><h4>importing / exporting</h4>
+					To remove the state of an app we can use import / export functinality
+				</section>
+			</section>
+
+
+			<section data-background-color="#dFfFD3">
+				<section><h4>bonus: JS tips noone knows</h4></section>
+				<section><h4>nullish coalescing</h4>
+					<pre><code class="js">function calculatePrice(price, tax, desc){
+  const total = price * (1 + tax)
+  console.log(`${desc} with tax: ${total}`)
+}
+
+calculatePrice(100, 0.23, 'car')
+calculatePrice(100, 0, 'other car')
+calculatePrice(100, undefined, undefined)
+
+		</code></pre>
+				</section>
+				<section><h4></h4><pre><code class="js" data-line-numbers="2-4">function calculatePrice(price, tax, desc){
+	// adding defaults				
+  tax = tax || 0.07
+  desc = desc || 'default item'
+
+  const total = price * (1 + tax)
+  console.log(`${desc} with tax: ${total}`)
+}
+
+calculatePrice(100, 0.23, 'car')
+calculatePrice(100, 0, 'other car')
+calculatePrice(100, undefined, undefined)
+					
+				</code></pre></section>
+
+
+				<section><h4></h4><pre><code class="js">	// ?? checks for NULL or UNDEFINED only				
+  tax = tax ?? 0.07
+  desc = desc ?? 'default item'			</code></pre>
+<small><a href="https://codepen.io/u295486/pen/ExWOZQK?editors=0011" target="_new">(...this example on codepen)</a></small></section>
+				<section><h4>styling console.log</h4><pre><code class="js" data-line-numbers="6">function calculatePrice(price, tax, desc){
+  tax = tax ?? 0.07
+  desc = desc ?? 'default item'
+  
+  const total = price * (1 + tax)
+  console.log(`${desc} with tax: %c${total}`, 'color:red')
+}
+
+calculatePrice(100, 0.23, 'car')
+calculatePrice(100, 0, 'other car')
+calculatePrice(100, undefined, undefined)</code></pre></section>
+
+
+				<section><h4>optional chaining</h4><pre><code class="js">const person = {
+  name: "John",
+  surname: "Doe",
+  // what if address was not given?
+  //address: {
+  //  street: "xyz",
+  //  city: "London"
+  //}
+}
+
+console.log(person.address.zip)</code></pre>
+<div>results in: "Uncaught TypeError: Cannot read property 'zip' of undefined"</div></section>
+				<section><h4></h4><pre><code class="js">console.log(person.address?.zip)
+					console.log(person.address?.())
+					console.log(person.address?.[2])
+				</code></pre></section>
+
+			</section>
+
+			<section data-background-color="#FFDFD3">
+				<section><h4>Promises, async-await</h4><small>(read: ASYNCHRONOUS way of doing stuff)</small></small></section>
+				<section><h4>Promises</h4><div>like in real life, a promise can go two ways, its result can either be <strong class="fragment highlight-green">RESOLVED</strong> successfully (i.e. accepted)</div> by the receipient, or be <strong class="fragment highlight-red">REJECTED</strong>
+					<pre><code  class="fragment fade-in js">const p = new Promise((resolve, reject) => {})</code></pre>
+				</section>
+				<section><h4>Promises</h4>
+					<pre><code class="js">const p = new Promise((resolve, reject) => {
+	let i = 1 + 1
+	if(i == 2) {
+		resolve("Success")
+	} else {
+		reject("Failed")
+	}
+})
+	</code></pre>
+					<span class="fragment fade-in"><div>processing promise return</div>
+	<pre><code class="js">p.then(message => console.log("received response: " + message))
+ .catch(message => console.log("received response: " + message))</code></pre>
+	</span>
+				</section>
+				<section>
+					<h4>Getting multiple promises response</h4>
+					<pre><code class="js">let option1 = new Promise((resolve, reject) => resolve("option 1 finished"))
+let option2 = new Promise((resolve, reject) => resolve("option 2 finished"))
+let option3 = new Promise((resolve, reject) => resolve("option 3 finished"))
+
+Promise.all([option1, option2, option3]).then((messages) => console.log(messages))
+// but there's also a RACE option (the first one that succeedes or fails)
+Promise.race([option1, option2, option3]).then((messages) => console.log(messages))
+// similat to race, BUT only for success
+Promise.any([option1, option2, option3]).then((messages) => console.log(messages))
+
+</code></pre>
+					<div>(promise docs <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">here</a>)</div>
+				</section>
+				<section><h4>task:</h4><div>Write down a `performRequest` function returning a Promise. The promise shall check for the parameter provided to the function and return 'resolved' state only if the address provided is 'google.com'. <br><br>Run the function and console.log the response (simple text will do fine)</div></section>
+				<section>
+		<pre><code class="js">let performRequest = (endpoint) => (
+  new Promise((resolve, reject) => {
+    console.log('making request to ' + endpoint)
+    if (endpoint === "google.com") {
+      resolve("request sent to " + endpoint)
+    }else {
+      reject("sorry, we accept only google")
+    }
+  })
+)
+
+performRequest('google.com')
+  .then(response => console.log("received: " + response))
+  .catch(response => console.log("received: " + response))</code></pre>
+					<div>solution on <a target="_new" href="https://codepen.io/u295486/pen/mdRvxod">codepen</a></div></section>
+				<section><h4>async-await</h4><div>...when handling promises happens to be too complex</div>
+					<small class="fragment fade-in">(it's just a syntactic sugar over the promises)</small>
+					<pre><code class="fragment fade-in js" data-line-numbers='12-27'>let performRequest = (endpoint) => (
+  new Promise((resolve, reject) =>{
+    console.log('making request to ' + endpoint)
+    if (endpoint === "google.com"){
+      resolve("request sent to " + endpoint)
+    }else{
+      reject("sorry, we accept only google")
+    }
+  })
+)
+
+// let's add another step
+let processRequest = (response) => {
+  return new Promise((resolve, reject) => {
+    console.log("Processing response")
+    resolve("Adding extra text to: " + response)
+  })
+}
+
+performRequest('google.com')
+  .then(response => {
+    console.log("Response received.");
+    return processRequest(response)
+  })
+  .then(processedResponse =>
+    console.log(processedResponse))
+  .catch(errorMsg => console.log(errorMsg))
+		</code></pre>
+				</section>
+				<section><h4>async-await to the rescue</h4>
+					<pre><code class="js" data-line-numbers='19-28'>let performRequest = (endpoint) => (
+  new Promise((resolve, reject) =>{
+    console.log('making request to ' + endpoint)
+    if (endpoint === "google.com"){
+      resolve("request sent to " + endpoint)
+    }else{
+      reject("sorry, we accept only google")
+    }
+  })
+)
+
+let processRequest = (response) => {
+  return new Promise((resolve, reject) => {
+    console.log("Processing request")
+    resolve("Adding extra text to: " + response)
+  })
+}
+
+// function must be defined as asynchronous to be able to trigger 'await'
+async function doWork(){
+  // await means: do other stuff, but when 'await' finishes, proceed to the next line here
+  const response = await performRequest('google.com')
+  console.log("Response received.");
+  const processedResponse = await processRequest(response)
+  console.log(processedResponse)
+}
+
+doWork()</code></pre>
+					<div class="fragment fade-in">...one last issue - handling errors</div>
+
+				</section>
+				<section><h4>async-await error handling</h4>
+					<pre><code class="js" data-line-numbers="2, 7-9">async function doWork(){
+  try{
+    const response = await performRequest('google.com')
+    console.log("Response received.");
+    const processedResponse = await processRequest(response)
+    console.log(processedResponse)
+  } catch(err) {
+    console.log(err)
+  }
+}
+
+doWork()</code></pre>
+					<div>solution on <a href="https://codepen.io/u295486/pen/GRrzGrQ">codepen</a></div></section>
+			</section>
+
+
+			<section data-background-color="#d586aE">
+				<section><h4>fetch ===> axios</h4></section>
+				<section><h4>fetch</h4>
+					<pre><code class="js">// returns promise
+fetch('https://reqres.in/api/users')</code></pre>
+					<div>...means we have to either 'async-await' or '.then' it</div>
+					<pre><code class="fragment fade-in">fetch('https://reqres.in/api/users').then(res => console.log(res))</code></pre>
+				</section>
+				<section><pre><code class="js" data-line-numbers="1,3-5">//gathered data is in the 'body', but we have no access to it yet
+fetch('https://reqres.in/api/users')
+.then(res => res.json())
+// .json() returns another promise
+.then(data => console.log(data))
+</code></pre>
+					<div class="fragment fade-in"><br>but what if the API returns an error?
+						<pre><code class="js">fetch('https://reqres.in/api/users/23')
+	.then(res => res.json())
+	.then(data => console.log(data))</code></pre>
+						<div>fetch succeded (catch would NOT work), it's API's internal fail only</div>
+					</div>
+				</section>
+				<section>
+<pre><code class="js">fetch('https://reqres.in/api/users/23')
+  .then(res => {
+    if(res.ok){
+      console.log('success')
+    }else{
+      console.log('not successful')
+    }
+  })
+  .then(data => console.log(data))</code></pre></section>
+				<section><div>and... how about posting?</div><pre><code class="js">fetch('https://reqres.in/api/users', {})</code></pre>
+					<div class="fragment fade-in"><ul>
+						<li>provide method</li>
+						<li>provide headers</li>
+						<li>provide stingified JSON body</li>
+					</ul>
+					<pre><code class="js">fetch('https://reqres.in/api/users', {
+  		method: "POST",
+  		headers: {
+  			'Content-Type': "application/json"
+  		},
+  		body: JSON.stringify({
+  			name: "User 1"
+  		})
+  	})
+  	.then(res => res.json())
+  	.then(data => console.log(data))
+  </code></pre></div></section>
+				<section><div>fortunately there is a faster way :)</div>
+					<div class="fragment fade-in"><a href="https://github.com/axios/axios" target="_new">AXIOS</a></div>
+					<div class="fragment fade-in"><a href="https://apicase.github.io/" target="_new">Apicase</a></div>
+					<small class="fragment fade-in">( uhm... sorry for the link colors:P )</small>
+				</section>
+
+				<section><h4>axios</h4>
+					<pre><code class="js">axios.get()</code></pre>
+					<pre><code  class="fragment fade-in js" data-line-numbers="8">import axios from "axios";
+
+function App(props) {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() =>{
+      // presume we're trying to get users from here
+      axios.get('https://jsonplaceholder.typicode.com/users')
+          //data will be provided id .data
+          .then(res => setUsers(prevUsers => res.data))
+          .catch(err => console.log(err))
+  },[])
+
+  console.log('%c reached API:', "color:green", {users})
+  return (
+
+  	</code></pre>
+				</section>
+				<section><pre><code class="js">
+// limiting the set
+axios.get('https://jsonplaceholder.typicode.com/users?_limit=5')
+
+//posting the data
+axios.post('https://jsonplaceholder.typicode.com/users', {
+  name: "new name"
+})
+
+// updating via PUT/PATCH
+// there's a difference between PUT and PATCH
+axios.put('https://jsonplaceholder.typicode.com/users/1', {
+  name: "updated name",
+})
+
+// deleting
+axios.delete('https://jsonplaceholder.typicode.com/users/1')
+
+</code></pre></section>
+
+				<section><pre><code class="js">// simultaneous calls
+axios.all([
+    axios.get('https://jsonplaceholder.typicode.com/todos'),
+    axios.get('https://jsonplaceholder.typicode.com/posts')
+]).then(res => console.log(res))
+
+// custom headers
+axios.post('https://jsonplaceholder.typicode.com/posts', {
+      title: 'new post'
+    }, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'sometoken'
+      }
+    })
+
+</code></pre></section>
+
+				<section><h4>recommended read: <a target="_new" href="https://itnext.io/how-not-to-suffer-with-apis-8aa75f890fe6">how not to suffer with APIs</a></h4></section>
+
+
+			</section>
+			<section>
+				<section>
+				<h4>creating own mock server</h4>
+			</section>
+			<section><a href="https://www.npmjs.com/package/json-server">JSON server</a>
+				<pre><code class="js">// installing the server
+npm install -g json-server
+
+// running it
+json-server --watch db.json
+
+// alternative port
+json-server --watch db.json --port 3004
+
+</code></pre></section>
+			</section>
+
+
+	<section data-background-color="#018786"><h4>TASK:</h4>
+		<div>create an app that:</div><br>
+		<ol>
+			<li>gets POSTS data from <a href="https://jsonplaceholder.typicode.com/posts">JSON placeholder</a> (axios)</li>
+			<li>data shall be gathered only on app start (useEffect)</li>
+			<li>data shall be stored in a state (useState)</li>
+			<li>change the endpoint to local <a href="https://www.npmjs.com/package/json-server">json server</a></li>
+			<li>create a button that pushes new entry to the server</li>
+			<li>provide basic error handling</li>	
+			<li>if no error, update the state with new entry</li>
+			<li>show updated list of entries on the screen (bootstrap table)</li>
+			<li>implement loading indicator feature (<a href="https://www.npmjs.com/package/react-spinners">react spinners</a>)</li>
+		</ol>
+	</section>
+
+			<section data-background-color="#A5A67E">
+				<section>
+					<h4>Deployment</h4>
+				</section>
+				<section>
+					<h4>Environment Variables (<span class="fragment highlight-green"><strong> .env</strong> files</span>)</h4>
+					<div>Every application should run on various environments - development, test and production (eg. to have a different backend connector).<br> i.e. each environment should have its own set of variables</div><br>
+					<ul><li>create <strong>.env</strong> and <strong>.env.development</strong> files in a root directory</li>
+						<li>configuration is done using <strong>REACT_APP_</strong> prefix for each parameter</li></ul>
+					<br>
+					<pre><code class="hljs">// .env.development
+REACT_APP_NAME=Vidly in dev
+REACT_APP_VERSION=1</code></pre>
+					<small>restart the server and try calling <strong>console.log(process.env)</strong> in index.js</small>
+				</section>
+				<section>
+					<h4>building for production</h4>
+					<ul><li><strong><code>npm start</code></strong> creates a development bundle with additional javascript made for debugging</li>
+						<li><strong><code>npm run build</code></strong> creates a production package</li></ul>
+					<img style="height: 450px" src="img/build1.png" />
+				</section>
+
+				<section>
+					<ul><li>configuration is gathered from respective <strong>.env</strong> file (based on <strong>NODE_ENV</strong> environment variable) </li>
+						<li>since we're building production package, a new directory called <strong>'build'</strong> is generated (root directory)</li></ul>
+					<pre><code class="js">// installs simple lightweight web server
+npm install -g serve
+
+// deploys build directory to the server
+serve -s build </code></pre>
+				</section>
+
+
+			</section>
+
+
+
+			<section data-background-color="#680101">TO BE CONTINUED...</section>
+			<section><section><h4>bonus: face-detect app</h4></section>
+				<section><pre><code class="js">npx create-react-app face-detect
+cd face-detect
+npm i prettier eslint-plugin-prettier tachyons clarifai
+npm start</code></pre>
+					<pre><code>// clear the return of src/App.js
+
+// src/App.css
+.App {
+  text-align: center;
+}
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+// src/index.js
+import "tachyons"
+</code></pre></section>
+				<section><pre><code class="js">// src/index.css
+body {
+	background: #485563; /* fallback for old browsers */
+	  background: linear-gradient(
+	    to right,
+	    #29323c,
+	    #485563
+	  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+button {
+  cursor: pointer;
+}
+</code></pre></section>
+				<section><pre><code class="js">// directory structure
+├── src
+  ├── Components
+    ├── FaceDetect
+      ├── FaceDetect.css
+      ├── FaceDetect.js
+    ├── ImageSearchForm
+      ├── ImageSearchForm.css
+      ├── ImageSearchForm.js
+	</code></pre></section>
+				<section><pre><a href="https://tachyons.io/" target="new">Tachyons docs</a><code class="js">// src/components/ImageSearchForm/ImageSearchForm.js
+import React from "react";
+import "./ImageSearchForm.css";
+
+const ImageSearchForm = () => {
+  return (
+    < div className="ma5 to">
+      < div className="center">
+        < div className="form center pa4 br3 shadow-5">
+          < input className="f4 pa2 w-70 center" type="text" />
+          < button className="w-30 grow f4 link ph3 pv2 dib white bg-blue">
+            Detect
+          < /button>
+        < /div>
+      < /div>
+    < /div>
+  );
+};
+export default ImageSearchForm;
+	</code></pre>
+					<pre><code>// src/components/ImageSearchForm/ImageSearchForm.css
+.form {
+  width: 700px;
+  background-color: #ddd;
+}</code></pre></section>
+				<section><pre>backend will be served from <a href="https://www.clarifai.com/pricing" target="new">clarifai</a> (create an app there)<code class="js">// src/App.js
+import Clarifai from "clarifai";
+
+// You need to add your own API key here from Clarifai.
+const app = new Clarifai.App({
+  apiKey: "ADD YOUR API KEY HERE",
+});
+
+...
+
+state = {
+    input: "",
+    imageUrl: "",
+};
+
+onInputChange = (event) => {
+    this.setState({ input: event.target.value });
+};
+
+// Perform a function when submitting with onSubmit
+onSubmit = () => {
+    this.setState({ imageUrl: this.state.input });
+    app.models.predict(Clarifai.FACE_DETECT_MODEL, this.state.input).then(
+        function (response) {
+            // response data fetch from FACE_DETECT_MODEL
+            console.log(response);
+            /* data needed from the response data from clarifai API,
+               note we are just comparing the two for better understanding
+               would to delete the above console*/
+            console.log(
+                response.outputs[0].data.regions[0].region_info.bounding_box
+            );
+        },
+        function (err) {
+            // there was an error
+        }
+    );
+};
+
+...
+
+       < ImageSearchForm
+          onInputChange={this.onInputChange}
+          onSubmit={this.onSubmit}
+        />
+        // uncomment your face detect app and update with imageUrl state
+        < FaceDetect imageUrl={this.state.imageUrl} />
+
+</code></pre></section>
+				<section><pre><code class="js">// src/components/ImageSearchForm/ImageSearchForm.js
+const ImageSearchForm = ({ onInputChange, onSubmit }) => {
+  return (
+  ...
+          < input
+            className="f4 pa2 w-70 center"
+            type="text"
+            onChange={onInputChange}    // add an onChange to monitor input state
+          />
+          < button
+            className="w-30 grow f4 link ph3 pv2 dib white bg-blue"
+            onClick={onSubmit}  // add onClick function to perform task
+          >
+          Detect
+          < /button>
+
+  	</code></pre></section>
+				<section><pre><code class="js">// src/components/FaceDetect/FaceDetect.js
+import React from "react";
+// Pass imageUrl to FaceDetect component
+const FaceDetect = ({ imageUrl }) => {
+    return (
+        < div className="center ma">
+            < div className="absolute mt2">
+                # we set our image SRC to the url of the fetch image
+                < img alt="" src={imageUrl} width="500px" heigh="auto" />
+            < /div>
+        < /div>
+    );
+};
+export default FaceDetect;</code></pre></section>
+				<section><pre>after submitting the URL, open console and check the output<code class="js">// src/App.js
+  // this function calculate the facedetect location in the image
+  calculateFaceLocation = (data) => {
+    const clarifaiFace =
+      data.outputs[0].data.regions[0].region_info.bounding_box;
+    const image = document.getElementById("inputimage");
+    const width = Number(image.width);
+    const height = Number(image.height);
+    return {
+      leftCol: clarifaiFace.left_col * width,
+      topRow: clarifaiFace.top_row * height,
+      rightCol: width - clarifaiFace.right_col * width,
+      bottomRow: height - clarifaiFace.bottom_row * height,
+    };
+  };
+  ...
+  ...
+  ...
+  < FaceDetect box={this.state.box} imageUrl={this.state.imageUrl} />
+
+	</code></pre></section>
+				<section><pre>getting the bounding box<code class="js">// src/App.js
+    state = {
+        input: "",
+        imageUrl: "",
+        box: {}
+    };
+
+    ...
+
+  displayFaceBox = (box) => {
+    this.setState({ box: box });
+  };
+	...
+
+  onSubmit = () => {
+    this.setState({ imageUrl: this.state.input });
+    app.models
+      .predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
+      .then((response) =>
+        this.displayFaceBox(this.calculateFaceLocation(response))
+      )
+      // if error exist console.log error
+      .catch((err) => console.log(err));
+  };
+...
+  onSubmit = () => {
+    this.setState({ imageUrl: this.state.input });
+    app.models
+      .predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
+      .then((response) =>
+        this.displayFaceBox(this.calculateFaceLocation(response))
+      )
+      // if error exist console.log error
+      .catch((err) => console.log(err));
+  };
+  ...
+        // box state pass to facedetect component
+        < FaceDetect box={this.state.box} imageUrl={this.state.imageUrl} />
+	</code></pre></section>
+				<section><pre><code class="js">// src/components/FaceDetect/FaceDetect.js
+const FaceDetect = ({ imageUrl, box }) => {
+...
+                < img alt="" src={imageUrl} width="500px" heigh="auto" />
+                < div className="bounding-box"
+                    style={{
+                        top: box.topRow,
+                        right: box.rightCol,
+                        bottom: box.bottomRow,
+                        left: box.leftCol,
+                    }}>< /div>
+
+	</code></pre></section>
+				<section><pre><code class="js">// src/components/FaceDetect.css
+.bounding-box {
+  position: absolute;
+  box-shadow: 0 0 0 3px #fff inset;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  cursor: pointer;
+}
+	</code></pre></section>
+				<section><pre><code class="js"></code></pre></section>
+				<section><pre><code class="js"></code></pre></section>
+
+			</section>
+
+
 		</div>
+	</div>
 
 		<script src="dist/reveal.js"></script>
 		<script src="plugin/notes/notes.js"></script>
