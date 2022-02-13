@@ -18,7 +18,7 @@
 	<div class="reveal">
 		<div class="slides">
 			<section>
-				<div>Major: <div class="fragment strike">Advanced mobile... blah blah blah</div><div class="fragment fade-in">Building SPA React app</div></dir></div>
+				<div>Major: <div class="fragment strike">Advanced... blah blah blah</div><div class="fragment fade-in">Building SPA React app</div></dir></div>
 			</section>
 
 			<section>
@@ -403,9 +403,10 @@ class Car {
 }
 
 mycar = new Car("Ford");
-document.getElementById("demo").innerHTML = mycar.present("Hello");
+document.getElementById("demo-car").innerHTML = mycar.present("Hello");
 
 	</code></pre>
+					<div id="demo-car">demo div</div>
 				</section>
 			</section>
 
@@ -437,7 +438,7 @@ x += y;
 				</section>
 
 				<section>
-					3. Create and execute function that makes 'alert X' (x is a variable value)
+					3. Create and execute function that shows alert box with 'hello X' (x is a variable value)
 					<pre><code class="fragment fade-in">
 function myFunction( x ) {
   alert("Hello "+ x +" !");
@@ -2852,7 +2853,7 @@ export default Form;
 		<li>create new project 'router'</li>
 		<li>create 3 components 'About', 'Shop', 'Nav'</li>
 		<li>Nav should contain < nav> with h3 logo and < ul> containing 'about', 'shop'</li>
-		<li>import all 3 files to App.js clearing file's return and putting the components one afther another</li>
+		<li>import all 3 files to App.js clearing file's return and putting the components one after another</li>
 		<li>clear the CSS adding</li>
 	</ul>
 	<pre><code class="css">nav{
@@ -2919,7 +2920,9 @@ function App() {
       < div className="App">
         < Nav />
         < Route path="/" component={Home} />
-        < Route path="/about" component={About} />
+        < Route path="/about" />
+			< About/>
+		< /Route>
         < Route path="/shop" component={Shop} />
       < /div>
     < /Router>
@@ -3014,12 +3017,12 @@ const Nav = () => {
     <nav>
       <h3>Logo</h3>
       <ul className="nav-links">
-        <Link style={navStyle} to="/shop">
+        < Link style={navStyle} to="/shop">
           <li>Shop</li>
-        </Link>
-        <Link style={navStyle} to="/about">
+        < /Link>
+        < Link style={navStyle} to="/about">
           <li>About</li>
-        </Link>
+        < /Link>
       </ul>
     </nav>
   );
