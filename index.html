@@ -4063,9 +4063,9 @@ const myReducer = (state = initState, action) => {
 const store = createStore(myReducer)
 
 const todoAction = {type: "ADD_TODO", todo: "adding todo"}
-
 store.dispatch(todoAction)
-</code></pre></section>
+</code></pre>
+				</section>
 				<section><h4>store subscription</h4>
 					<pre><code class="js" data-line-numbers="5-7">
 
@@ -4076,10 +4076,10 @@ store.subscribe(() =>{
 })
 
 const todoAction = {type: "ADD_TODO", todo: "adding todo"}
-
 store.dispatch(todoAction)
-
-</code></pre></section>
+</code></pre>
+					<small class="fragment">typo?</small>
+				</section>
 
 				<section><h4>quick task:</h4>
 					<div>Add POST item (not the todo) and handle it appropriately</div></section>
@@ -4175,11 +4175,16 @@ function App(props) {
 
 					<div class="fragment fade-in">example
 						<pre><code class="js">const mapStateToProps = (state, ownProps) => {
-  const id = ownProps.params.post_id
+  const id = ownProps.postId
+
   return {
     posts: state.posts.find(post => post.id === id)
   }
 }</code></pre>
+
+						<pre><code class="js">// App.js
+...
+< App postId="3" />						</code></pre>
 					</div>
 				</section>
 
@@ -4255,7 +4260,7 @@ const mapDispatchToProps = (dispatch) => {
 				<section><h4>ducks pattern</h4>
 					<small><a target="_new" href="https://github.com/erikras/ducks-modular-redux">https://github.com/erikras/ducks-modular-redux</a></small>
 				</section>
-				<section><pre><code>//duck.js
+				<section><pre><code class="js">//duck.js
 // Actions
 export const DELETE_POST = 'posts/DELETE_POST';
 
@@ -4277,7 +4282,27 @@ export const deletePost = (id) => {
 }
 
 export default rootReducer;	</code></pre></section>
+				<section><h4>multiple reducers</h4>
+					<pre><code class="js">// change rootReducer to postsReducer in duck.js
+
+// new file: rootreducer.js:
+import postsReducer from "./duck";
+import { combineReducers } from "redux";
+const rootReducer = combineReducers({ postsReducer });
+
+export default rootReducer;
+
+// index.js
+import rootReducer from "./rootReducer";
+
+						</code>
+</pre>
+					<small class="fragment">...but check if functionality still works - what changed? why posts are not there?</small>
+				</section>
+
+
 			</section>
+
 
 
 			<!-- <section>
@@ -4520,9 +4545,6 @@ export default rootReducer;	</code></pre></section>
             </section> -->
 
 
-
-
-
 			<section>
 				<section><h4>debugging redux</h4>
 					get the <a href="https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd" target="new"> redux devtools (chrome)</a><br>
@@ -4547,6 +4569,15 @@ const store = createStore(reducer, devToolsEnhancer({trace: true}))
 				<section><h4>importing / exporting</h4>
 					To remove the state of an app we can use import / export functinality
 				</section>
+			</section>
+
+			<section data-background-color="#aFfFD3">
+					<h4>task</h4>
+					<ul>
+						<li>create a `todosReducer` in a separate file</li>
+						<li>add it to the rootReducer</li>
+						<li>put a button + missing functionality removing a todo in App.js</li>
+					</ul>
 			</section>
 
 
@@ -4614,6 +4645,103 @@ console.log(person.address.zip)</code></pre>
 					console.log(person.address?.[2])
 				</code></pre></section>
 
+			</section>
+
+			<section  data-background-color="#FFDFee">
+<section><h4><a href="https://redux-saga.js.org/">sagas</a></h4> <small>Redux side effect manager</small>
+	<pre class="fragment"><code class="js">yarn add redux-saga</code></pre></section>
+				<section><div>NEED: to perform ASYNC call to the BE</div><pre><code class="js" data-line-numbers="3-5">// App.js
+function App(props) {
+  fetch("https://jsonplaceholder.typicode.com/todos/1")
+    .then((response) => response.json())
+    .then((json) => console.log(json));	</code></pre>
+	</section>
+
+				<section>
+					<pre><code class="js" data-line-numbers="1-99">// index.js
+// import saga middleware
+import createSagaMiddleware from "redux-saga";
+const sagaMiddleware = createSagaMiddleware();
+					</code></pre>
+					<span class="fragment">
+					<pre><code class="js" data-line-numbers="3,6">// apply middleware to the store
+// remember to 'import' the 'applyMiddleware' and 'compose' from 'redux'
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(
+  rootReducer,
+  composeEnhancers(applyMiddleware(sagaMiddleware))
+);
+					</code></pre>
+						</span>
+					<span class="fragment">
+					<pre><code class="js" data-line-numbers="1-99">// run own sagas logic
+import postsSaga from "./sagas";
+sagaMiddleware.run(postsSaga);
+					</code></pre></span>
+				</section>
+				<section><pre><code class="js">// sagas.jsx
+export default function* bootstrap() {}
+				</code></pre>
+				</section>
+				<section><div>two types of generator functions</div><ul><li>watcher</li><li>worker</li></ul></section>
+				<section><pre><code class="js" data-line-numbers="5-11">// sagas.jsx
+import { takeLatest } from "redux-saga/effects";
+import { DELETE_POST } from "./postsDuck";
+
+// worker
+function* askForMore() {}
+
+// watcher
+export default function* bootstrap() {
+	yield takeLatest(DELETE_POST, askForMore);
+}</code></pre>
+				</section>
+				<section><pre><code class="js" data-line-numbers="6-8">// sagas.jsx
+import { takeLatest } from "redux-saga/effects";
+import { DELETE_POST } from "./postsDuck";
+
+function* askForMore() {
+  yield fetch("https://jsonplaceholder.typicode.com/todos/1")
+    .then((response) => response.json())
+    .then((json) => console.log(json));
+}
+
+export default function* bootstrap() {
+  yield takeLatest(DELETE_POST, askForMore);
+}</code></pre>
+				</section>
+<section>
+	<div>common way of doing stuff:</div>
+	<pre><code class="js">import { call, put, takeLatest } from "redux-saga/effects";
+import {
+  GET_USERDATA_REQUESTED,
+  getUserDataFailed,
+  getUserDataSucceeded,
+} from "./duck";
+import axios from "axios";
+import { CONFIG } from "../../core/config";
+
+function* getUserData() {
+  try {
+    const { data } = yield call(
+      axios.get,
+      `${CONFIG.backendUrl}/${CONFIG.endpoints.USER}`
+    );
+    yield put(getUserDataSucceeded(data));
+  } catch (err) {
+    yield put(getUserDataFailed());
+  }
+}
+
+export function* bootstrap() {
+  yield takeLatest(GET_USERDATA_REQUESTED, getUserData);
+}
+
+export default bootstrap();
+
+	</code></pre>
+</section>
+				<section><img src="img/saga_example.png"/></section>
 			</section>
 
 			<section data-background-color="#FFDFD3">
