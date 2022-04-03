@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -797,57 +797,57 @@ const items = colors.map(color => `<li> ${color} </li>`);</code></pre>
 
 				<section>
 					<div> <small>ES6:</small> object destructuring</div>
-					<img src="img/obdesc1.png">
-					<img src="img/obdesc2.png">
+					<img alt="" src="img/obdesc1.png">
+					<img alt="" src="img/obdesc2.png">
 				</section>
 
 				<section>
 					<div> <small>ES6:</small> spread</div>
-					<img src="img/spread1.png">
-					<img src="img/spread2.png">
+					<img alt="" src="img/spread1.png">
+					<img alt="" src="img/spread2.png">
 				</section>
 
 				<section>
 					<div> <small>ES6:</small> classes</div>
-					<img src="img/classes.png">
+					<img alt="" src="img/classes.png">
 				</section>
 
 				<section>
 					<div> <small>ES6:</small> inheritance</div>
-					<img src="img/inheritance.png">
+					<img alt="" src="img/inheritance.png">
 				</section>
 
 				<section>
 					<div> <small>ES6:</small> modules </div>
 					<p>Objects in a module are private by default</p>
-					<img src="img/modules1.png">
+					<img alt="" src="img/modules1.png">
 				</section>
 
 				<section>
 					<div> <small>ES6:</small> modules </div>
 					<p>Objects in a module are private by default</p>
-					<img src="img/modules2.png">
+					<img alt="" src="img/modules2.png">
 
 				</section>
 
 
 				<section>
 					<div> <small>ES6:</small> named exports </div>
-					<img src="img/nex1.png"><img src="img/nex2.png">
+					<img alt="" src="img/nex1.png"><img src="img/nex2.png">
 				</section>
 
 				<section>
 					<div> <small>ES6:</small> default exports </div>
-					<img src="img/dex1.png">
-					<img src="img/dex2.png">
+					<img alt="" src="img/dex1.png">
+					<img alt="" src="img/dex2.png">
 				</section>
 
 			</section>
 
 			<section data-background-color="#b1a786">
 			<section><h4>dad's jokes section</h4></section>
-			<section><img src="img/options1.png"></section>
-			<section><img src="img/options2.png"></section>
+			<section><img alt="" src="img/options1.png"></section>
+			<section><img alt="" src="img/options2.png"></section>
 			<section><pre><code class="js">// pls check
 '3' + 1;
 '3' - 1;
@@ -890,13 +890,13 @@ const items = colors.map(color => `<li> ${color} </li>`);</code></pre>
 
 			<section>
 				<h4>let's begin</h4>
-				<img src="img/starting.gif">
+				<img alt="" src="img/starting.gif">
 			</section>
 
 			<section>
 				<section>
 					<h4> aim </h4>
-					<img src="img/aim.png">
+					<img alt="" src="img/aim.png">
 				</section>
 				<section>
 					<h4> aim </h4>
@@ -1365,8 +1365,9 @@ const { length: count } = this.state.movies;
 						<li>import and return counter in counters</li>
 						<li>add state to maintain the counters</li>
 					</ul>
-					<pre><code class="js">// counters.jsx
-state = {
+					<pre><code class="js">// counters.jsx (feel free to use your favourite approach)
+// class
+  state = {
     counters: [
       { id: 1, value: 0 },
       { id: 2, value: 0 },
@@ -1374,6 +1375,14 @@ state = {
       { id: 4, value: 0 },
     ],
   };
+
+// functional
+  const [counters, setCounters] = useState([
+    { id: 1, value: 0 },
+    { id: 2, value: 0 },
+    { id: 3, value: 0 },
+    { id: 4, value: 0 },
+  ]);
 </code></pre></section>
 
 				<section><h4>
@@ -1461,7 +1470,10 @@ button.btn.btn-danger.btn-sm.m-2
 				<section><img src="img/rot-counters.png"></section>
 
 				<section>counters.jsx
-					<pre><code data-line-numbers="1, 10-11">handleDelete = () => {console.log("handle Delete triggered")};
+					<pre><code class="js" data-line-numbers="2, 13-14">// class
+handleDelete = () => {console.log("handle Delete triggered")};
+// function
+const handleDelete = () => {console.log("handle Delete triggered")};
 
   render() {
     return (
@@ -1495,12 +1507,16 @@ button.btn.btn-danger.btn-sm.m-2
 					<h4>Updating the state</h4>counter.jsx
 					<pre><code>onClick={() => this.props.onDelete(this.props.id)}
 </code></pre>counters.jsx
-					<pre><code class="hljs">  handleDelete = (counterId) => {
- # react's rule of thumb  - to be immutable
+					<pre><code class="js">//class
+handleDelete = (counterId) => {
+// react's rule of thumb  - to be immutable
     const counters = this.state.counters.filter((c) => c.id !== counterId);
- # since 'key' and 'values' are the same, we can simplify 'counters: counters'
+// since 'key' and 'values' are the same, we can simplify 'counters: counters'
     this.setState({ counters });
-  };</code></pre></section>
+  };
+
+// function
+</code></pre></section>
 
 				<section><h4>
 				</h4>tiny problem - too much redundancy
@@ -3963,7 +3979,7 @@ console.log(updated)
 					We cannot directly modify / mutate the store - it's being build on top of functional programming principles.<br><br><ul><li>store is immutable object</li> <li>to update it, we need to create a function that takes a store as a parameter, alters it (via spread / immutability library) and returns an updated store.</li> <li>This function is called <strong>a reducer</strong></li>	</ul>
 				</section>
 				<section><h4>redux building blocks</h4>
-					<img src="img/rax2.png" />
+					<img alt="" src="img/rax2.png" />
 				</section>
 				<section><pre><code class="js">// action - plain JS obj that describes what just happened
 // (login logout, adding to shopping cart etc)
@@ -3979,7 +3995,7 @@ function reducer(store, action){
 // various sections of the app</code></pre>
 				</section>
 
-				<section><img src="img/rax3.png" /><pre><ol><li>User performs an action</li><li>the action creates an action object and dispatches it</li><li>store obj takes action object and dispatches it forwarding to the reducer</li><li>reducer computes the new state and returns it</li><li>store sets the state internally notifying the UI component about the update</li><li>UI pulls out updated data and refreshes itself</li></ol></pre></section>
+				<section><img alt="" src="img/rax3.png" /><pre><ol><li>User performs an action</li><li>the action creates an action object and dispatches it</li><li>store obj takes action object and dispatches it forwarding to the reducer</li><li>reducer computes the new state and returns it</li><li>store sets the state internally notifying the UI component about the update</li><li>UI pulls out updated data and refreshes itself</li></ol></pre></section>
 				<section>Why do we have to do it this way? Why do we need to dispatch actions
 					<img src="img/rax4.png">
 					<pre>Dispatch is like an entry point to the store. While dispatching actions, we're
@@ -3996,13 +4012,13 @@ every action - vide redux devtools) </pre>
 					<div><small>Let's use <a href="https://codepen.io/">codepen.io</a> as a sandbox</small></div>
 				</section>
 				<section>
-					<img src="img/redux-idea.png">
+					<img alt="" src="img/redux-idea.png">
 				</section>
 				<section>
-					<img src="img/redux-flow.png">
+					<img alt="" src="img/redux-flow.png">
 				</section>
 				<section>
-					<h4>store</h4><img src="img/redux-flow.png" width=50%>
+					<h4>store</h4><img alt="" src="img/redux-flow.png" width=50%>
 					<small><ul>
 						<li><em>Store</em> is a central warehouse for the data (whole app state)</li>
 						<li>The warehouse is having a robot guard / worker. Only the guard can get into the warehouse</li>
@@ -4188,7 +4204,7 @@ function App(props) {
 					</div>
 				</section>
 
-				<section><h4>map dispatch to props</h4>			<img src="img/redux-flow.png" width=80%>
+				<section><h4>map dispatch to props</h4>			<img alt="" src="img/redux-flow.png" width=80%>
 				</section>
 
 				<section><h4>map dispatch to props</h4><pre><code class="js">// App.js
@@ -5045,7 +5061,7 @@ REACT_APP_VERSION=1</code></pre>
 					<h4>building for production</h4>
 					<ul><li><strong><code>npm start</code></strong> creates a development bundle with additional javascript made for debugging</li>
 						<li><strong><code>npm run build</code></strong> creates a production package</li></ul>
-					<img style="height: 450px" src="img/build1.png" />
+					<img alt="" style="height: 450px" src="img/build1.png" />
 				</section>
 
 				<section>
