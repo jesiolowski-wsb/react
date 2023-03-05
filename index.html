@@ -109,15 +109,15 @@
 				<h4>Idea: <span class="fragment highlight-red">State</span> and <span class="fragment highlight-blue">props</span></h4>
 				<p class="fragment fade-in">react reacts to state changes</p>
 				<pre><code class="hljs fragment fade-in" data-trim>
+						const Tweet = () => {
+							return()
+						}
+					</code></pre>
+				<pre><code class="hljs fragment fade-in" data-trim>
 						class Tweet {
 							state = {};
 							render() {
 							}
-						}
-					</code></pre>
-					<pre><code class="hljs fragment fade-in" data-trim>
-						const Tweet = () => {
-							return() 
 						}
 					</code></pre>
 			</section>
@@ -146,12 +146,12 @@
 			<section>
 				Building the framework
 				<pre><code class="js" data-trim>
-					// former way
-			 	npm i -g create-react-app
-			 	create-react-app my-app
-
 			 	// modern way
 			 	npx create-react-app my-app
+
+				 // old and rusty way
+			 	npm i -g create-react-app
+			 	create-react-app my-app
 
 			 	cd my-app
 			 	npm start
@@ -187,27 +187,8 @@ npm install --global yarn</code></pre>
 				</p>
 			</section>
 			<section>
-				<h3>class vs functional components</h3>
-				<section>
-					<h4>basic class component</h4>
-					<pre><code class="hljs" data-trim>
-import React, {Component} from 'react';
-import './App.css';
+				<h3>functional vs class components</h3>
 
-class App extends Component {
-  state = {}
-  render() {
-    return (
-        <div className="App">
-        </div>
-    );
-  }
-}
-
-export default App;
-				</code></pre>
-
-				</section>
 				<section>
 					<h4>basic functional component</h4>
 					<pre><code class="hljs" data-trim>
@@ -225,6 +206,26 @@ export default App;
 				</code></pre>
 				</section>
 			</section>
+			<section>
+				<h4>basic class component</h4>
+				<pre><code class="hljs" data-trim>
+import React, {Component} from 'react';
+import './App.css';
+
+class App extends Component {
+  state = {}
+  render() {
+    return (
+        <div className="App">
+        </div>
+    );
+  }
+}
+
+export default App;
+				</code></pre>
+
+			</section>
 
 			<section>
 				<h4>class vs function</h4>
@@ -237,15 +238,18 @@ export default App;
 				</section>
 
 				<section>
-					<h3 class="fragment highlight-blue">class lifecycle methods</h3>
+					<div>We're using <em><u>useEffect</u></em> hook to use lifecycle events in your functional components.</div>
+
+					<br/>
+					<div class="fragment fade-up">
+					<p >class lifecycle methods</p>
 					<ul>
 						<li>render()</li>
 						<li>componentDidMount()</li>
 						<li>componentDidUpdate()</li>
 						<li>componentWillUnmount()</li>
 					</ul>
-					<div>&nbsp;</div>
-					<div class="fragment fade-up">EDIT: You can now use the <em><u>useEffect</u></em> hook to use lifecycle events in your functional components.</div>
+					</div>
 				</section>
 			</section>
 			<section>
@@ -305,7 +309,7 @@ export default App;
 				</section>
 				<section>
 					<h4>variables</h4>
-					<pre><code>
+					<pre><code class="hljs">
 	// function scope
 	var x;
 	x = 6;
@@ -332,7 +336,12 @@ sayHello();
 				</section>
 				<section>
 					<h4>rule of thumb:</h4>
-					<img src="https://i.pinimg.com/originals/5d/94/8b/5d948bacebfaa922251260122303d2f4.png">
+					<img src="img/letnotvar.png">
+				</section>
+
+				<section>
+					<h4>rule of thumb:</h4>
+					<img src="img/constnotvar.png">
 				</section>
 
 				<section>
@@ -547,7 +556,7 @@ alert(x != y);
 				<section>
 					15. Create a loop that runs from 0 to 9.
 					<pre><code class="fragment fade-in">
-var i;
+let i;
 for(i = 0; i < 10; i++) {
   console.log(i);
 }
@@ -556,7 +565,7 @@ for(i = 0; i < 10; i++) {
 
 				<section>
 					16. Change the text of the first element that has the class name "test" (not the <a target="new" href="https://www.w3schools.com/jsref/met_document_getelementbyid.asp"> ID </a>)
-					<pre><code>
+					<pre><code class="hljs">
 < p class="test"></p>
 < p class="test"></p>
 			</code></pre>
@@ -944,12 +953,10 @@ yarn start
 						<li>create folder 'components'</li>
 						<li>create component file 'counter.jsx' </li>
 						<pre> <code>
-import React, { Component } from "react";
+import React from "react";
 
-class Counter extends Component {
-  render() {
+const Counter = () => {
     return <h1>Hello World</h1>;
-  }
 }
 
 export default Counter;
@@ -972,13 +979,11 @@ export default Counter;
 
 					<pre><code class="fragment fade-in"> React.createElement('h1');</code></pre>
 
-					<pre><code  class="fragment fade-in" data-line-numbers="6">
-import React, { Component } from "react";
+					<pre><code  class="fragment fade-in" data-line-numbers="5">
+import React from "react";
 
-class Counter extends Component {
-  render() {
+const Counter = () => {
       return <div><h1>Hello World</h1><button>Increment</button></div>;
-  }
 }
 
 export default Counter;
@@ -1024,126 +1029,206 @@ export default Counter;
 				<section>
 					<h4>Embedding expressions</h4>
 					<p>let's make a dynamic value out of a hello world</p>
-					<pre><code data-line-numbers="4-6, 10">  import React, { Component } from "react";
+<!--					<pre><code data-line-numbers="4-6, 10">  import React, { Component } from "react";-->
 
-class Counter extends Component {
-  state = {
-    count: 0,
-  };
-  render() {
+<!--class Counter extends Component {-->
+<!--  state = {-->
+<!--    count: 0,-->
+<!--  };-->
+<!--  render() {-->
+<!--    return (-->
+<!--      <React.Fragment>-->
+<!--        <span>{this.state.count}</span>-->
+<!--        <button>Increment</button>-->
+<!--      </React.Fragment>-->
+<!--    );-->
+<!--  }-->
+<!--}-->
+
+<!--export default Counter;-->
+<!--	</code></pre>-->
+
+					<pre><code data-line-numbers="1, 4, 7">import React, {useState} from "react";
+
+const Counter = () => {
+  const [count, setCount] = useState(0)
     return (
-      <React.Fragment>
-        <span>{this.state.count}</span>
+      < >
+        <span>{count}</span>
         <button>Increment</button>
-      </React.Fragment>
+      < />
     );
-  }
 }
 
 export default Counter;
-	</code></pre>
+					</code></pre>
+
+
 				</section>
 
 				<section>
 					<h4>...and format it</h4>
-					<pre><code data-line-numbers="5, 11-15">...
-  render() {
-    return (
-      <React.Fragment>
-        <span>{this.formatCount()}</span>
-        <button>Increment</button>
-      </React.Fragment>
-    );
-  }
+<!--					<pre><code data-line-numbers="5, 11-15">...-->
+<!--  render() {-->
+<!--    return (-->
+<!--      <React.Fragment>-->
+<!--        <span>{this.formatCount()}</span>-->
+<!--        <button>Increment</button>-->
+<!--      </React.Fragment>-->
+<!--    );-->
+<!--  }-->
 
-  formatCount() {
-    // object destructuring in action
-    const { count } = this.state;
-    return count === 0 ? <h1>Zero</h1> : count;
-  }
+<!--  formatCount() {-->
+<!--    // object destructuring in action-->
+<!--    const { count } = this.state;-->
+<!--    return count === 0 ? <h1>Zero</h1> : count;-->
+<!--  }-->
+<!--}-->
+
+<!--export default Counter;-->
+
+<!--	</code></pre>-->
+
+					<pre><code data-line-numbers="6, 10">import React, {useState} from "react";
+
+const Counter = () => {
+  const [count, setCount] = useState(0)
+
+const formatCount = () => count === 0 ? <h1>Zero</h1> : count;
+
+    return (
+      < >
+        <span>{formatCount()}</span>
+        <button>Increment</button>
+      < />
+    );
 }
 
 export default Counter;
+					</code></pre>
 
-	</code></pre>
+
 				</section>
 
 				<section>
 					<h4>Setting CSS attributes</h4>
 
-					<pre><code class="hljs" data-line-numbers="6, 9-12, 17-18, 21">import React, { Component } from "react";
+<!--					<pre><code class="hljs" data-line-numbers="6, 9-12, 17-18, 21">import React, { Component } from "react";-->
 
-class Counter extends Component {
-  state = {
-    count: 0,
-    imageUrl: "https://picsum.photos/200",
-  };
+<!--class Counter extends Component {-->
+<!--  state = {-->
+<!--    count: 0,-->
+<!--    imageUrl: "https://picsum.photos/200",-->
+<!--  };-->
 
-  styles = {
+<!--  styles = {-->
+<!--    fontSize: 20,-->
+<!--    fontWeight: "bold",-->
+<!--  };-->
+
+<!--  render() {-->
+<!--    return (-->
+<!--      < React.Fragment>-->
+<!--        < img src={this.state.imageUrl} />-->
+<!--        < span style={this.styles} className="badge badge-primary m-2">-->
+<!--          {this.formatCount()}-->
+<!--        < /span>-->
+<!--        < button style={{ fontSize: 50 }} className="btn btn-secondary btn-sm">-->
+<!--          Increment-->
+<!--        < /button>-->
+<!--      < /React.Fragment>-->
+<!--    );-->
+<!--  }-->
+
+<!--  formatCount() {-->
+<!--    // object destructuring in action-->
+<!--    const { count } = this.state;-->
+<!--    return count === 0 ? "Zero" : count;-->
+<!--  }-->
+<!--}-->
+
+<!--export default Counter;-->
+
+
+<!--	</code></pre>-->
+<pre><code class="hljs">
+	import React, { useState } from 'react';
+
+const Counter = () => {
+  const [count, setCount] = useState(0);
+  const [imageUrl, setimageUrl] = useState('https://picsum.photos/200');
+
+  const styles = {
     fontSize: 20,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   };
 
-  render() {
-    return (
-      < React.Fragment>
-        < img src={this.state.imageUrl} />
-        < span style={this.styles} className="badge badge-primary m-2">
-          {this.formatCount()}
-        < /span>
-        < button style={{ fontSize: 50 }} className="btn btn-secondary btn-sm">
-          Increment
-        < /button>
-      < /React.Fragment>
-    );
-  }
+  const formatCount = () => (count === 0 ? 'Zero' : count);
 
-  formatCount() {
-    // object destructuring in action
-    const { count } = this.state;
-    return count === 0 ? "Zero" : count;
-  }
-}
+  return (
+    < >
+      <img src={imageUrl} />
+      <span style={styles} className="badge badge-primary m-2">
+        {formatCount()}
+      </span>
+      <button style="{{ fontSize: 50 }}" className="btn btn-secondary btn-sm">
+        Increment
+      </button>
+    < />
+  );
+
+};
 
 export default Counter;
-
 
 	</code></pre>
 				</section>
 
 				<section>
 					<h4>CSS dynamically</h4>
-					<pre><code class="hljs" data-line-numbers="9,10, 14">import React, { Component } from "react";
+<!--					<pre><code class="hljs" data-line-numbers="9,10, 14">import React, { Component } from "react";-->
 
-class Counter extends Component {
-  state = {
-    count: 0,
-  };
+<!--class Counter extends Component {-->
+<!--  state = {-->
+<!--    count: 0,-->
+<!--  };-->
 
-  render() {
-    let classes = "badge m-2 badge-";
-    classes += this.state.count === 0 ? "warning" : "primary";
+<!--  render() {-->
+<!--    let classes = "badge m-2 badge-";-->
+<!--    classes += this.state.count === 0 ? "warning" : "primary";-->
 
-    return (
-      <React.Fragment>
-        <span className={classes}>{this.formatCount()}</span>
-        <button className="btn btn-secondary btn-sm">Increment</button>
-      </React.Fragment>
-    );
-  }
+<!--    return (-->
+<!--      <React.Fragment>-->
+<!--        <span className={classes}>{this.formatCount()}</span>-->
+<!--        <button className="btn btn-secondary btn-sm">Increment</button>-->
+<!--      </React.Fragment>-->
+<!--    );-->
+<!--  }-->
 
-  formatCount() {
-    // object destructuring in action
-    const { count } = this.state;
-    return count === 0 ? "Zero" : count;
-  }
-}
+<!--  formatCount() {-->
+<!--    // object destructuring in action-->
+<!--    const { count } = this.state;-->
+<!--    return count === 0 ? "Zero" : count;-->
+<!--  }-->
+<!--}-->
 
-export default Counter;
+<!--export default Counter;-->
 
 
-	</code></pre>
+<!--	</code></pre>-->
+					<pre><code class="hljs" data-line-numbers="4, 5, 10">...
+  const formatCount = () => (count === 0 ? 'Zero' : count);
+
+  let classes = "badge m-2 badge-";
+  classes += count === 0 ? "warning" : "primary";
+
+  return (
+    <>
+      <img src={imageUrl} />
+      <span style={styles} className={classes}>
+					</code></pre>
 				</section>
+
 				<section>
 					<h4>extracting method...</h4>
 					<img src="img/refactor.png">
@@ -1155,13 +1240,15 @@ export default Counter;
 
 				<section>
 					<h4>Rendering lists</h4>
-					<pre><code>
-  state = {
-    count: 0,
-    tags: ["tag1", "tag2", "tag3"],
-  };
+					<pre><code class="hljs">const [tagsList, setTagsList] = useState(["tag1", "tag2", "tag3"]);
 	</code></pre>
 					<pre><code class="fragment fade-in">...
+
+tagsList.map((tag) => (
+  <li>{tag}</li>
+))
+
+// class
   render() {
     return (
 	...
@@ -1203,6 +1290,22 @@ export default Counter;
 </pre>
 
 				</section>
+				<section><pre><code>
+const renderTags = () =>
+    tagsList ? (
+      < ul>
+        {tagsList.map((tag) => (
+          < li>{tag}< /li>
+        ))}
+      < /ul>
+	) : (
+	<p>There are no tags</p>
+	);
+					</code></pre>
+					<p class="fragment">any problem here? (check for no entries in array)</p>
+					<p class="fragment">solution: `.length==0` or <a href="https://lodash.com/docs/4.17.15#isEmpty">lodash</a></p>
+
+				</section>
 
 				<section><h4>Alternative approach - truthy / falsy</h4>
 					<pre><code class="js">// in 'render()'
@@ -1210,72 +1313,40 @@ export default Counter;
 					<img src="img/truthy.png"></section>
 
 				<section><h4>Events handling</h4>
-					<small>IMPORTANT: Passing a reference i.e. no <em>'...()'</em> (different in vanillaJS)</small>
-					<pre><code class="hljs" data-line-numbers="4-6, 13">class Counter extends Component {
-...
-
-  handleIncrement() {
+					<pre><code class="hljs" data-line-numbers="2, 10">
+  const handleIncrement = () => {
     console.log("Increment Clicked");
   }
 
-  render() {
     return (
       < React.Fragment>
         < span className={this.getClassNames()}>{this.formatCount()}< /span>
         < button
-          onClick={this.handleIncrement}
+          onClick={handleIncrement}
           className="btn btn-secondary btn-sm"
         >
           Increment
         < /button>
-        {this.state.tags.length === 0 && "Please create a new tag!"}
-        {this.renderTags()}
+        {tagsList.length === 0 && "Please create a new tag!"}
+        {renderTags()}
       < /React.Fragment>
     );
-  }
-</code></pre>
-					<small>...and also case sensitive - onClick</small>
-					<div class="fragment fade-in">BUT... there is a problem with THIS</div>
-				</section>
-
-				<section><h4>
-				</h4>
-					<pre><code>  handleIncrement() {
-    console.log("Increment Clicked", this.state.count);
-    // obj.method()
-    // function
-  }
-</code></pre>
-					<div class="fragment fade-in">solution
-						<pre><code>  constructor() {
-    super();
-    this.handleIncrement = this.handleIncrement.bind(this);
-  }</code></pre>
-					</div>
-
-					<pre><code class="fragment fade-in">handleIncrement = () => {
-    console.log("Increment Clicked", this.state.count);
-  };
 </code></pre>
 				</section>
 
 				<section><h4>updating the state
 				</h4>
-					<pre><code data-line-numbers="3, 11, 14">
-  state = {
-    count: 0,
-    tags: ["tag1", "tag2", "tag3"],
-  };
+					<pre><code data-line-numbers="6, 9, 11">const [count, setCount] = useState(0);
 
-
-  handleIncrement = () => {
+  const handleIncrement = () => {
   	// won't work
   	// updating the count, but not forwarding to react
-    	this.state.count++;
+	  count++;
 
-    	// correct way (provide an object)
-        this.setState({ count: this.state.count + 1 });
-
+	  // correct way
+	  setCount(count + 1);
+	  // why this one doesn't work?
+	  setCount(count + 1);
   };
 </code></pre></section>
 
@@ -1287,21 +1358,21 @@ export default Counter;
 
 				<section><h4>passing event arguments
 				</h4><small>react requires passing the reference, not the call. One solution could be:</small>
-					<pre><code>  handleIncrement = (product) => {
-    console.log(product);
-    this.setState({ count: this.state.count + 1 });
+					<pre><code>  const handleIncrement = (increaseBy) => {
+    console.log(increaseBy);
+    setCount(count + increaseBy );
   };
 
   doHandleIncrement = () => {
-    this.handleIncrement({ id: 1 });
+    handleIncrement(10);
   };
 
   render() {
     return (
       <React.Fragment>
-        <span className={this.getClassNames()}>{this.formatCount()}</span>
+        <span className={getClassNames()}>{formatCount()}</span>
         <button
-				onClick={this.doHandleIncrement}
+				onClick={doHandleIncrement}
 				className="btn btn-secondary btn-sm"
 		>
           Increment
@@ -1311,12 +1382,12 @@ export default Counter;
 				<section><h4>better solution - inline function call
 				</h4>
 					<pre><code>        < button
-          onClick={() => this.handleIncrement({ id: 1 })}
+          onClick={() => handleIncrement(10)}
           className="btn btn-secondary btn-sm"
         >
 </code></pre>
 					<pre><code>        < button
-          onClick={() => this.handleIncrement(product)}
+          onClick={() => handleIncrement(product)}
           className="btn btn-secondary btn-sm"
         >
 </code></pre></section>
@@ -1366,6 +1437,14 @@ const { length: count } = this.state.movies;
 						<li>add state to maintain the counters</li>
 					</ul>
 					<pre><code class="js">// counters.jsx (feel free to use your favourite approach)
+// functional
+  const [counters, setCounters] = useState([
+    { id: 1, value: 0 },
+    { id: 2, value: 0 },
+    { id: 3, value: 0 },
+    { id: 4, value: 0 },
+  ]);
+
 // class
   state = {
     counters: [
@@ -1375,14 +1454,6 @@ const { length: count } = this.state.movies;
       { id: 4, value: 0 },
     ],
   };
-
-// functional
-  const [counters, setCounters] = useState([
-    { id: 1, value: 0 },
-    { id: 2, value: 0 },
-    { id: 3, value: 0 },
-    { id: 4, value: 0 },
-  ]);
 </code></pre></section>
 
 				<section><h4>
@@ -1391,7 +1462,7 @@ const { length: count } = this.state.movies;
 					<pre><code class="js">// counters.jsx
     return (
       <>
-        {this.state.counters.map((counter) => (
+        {counters.map((counter) => (
           < Counter key={counter.id} />
         ))}
       < />
@@ -1411,9 +1482,7 @@ const { length: count } = this.state.movies;
 
 				<section><h4>
 				</h4>in counter.jsx
-					<pre><code>  state = {
-    count: this.props.value,
-  };
+					<pre><code>  const [count, setCount] = useState(props.value)
 </code></pre>
 					nice: rename 'count' to 'value'</section>
 
@@ -1421,14 +1490,14 @@ const { length: count } = this.state.movies;
 				</h4>sometimes we want to pass a child (eg. dialog box)
 					<pre><code class="js">// counters.jsx
 <>
-        {this.state.counters.map((counter) => (
+        {counters.map((counter) => (
           < Counter key={counter.id} value={counter.value}>
             < h4>Counter no: {counter.id}< /h4>
           < /Counter>
         ))}
 < />
 </code></pre>
-					have a look at props in counter.jsx - 'children' appears (we can also put <em>{this.props.children})</em> in render</section>
+					have a look at props in counter.jsx - 'children' appears (we can also put <em>{props.children})</em> in render</section>
 
 			</section>
 			<section>
@@ -1448,8 +1517,8 @@ const { length: count } = this.state.movies;
 					<br>
 					<pre><code data-line-numbers="3">//try to asign a value to props
 handleIncrement = () => {
-    this.props.value = "99";
-    this.setState({ count: this.state.count + 1 });
+    props.value = "99";
+	setCount(count + 1)
   };</code> </pre>
 				</section>
 
@@ -1460,7 +1529,7 @@ handleIncrement = () => {
 // emmet syntax. Add it after existing button
 button.btn.btn-danger.btn-sm.m-2
 </code></pre>
-					<pre><code>onClick={this.handleDelete}
+					<pre><code>onClick={handleDelete}
 </code></pre>
 					problem: counter doesn't own its ID (there is only 'count' parameter in a state). How to remove it then?
 					<p class="fragment fade-in">answer: from outside! (counters.jsx)</p></section>
@@ -1475,27 +1544,25 @@ handleDelete = () => {console.log("handle Delete triggered")};
 // function
 const handleDelete = () => {console.log("handle Delete triggered")};
 
-  render() {
     return (
       < >
-        {this.state.counters.map((counter) => (
+        {counters.map((counter) => (
           < Counter
             key={counter.id}
             value={counter.value}
             id={counter.id}
-            onDelete={this.handleDelete}
+            onDelete={handleDelete}
           />
         ))}
       < />
     );
-  }
 }
 </code></pre></section>
 
 				<section>counter.jsx
 					<pre><code data-line-numbers="3">...
 	< button
-          onClick={this.props.onDelete}
+          onClick={props.onDelete}
           className="btn btn-danger btn-sm m-2"
         >
         Delete
@@ -1505,17 +1572,13 @@ const handleDelete = () => {console.log("handle Delete triggered")};
 
 				<section>
 					<h4>Updating the state</h4>counter.jsx
-					<pre><code>onClick={() => this.props.onDelete(this.props.id)}
+					<pre><code>onClick={() => props.onDelete(props.id)}
 </code></pre>counters.jsx
-					<pre><code class="js">//class
+					<pre><code class="js">
 handleDelete = (counterId) => {
-// react's rule of thumb  - to be immutable
-    const counters = this.state.counters.filter((c) => c.id !== counterId);
-// since 'key' and 'values' are the same, we can simplify 'counters: counters'
-    this.setState({ counters });
+	setCounters(counters.filter((c) => c.id !== counterId))
   };
 
-// function
 </code></pre></section>
 
 				<section><h4>
