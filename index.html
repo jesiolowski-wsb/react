@@ -1290,18 +1290,18 @@ tagsList.map((tag) => (
 </pre>
 
 				</section>
-				<section><pre><code>
+				<section><pre><code><script type="text/template">
 const renderTags = () =>
     tagsList ? (
-      < ul>
+      <ul>
         {tagsList.map((tag) => (
-          < li>{tag}< /li>
+          <li>{tag}< /li>
         ))}
-      < /ul>
+      </ul>
 	) : (
 	<p>There are no tags</p>
 	);
-					</code></pre>
+				</script></code></pre>
 					<p class="fragment">any problem here? (check for no entries in array)</p>
 					<p class="fragment">solution: `.length==0` or <a href="https://lodash.com/docs/4.17.15#isEmpty">lodash</a></p>
 
@@ -1313,25 +1313,25 @@ const renderTags = () =>
 					<img src="img/truthy.png"></section>
 
 				<section><h4>Events handling</h4>
-					<pre><code class="hljs" data-line-numbers="2, 10">
+					<pre><code class="hljs" data-line-numbers="2, 10"><script type="text/template">
   const handleIncrement = () => {
     console.log("Increment Clicked");
   }
 
     return (
-      < React.Fragment>
-        < span className={this.getClassNames()}>{this.formatCount()}< /span>
-        < button
+      <>
+        <span className={this.getClassNames()}>{this.formatCount()}< /span>
+        <button
           onClick={handleIncrement}
           className="btn btn-secondary btn-sm"
         >
           Increment
-        < /button>
+        </button>
         {tagsList.length === 0 && "Please create a new tag!"}
         {renderTags()}
-      < /React.Fragment>
+      </>
     );
-</code></pre>
+					</script></code></pre>
 				</section>
 
 				<section><h4>updating the state
@@ -1358,7 +1358,7 @@ const renderTags = () =>
 
 				<section><h4>passing event arguments
 				</h4><small>react requires passing the reference, not the call. One solution could be:</small>
-					<pre><code>  const handleIncrement = (increaseBy) => {
+					<pre><code>  <script type="text/template">const handleIncrement = (increaseBy) => {
     console.log(increaseBy);
     setCount(count + increaseBy );
   };
@@ -1367,9 +1367,8 @@ const renderTags = () =>
     handleIncrement(10);
   };
 
-  render() {
     return (
-      <React.Fragment>
+      <>
         <span className={getClassNames()}>{formatCount()}</span>
         <button
 				onClick={doHandleIncrement}
@@ -1377,20 +1376,21 @@ const renderTags = () =>
 		>
           Increment
         </button>
-</code></pre></section>
+	  </>
+</script></code></pre></section>
 
 				<section><h4>better solution - inline function call
 				</h4>
-					<pre><code>        < button
+					<pre><code><script type="text/template">        <button
           onClick={() => handleIncrement(10)}
           className="btn btn-secondary btn-sm"
         >
-</code></pre>
-					<pre><code>        < button
+					</script></code></pre>
+					<pre><code><script type="text/template">        <button
           onClick={() => handleIncrement(product)}
           className="btn btn-secondary btn-sm"
         >
-</code></pre></section>
+					</script></code></pre></section>
 			</section>
 
 
@@ -1436,37 +1436,26 @@ const { length: count } = this.state.movies;
 						<li>import and return counter in counters</li>
 						<li>add state to maintain the counters</li>
 					</ul>
-					<pre><code class="js">// counters.jsx (feel free to use your favourite approach)
-// functional
+					<pre><code class="js">// counters.jsx
   const [counters, setCounters] = useState([
     { id: 1, value: 0 },
     { id: 2, value: 0 },
     { id: 3, value: 0 },
     { id: 4, value: 0 },
   ]);
-
-// class
-  state = {
-    counters: [
-      { id: 1, value: 0 },
-      { id: 2, value: 0 },
-      { id: 3, value: 0 },
-      { id: 4, value: 0 },
-    ],
-  };
 </code></pre></section>
 
 				<section><h4>
 				</h4>
 					Instead of 4x < Counter />
-					<pre><code class="js">// counters.jsx
-    return (
-      <>
-        {counters.map((counter) => (
-          < Counter key={counter.id} />
-        ))}
-      < />
-    );
+					<pre><code class="js"><script type="text/template">// counters.jsx
+return (
+  <>
+	{counters.map((counter) => (
+	  <Counter key={counter.id} />
+	))}
+  </>
+	);</script>
 </code></pre>
 					<div class="fragment fade-in">Problem: initial state does not work. <strong>Why?</strong> </div></section>
 
@@ -1488,15 +1477,15 @@ const { length: count } = this.state.movies;
 
 				<section><h4>passing children
 				</h4>sometimes we want to pass a child (eg. dialog box)
-					<pre><code class="js">// counters.jsx
+					<pre><code class="js"><script type="text/template">// counters.jsx
 <>
-        {counters.map((counter) => (
-          < Counter key={counter.id} value={counter.value}>
-            < h4>Counter no: {counter.id}< /h4>
-          < /Counter>
-        ))}
+	{counters.map((counter) => (
+	  <Counter key={counter.id} value={counter.value}>
+		  <h4>Counter no: {counter.id}</h4>
+	  </Counter>
+	))}
 < />
-</code></pre>
+					</script></code></pre>
 					have a look at props in counter.jsx - 'children' appears (we can also put <em>{props.children})</em> in render</section>
 
 			</section>
@@ -1539,35 +1528,31 @@ button.btn.btn-danger.btn-sm.m-2
 				<section><img src="img/rot-counters.png"></section>
 
 				<section>counters.jsx
-					<pre><code class="js" data-line-numbers="2, 13-14">// class
-handleDelete = () => {console.log("handle Delete triggered")};
-// function
-const handleDelete = () => {console.log("handle Delete triggered")};
+					<pre><code class="js" data-line-numbers="1, 10"><script type="text/template">const handleDelete = () => {console.log("handle Delete triggered")};
 
-    return (
-      < >
-        {counters.map((counter) => (
-          < Counter
-            key={counter.id}
-            value={counter.value}
-            id={counter.id}
-            onDelete={handleDelete}
-          />
-        ))}
-      < />
+return (
+  <>
+	{counters.map((counter) => (
+	  <Counter
+		key={counter.id}
+		value={counter.value}
+		id={counter.id}
+		onDelete={handleDelete}
+	  />
+	))}
+  </>
     );
-}
+}</script>
 </code></pre></section>
 
 				<section>counter.jsx
-					<pre><code data-line-numbers="3">...
-	< button
-          onClick={props.onDelete}
-          className="btn btn-danger btn-sm m-2"
-        >
-        Delete
-        < /button>
-</code></pre>
+					<pre><code data-line-numbers="3"><script type="text/template">...
+<button
+  onClick={props.onDelete}
+  className="btn btn-danger btn-sm m-2"
+>Delete
+</button>
+					</script></code></pre>
 					NEXT: updating the state</section>
 
 				<section>
@@ -1584,23 +1569,23 @@ handleDelete = (counterId) => {
 				<section><h4>
 				</h4>tiny problem - too much redundancy
 					<small>Q: Why we have to provide counter.id 2 times (as a 'key' and 'id')?</small>
-					<pre><code class="js">// counters.jsx
-        {this.state.counters.map((counter) => (
-          < Counter
-            key={counter.id}
-            value={counter.value}
-            id={counter.id}
-            selected={counter.selected}
-            onDelete={this.handleDelete}
-          />
-        ))}
-</code></pre>
+					<pre><code class="js"><script type="text/template">// counters.jsx
+{this.state.counters.map((counter) => (
+  <Counter
+	key={counter.id}
+	value={counter.value}
+	id={counter.id}
+	selected={counter.selected}
+	onDelete={this.handleDelete}
+  />
+))}
+					</script></code></pre>
 					to:
-					<pre><code>	< Counter
-            key={counter.id}
-            counter={counter}
-            onDelete={this.handleDelete}
-          />
+					<pre><code>	<script type="text/template"><Counter
+	key={counter.id}
+	counter={counter}
+	onDelete={this.handleDelete}
+/></script>
 </code></pre>
 				</section>
 
