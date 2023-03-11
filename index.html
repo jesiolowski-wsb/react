@@ -1959,7 +1959,7 @@ const { onReset, counters, onDelete, onIncrement, onDecrement } = props;
 
 				<section><pre><code data-line-numbers="2-8, 13" class="js"><script type="text/template">// App.js - new props & handler
 const handleDecrement = (counter) => {
-	const countersUpdated = [...this.state.counters];
+	const countersUpdated = [...counters];
 	const index = countersUpdated.indexOf(counter);
 	countersUpdated[index] = { ...counter };
 	countersUpdated[index].value--;
@@ -2019,26 +2019,26 @@ return (
 				</ul></section>
 				<section>
 					<ul><li>icon must have a behavior, let's call it 'liked'
-						<pre><code class="js">// movies.jsx
-< Like liked={true} /></code></pre></li>
-						<li class="fragment fade-up">and handle the prop <pre><code data-line-numbers="7-9">// like.jsx
-import React, { Component } from "react";
+						<pre><code class="js"><script type="text/template">// movies.jsx
+<Like liked={true} /></script></code></pre></li>
+						<li class="fragment fade-up">and handle the prop <pre><code><script type="text/template">// like.jsx
+import React from "react";
+import "font-awesome/css/font-awesome.css";
 
-class Like extends Component {
-  state = {};
-  render() {
-    let classes = "fa fa-heart";
-    if (!this.props.liked) classes += "-o";
-    return <i className={classes} aria-hidden="true"></i>;
-  }
+function Like({ liked }) {
+	let classes = "fa fa-heart";
+	if (!liked) classes += "-o";
+
+	return <i className={classes} aria-hidden="true"></i>;
 }
-export default Like;</code></pre></li>
+export default Like;
+						</script></code></pre></li>
 					</ul>
 				</section>
 				<section>
 					<ul><li>
-						lets make it dynamic<pre><code class="js">// movies.jsx
-< Like liked={movies.liked} /></code></pre>
+						lets make it dynamic<pre><code class="js"><script type="text/template">// movies.jsx
+<Like liked={movie.liked} /></script></code></pre>
 					</li>
 						<li class="fragment fade-up">add responsible parameter to our fake data provider
 							<pre><code data-line-numbers="9" class="js">// fakeMovieService.js
@@ -2056,21 +2056,20 @@ export default Like;</code></pre></li>
 				</section>
 				<section>
 					<ul><li>one last thing - click event</li>
-						<pre><code class="js">// movies.jsx
-<Like liked={movie.liked} onClick={this.handleLike} /></code></pre>
-						<pre><code class="js">  handleLike = () => {
+						<pre><code class="js"><script type="text/template">// movies.jsx
+<Like liked={movie.liked} onClick={handleLike} /></script></code></pre>
+						<pre><code class="js"><script type="text/template">const handleLike = () => {
     console.log("Like Clicked");
-  };</code></pre>
-						<pre><code class=" fragment fade-in js">// like.jsx
+};</script></code></pre>
+						<pre><code class=" fragment fade-in js"><script type="text/template">// like.jsx
     return (
       <i
 			  className={classes}
-			  onClick={this.props.onClick}
+			  onClick={props.onClick}
 			  aria-hidden="true"
 	  ></i>
     );
-  }
-</code></pre>
+  }</script></code></pre>
 					
 						<li class="fragment fade-up">eye candy: cursor icon
 							<pre><code class="js">// like.jsx
@@ -2079,35 +2078,35 @@ export default Like;</code></pre></li>
 
 				<section>
 					<ul><li>finally, change the state
-						<pre><code class="js">// movies.jsx
-  < Like
+						<pre><code class="js"><script type="text/template">// movies.jsx
+  <Like
     liked={movie.liked}
-    onClick={() => this.handleLike(movie)}
+    onClick={() => handleLike(movie)}
   />
-</code></pre>
-						<pre><code class="js" data-line-numbers="9">  handleLike = (movie) => {
-    const movies = [...this.state.movies];
-    const index = movies.indexOf(movie);
-    movies[index] = { ...movies[index] };
-    movies[index].liked = !movies[index].liked;
-    this.setState({ movies });
-  };
-</code></pre>
+						</script></code></pre>
+<pre><code class="js" data-line-numbers="9"><script type="text/template">const handleLike = (movie) => {
+	const moviesLiked = [...movies];
+	const index = moviesLiked.indexOf(movie);
+	moviesLiked[index] = { ...movies[index] };
+	moviesLiked[index].liked = !movies[index].liked;
+	setMovies(moviesLiked);
+};
+						</script></code></pre>
 					</li></ul>
 					<div>Q: why line 4 is needed?</div>
 				</section>
 
-				<section><h4>Really one last thing - stateless functional component</h4>
-					<div>'Like' doesn't have a state and is fully controlled by 'movies' component - no need to keep it as class</div><br>
-					<div> We have two ways of making the 'convert'
-						<ol>
-							<li><pre><code>const Like = () =>{}</code></pre><ul>
-								<li>move contents of a 'render' function to {}</li>
-								<li>remove 'this.' and provide props as a parameter to the function call</li>
-								<li>get rid of <code>, { Component }</code></li>
-							</ul></li>
-							<li class="fragment fade-up"> or... right mouse click on class name and 'refactor'</li></ol></div>
-				</section>
+<!--				<section><h4>Really one last thing - stateless functional component</h4>-->
+<!--					<div>'Like' doesn't have a state and is fully controlled by 'movies' component - no need to keep it as class</div><br>-->
+<!--					<div> We have two ways of making the 'convert'-->
+<!--						<ol>-->
+<!--							<li><pre><code>const Like = () =>{}</code></pre><ul>-->
+<!--								<li>move contents of a 'render' function to {}</li>-->
+<!--								<li>remove 'this.' and provide props as a parameter to the function call</li>-->
+<!--								<li>get rid of <code>, { Component }</code></li>-->
+<!--							</ul></li>-->
+<!--							<li class="fragment fade-up"> or... right mouse click on class name and 'refactor'</li></ol></div>-->
+<!--				</section>-->
 
 
 			</section>
