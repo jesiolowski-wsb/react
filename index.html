@@ -1570,13 +1570,13 @@ handleDelete = (counterId) => {
 				</h4>tiny problem - too much redundancy
 					<small>Q: Why we have to provide counter.id 2 times (as a 'key' and 'id')?</small>
 					<pre><code class="js"><script type="text/template">// counters.jsx
-{this.state.counters.map((counter) => (
+{counters.map((counter) => (
   <Counter
 	key={counter.id}
 	value={counter.value}
 	id={counter.id}
 	selected={counter.selected}
-	onDelete={this.handleDelete}
+	onDelete={handleDelete}
   />
 ))}
 					</script></code></pre>
@@ -1584,31 +1584,31 @@ handleDelete = (counterId) => {
 					<pre><code>	<script type="text/template"><Counter
 	key={counter.id}
 	counter={counter}
-	onDelete={this.handleDelete}
+	onDelete={handleDelete}
 /></script>
 </code></pre>
 				</section>
 
 				<section>and in counter.jsx
-					<pre><code>this.props.XXX => this.props.counter.XXX
+					<pre><code>props.XXX => props.counter.XXX
 </code></pre></section>
 
 				<section><h4>single source of truth
 				</h4>add button in counters.jsx
-					<pre><code>  handleReset = () => {
-    const counters = this.state.counters.map((c) => {
+					<pre><code><script type="text/template">  const handleReset = () => {
+    const countersReset = counters.map((c) => {
       c.value = 0;
       return c;
     });
-    this.setState({ counters });
+    setCounters( countersReset );
   };
 	...
-	< button
-          onClick={this.handleReset}
+	<button
+          onClick={handleReset}
           className="btn btn-primary btn-sm m-2"
-        >
+	>
           Reset
-        < /button>
+	</button></script>
 </code></pre>doesn't work!</section>
 
 				<section><img src="img/ssot.png" /></section>
@@ -1638,16 +1638,16 @@ handleDelete = (counterId) => {
 				</ul></section>
 
 				<section>
-	<span><div>1. Get all the counters</div><div>2. Find place of a counter in an array</div>3. change the desired value<br>4. setState with new data</span>
-		<pre><code>handleIncrement = (counter) => {
-    const counters = [...this.state.counters];
-    const index = counters.indexOf(counter);
-    counters[index] = { ...counter };
-    counters[index].value++;
-    this.setState({ counters });
+	<span><div>1. Get all the counters</div><div>2. Find place of a counter in an array</div>3. change the desired value<br>4. set state with new data</span>
+		<pre><code><script type="text/template">handleIncrement = (counter) => {
+    const countersUpdated = [...counters];
+    const index = countersUpdated.indexOf(counter);
+    countersUpdated[index] = { ...counter };
+    countersUpdated[index].value++;
+    setCounters(countersUpdated);
   };
-	</code></pre>
-	<span>NOTE: bear in mind the IMMUTABILITY requirement, altering the state directly (<em>this.state.counter[index].value++</em>) is not an option</span>
+		</script></code></pre>
+	<span>NOTE: bear in mind the IMMUTABILITY requirement, altering the state directly (<em>counters[index].value++</em>) is not an option</span>
 				</section>
 
 				<section><div>well ok, but why immutability is so important in the first place?</div>
@@ -1671,53 +1671,50 @@ handleDelete = (counterId) => {
 					<small>requirement: add another component (App compoment) acting as a root of our app</small>
 				</section>
 				<section><img src="img/multipleComponents.png"></section>
-				<section><h4>1. Enable App component as a root component</h4><pre><code class="fragment fade-in js">// index.js - counters => App
+				<section><h4>1. Enable App component as a root component</h4><pre><code class="fragment fade-in js"><script type="text/template">// index.js - counters => App
 import App from "./App";
 ...
 ReactDOM.render(
   <React.StrictMode>
-    < App />
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );
-</code></pre>
+				</script></code></pre>
 					<h4 class="fragment fade-in">2. create a new component 'navbar'
 						(see <a target="new" href="https://getbootstrap.com/docs/4.0/components/navbar/">navbar</a>)
 					</h4>
-					<pre><code class="js fragment fade-in">// Navbar.jsx
-import React, { Component } from "react";
+					<pre><code class="js fragment fade-in"><script type="text/template">// Navbar.jsx
+import React from "react";
 
-class Navbar extends Component {
-  state = {};
-  render() {
-    return <>< />;
-  }
+function Navbar(props) {
+return <div></div>;
 }
+
 export default Navbar;
-</code></pre>
+					</script></code></pre>
 				</section>
 
 				<section>
 					<h4>modify App.js triggering the Navbar & counters generation using <a target="new" href="https://getbootstrap.com/docs/4.0/examples/starter-template/">bootstrap starter template</a></h4>
-					<pre><code class="fragment fade-in js">// App.jsx
-import React from "react";
+					<pre><code class="fragment fade-in js"><script type="text/template">// App.jsx
 import "./App.css";
-import Navbar from "./components/navbar";
 import Counters from "./components/counters";
+import Navbar from "./components/navbar";
 
 function App() {
   return (
-    <>
-      < Navbar />
+    <div className="App">
+      <Navbar />
       <main className="container" role="main">
-        < Counters />
+        <Counters />
       </main>
-    < />
+    </div>
   );
 }
 
 export default App;
-</code></pre>
+</script></code></pre>
 				</section>
 
 				<section>
@@ -1732,31 +1729,22 @@ export default App;
 
 				<section>
 					<ul>
-						<li>convert App component to class component <small><a target="new" href="https://stackoverflow.com/questions/60985759/functional-component-renders-once-class-component-renders-twice"> err... wait, but why my class component is rendered twice?</a></small></li>
 						<li>cut state and all state-mutators from counters and paste them into App component</li>
 						<li>provide handling methods to the counters component</li>
-						<li>change 'state' references in Counters to props references (inc. 'this')</li>
+						<li>change 'state' references in Counters to props references</li>
 					</ul>
 				</section>
 
 				<section>
 					...and finally
-					<pre><code>< Navbar totalCounters={this.state.counters.length} /></code></pre>
+					<pre><code><script type="text/template"><Navbar totalCounters={counters.length} /></script></code></pre>
 					<span class="fragment fade-in">...or better
-	<pre><code>< Navbar totalCounters={this.state.counters.filter((c) => c.value > 0).length} /></code></pre></span>
-					<span class="fragment fade-in">...and adding the prop to the navbar itself<pre><code>Navbar <span className="badge badge-pill badge-secondary">{this.props.totalCounters}</span></code></pre></span>
+						<pre><code><script type="text/template"><Navbar totalCounters={counters.filter(c => c.value > 0).length} /></script></code></pre></span>
+					<span class="fragment fade-in">...and adding the prop to the navbar itself<pre><code>Navbar <span className="badge badge-pill badge-secondary">{props.totalCounters}</span></code></pre></span>
 				</section>
 
 			</section>
 
-
-			<section><h4>Stateless functional component</h4>
-				<div>Navbar.jsx doesn't have a state, so we can transform it into functional component</div>
-				<pre><code>// Stateless Functional Component
-const Navbar = () => {};</code></pre>
-				+ move the 'render' function body inside the {}<br>
-				+ take care about the 'props' (remove 'this' and provide props variable in () )
-			</section>
 			<section><h4>Destructuring arguments</h4>
 				<pre><code>const Navbar = (props) => {
 ...
@@ -1767,13 +1755,12 @@ const Navbar = () => {};</code></pre>
 {totalCounters}</code></pre>
 
 				<div class="fragment fade-in"> task: destructure props in counters.jsx</div>
-				<pre><code class="fragment fade-up">render() {
-const { onReset, counters, onDelete, onIncrement } = this.props;</code></pre>
+				<pre><code class="fragment fade-up"><script type="text/template">const { onReset, counters, onDelete, onIncrement } = props;</script></code></pre>
 			</section>
 
 			<section>
 
-				<section><h4>Lifecycle hooks - class</h4>
+				<section><h4>Lifecycle hooks - class <small>(just an FYI :) )</small></h4>
 					<img target="new" src="img/lhooks.png" /></section>
 				<section><h4>mounting phase</h4>
 					<pre><code class="js">  // invoked only once, during class initialization.
@@ -1841,7 +1828,7 @@ const { onReset, counters, onDelete, onIncrement } = this.props;</code></pre>
 		useEffect()
 
 		// others
-		// useCallback(), useMemo(), useRef()
+		// useCallback(), useMemo(), useRef() etc...
 	</code></pre>
 				</section>
 
@@ -1853,15 +1840,17 @@ const { onReset, counters, onDelete, onIncrement } = this.props;</code></pre>
 		[state, setState]  = useState(initialValue)
 	</code></pre>
 					<ul><li>we can have multiple instances of useState</li>
-						<li>works slightly different when merging state (objects!)</li>
 						<li>initialValue can be a function (reason: rendered only once)</li></ul>
 				</section>
 				<section>
-					Create 'counterFunc' component with useState implemented
+					example of 'useState' with all features implemented
 
-					<pre><code class="js fragment fade-up">import React, { useState } from "react";
+					<pre><code class="js"><script type="text/template">import React, { useState } from "react";
 
 function CounterFunc(props) {
+
+// compare with
+// const initialStateCalc = console.log("run function");
   const [count, setCount] = useState(() => {
     // triggered only once
     console.log("run function");
@@ -1884,7 +1873,7 @@ function CounterFunc(props) {
 }
 
 export default CounterFunc;
-	</code></pre>
+					</script></code></pre>
 				</section>
 				<section>
 					<h4>if initialState = object</h4>
@@ -1925,12 +1914,12 @@ export default CounterFunc;
 				<section><h4>use Effect</h4>
 					<pre><code class="js">  // only when count value will change
   useEffect(() => {
-    console.log("useEffect rerender");
+    console.log("useEffect re-render");
   }, [count.value]);</code></pre>
 
 					<pre><code class="js" data-line-numbers="4">// clearing memory
   useEffect(() => {
-    console.log("useEffect rerender");
+    console.log("useEffect re-render");
     return console.log("unmount");
   }, [count.value]);</code></pre>
 
@@ -1948,63 +1937,64 @@ export default CounterFunc;
 
 				<section><h4>Solution</h4></section>
 				<section>
-<pre><code class="js" >// counter.jsx - new button
-< button
-  onClick={() => this.props.onDecrement(this.props.counter)}
+<pre><code class="js" ><script type="text/template">// counter.jsx - new button
+<button
+  onClick={() => props.onDecrement(props.counter)}
   className="btn btn-secondary btn-sm"
 >
   -
-< /button></code></pre>
-					<pre><code data-line-numbers="2,9" class="js">// counters.jsx - new props
-const { onReset, counters, onDelete, onIncrement, onDecrement } = this.props;
+</button></script></code></pre>
+					<pre><code data-line-numbers="2,9" class="js"><script type="text/template">// counters.jsx - new props
+const { onReset, counters, onDelete, onIncrement, onDecrement } = props;
 ...
-< Counter
+<Counter
     key={counter.id}
     counter={counter}
     onDelete={onDelete}
     onIncrement={onIncrement}
     onDecrement={onDecrement}
  />
-</code></pre>
+					</script></code></pre>
 				</section>
 
-				<section><pre><code data-line-numbers="2-8, 13" class="js">// App.js - new props & handler
-  handleDecrement = (counter) => {
-    const counters = [...this.state.counters];
-    const index = counters.indexOf(counter);
-    counters[index] = { ...counter };
-    counters[index].value--;
-    this.setState({ counters });
-  };
+				<section><pre><code data-line-numbers="2-8, 13" class="js"><script type="text/template">// App.js - new props & handler
+const handleDecrement = (counter) => {
+	const countersUpdated = [...this.state.counters];
+	const index = countersUpdated.indexOf(counter);
+	countersUpdated[index] = { ...counter };
+	countersUpdated[index].value--;
+	setCounters(countersUpdated);
+};
 ...
-  < Counters
+  <Counters
     counters={this.state.counters}
     onIncrement={this.handleIncrement}
     onDecrement={this.handleDecrement}
     onDelete={this.handleDelete}
     onReset={this.handleReset}
   />
-	</code></pre></section>
+				</script></code></pre></section>
 
 				<section>
-					layout mod (<a target="new" href="https://getbootstrap.com/docs/4.0/layout/grid/">botstrap's grid</a>)
-					<pre><code class="js">// counter.jsx
-    return (
-      < div className="row">
-      div.col-1+div.col [tab] // emmet syntax
-      // move span inside the first column, and the buttons to the second one
-      // m-2 class added to the 'decrement' btn, removed from the 'delete' btn
-		</code></pre>
+					layout modifications (<a target="new" href="https://getbootstrap.com/docs/4.0/layout/grid/">botstrap's grid</a>)
+					<pre><code class="js"><script type="text/template">// counter.jsx
+return (
+  <div className="row">
+  div.col-1+div.col [tab] // emmet syntax
+  // move span inside the first column, and the buttons to the second one
+  // m-2 class added to the 'decrement' btn, removed from the 'delete' btn
+					</script></code></pre>
 
 					<span class="fragment fade-up">
 		...and the 'disable' logic
-		<pre><code class="js" data-line-numbers="4">          < button
-            onClick={() => this.props.onDecrement(this.props.counter)}
-            className="btn btn-secondary btn-sm m-2"
-            disabled={this.props.counter.value === 0 ? "disabled" : ""}
-          >
-            -
-          < /button></code></pre>
+<pre><code class="js" data-line-numbers="4"><script type="text/template"><button
+	onClick={() => props.onDecrement(props.counter)}
+	className="btn btn-secondary btn-sm m-2"
+	disabled={props.counter.value === 0 ? "disabled" : ""}
+  >
+	-
+</button>
+		</script></code></pre>
 		</span>
 				</section>
 			</section>
