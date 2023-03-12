@@ -2118,36 +2118,37 @@ export default Like;
 			<section>
 				<section><h4>Pagination</h4>
 					<ul><li>Pagination.jsx in 'common'<br><small>make it a functional component - no local state needed</small>
-						<pre><code class="js">// pagination.jsx
+						<pre><code class="js"><script type="text/template">// pagination.jsx
 import React from "react";
 
 const Pagination = (props) => {
-  return <>test< />;
+  return <>test</>;
 };
 
-export default Pagination;</code></pre></li>
+export default Pagination;</script></code></pre></li>
 						<li>import it in movies.jsx after the 'table'</li>
 						<li>Q: What input should it receive?<br><small class="fragment fade-in">(total number of items and a page size)<br>HINT: it's a good practice to start implementing the pattern before its creation</small></li></ul>
 				</section>
 				<section>
 					<h4>defining the interface</h4>
-					<pre><code class="js">// movies.jsx
+					<pre><code class="js"><script type="text/template">// movies.jsx
 import Pagination from "./common/pagination";
 ...
-// {this.state.movies.length} decomposed to {count} earlier
-< Pagination itemsCount={count} /> </code></pre>
-					<pre><code class="fragment fade-up hljs">state = { movies: getMovies(), pageSize: 4 };
+// {movies.length} from state decomposed to {count} earlier
+<Pagination itemsCount={count} /> </script></code></pre>
+					<pre><code class="fragment fade-up hljs"><script type="text/template">const [pageSize, setPageSize] = useState(4);
 ...
-< Pagination ... pageSize={this.state.pageSize} /></code></pre>
-					<pre><code class="fragment fade-up hljs">handlePageChange = (page) => {
+<Pagination ... pageSize={pageSize} /></script></code></pre>
+					<pre><code class="fragment fade-up hljs"><script type="text/template">const handlePageChange = (page) => {
   console.log(page + " clicked");
 };
-< Pagination ... onPageChange={this.handlePageChange}/></code></pre>
+<Pagination ... onPageChange={handlePageChange}/></script></code></pre>
 				</section>
 				<section>
 					<h4>implementation</h4>
 					<h4>bootstrap pagination <a href="https://getbootstrap.com/docs/4.0/components/pagination/" target="new"> -> here</a></h4>
-					<pre><code class="js">const Pagination = (props) => {
+					<pre><code class="js">//pagination.jsx
+  const Pagination = (props) => {
   return nav>ul.pagination>li.page-item>a.page-link; // + hit [tab] key
 };</code></pre>
 					<ul><li>add '1' as a link label</li><li>remove "href" & check the console</li><li class="fragment fade-up">substitute 'a' with 'button'</li>
@@ -2163,13 +2164,13 @@ import Pagination from "./common/pagination";
 
   // [1.. pagesCount].map()</code></pre>
 					<div class="fragment fade-in"><a href="https://lodash.com/" target="new">here comes the lodash </a>
-						<pre><code> > npm i lodash</code></pre>
+						<pre><code>> yarn add lodash // alternatively: npm i lodash</code></pre>
 						<pre><code>// pagination.jsx
 import _ from "lodash";</code></pre></div>
 				</section>
 
 				<section>
-	<pre><code class="hljs" data-line-numbers="3, 8-12">  const { itemsCount, pageSize } = props;
+	<pre><code class="hljs" data-line-numbers="3, 8-12"><script type="text/template">  const { itemsCount, pageSize } = props;
   const pagesCount = itemsCount / pageSize;
   const pages = _.range(1, pagesCount + 1);
 
@@ -2184,7 +2185,7 @@ import _ from "lodash";</code></pre></div>
       </ul>
     </nav>
   );
-</code></pre>
+	</script></code></pre>
 					<div class="fragment fade-up">What with the edge case? Let's change pageSize to 10 (movies.jsx)<br><small>in case of only one page, we do not need pagination at all!</small></div>
 				</section>
 				<section>Why it doesn't work?
@@ -2199,51 +2200,45 @@ import _ from "lodash";</code></pre></div>
 
 				<section>
 					<h4>raising 'click' event</h4><small>(but first let's revert pageSize state back to 4)</small>
-					<pre><code class="hljs">//pagination.jsx
-< button
+					<pre><code class="hljs"><script type="text/template">//pagination.jsx
+<button
   className="page-link"
-  onClick={() => props.onPageChange(page)} >{page}< /button>	</code></pre>
+  onClick={() => props.onPageChange(page)} >{page}< /button>	</script></code></pre>
 					<div>...but we can also destructure props.onPageChange</div>
-					<pre><code>  const { itemsCount, pageSize, onPageChange } = props;
+					<pre><code><script type="text/template">  const { itemsCount, pageSize, onPageChange } = props;
 ...
-< button
+<button
   className="page-link"
   onClick={() => onPageChange(page)}
 >
   {page}
-< /button></code></pre>
+</button></script></code></pre>
 				</section>
 
 				<section>
 					<h4>highlighting active page <small>i.e. adding 'active' class to 'LI'</small></h4>
-					<div>Q: what's the problem here?</div><div>A: the component doesn't know what page it is on</div>
-					<pre><code class="hljs">// pagination.jsx
+					<div class="fragment">Q: what's the problem here?</div><div class="fragment">A: the component doesn't know what page it is on</div>
+					<span class="fragment"><pre><code class="hljs">// pagination.jsx
   const { itemsCount, pageSize, currentPage, onPageChange } = props;
 </code></pre>
-					<pre><code>// movies.jsx
-state = { movies: getMovies(), pageSize: 4, currentPage: 1 };
+					<pre><code class="hljs"><script type="text/template">// movies.jsx
+const [currentPage, setCurrentPage] = useState(1);
 ...
 <Pagination
 		itemsCount={count}
-		pageSize={this.state.pageSize}
-		onPageChange={this.handlePageChange}
-		currentPage={this.state.currentPage}
+		pageSize={pageSize}
+		onPageChange={handlePageChange}
+		currentPage={currentPage}
 />
-</code></pre>
-					<div>...and object destructuring :)</div>
-					<pre><code>// movies.jsx
-  render() {
-    const { length: count } = this.state.movies;
-    const { pageSize, currentPage } = this.state;
-</code></pre>
-					<small>dont forget to remove <em>'this.state.'</em> from the calls</small>
+					</script></code></pre>
+					</span>
 				</section>
 
 				<section>
 					<div>one last thing - handleClick</div>
 					<pre><code class="hljs">// movies.jsx
-  handlePageChange = (page) => {
-    this.setState({ currentPage: page });
+  const handlePageChange = (page) => {
+    setCurrentPage( page );
   };
 	</code></pre>
 					<div> so we can check it by 'console.log'</div>
@@ -2263,22 +2258,22 @@ state = { movies: getMovies(), pageSize: 4, currentPage: 1 };
 				</section>
 				<section>
 					<h4>last but not least</h4>
-					<pre><code class="hljs" data-line-numbers="7">// pagination.jsx
-< nav>
-  < ul className="pagination">
+					<pre><code class="hljs" data-line-numbers="7"><script type="text/template">// pagination.jsx
+<nav>
+  <ul className="pagination">
     {pages.map((page) => (
-      < li
+      <li
         key={_.uniqueId("pagination-")}
         className={currentPage === page ? "page-item active" : "page-item"}
       >
-        < button className="page-link" onClick={() => onPageChange(page)}>
+        <button className="page-link" onClick={() => onPageChange(page)}>
           {page}
-        < /button>
-      < /li>
+        </button>
+      </li>
     ))}
-  < /ul>
-< /nav>
-	</code></pre>
+  </ul>
+</nav>
+					</script></code></pre>
 				</section>
 
 				<section>
@@ -2304,24 +2299,17 @@ export function paginate(items, pageNumber, pageSize) {
 					<small class="fragment fade-up">fun fact: _ is a fork of <a href="https://underscorejs.org/" target="new">'underscore.js'</a> (name Lo-dash finally makes sense)</small>
 				</section>
 				<section>
-	<pre><code class="hljs" data-line-numbers="2, 6, 10">  // movies.jsx
-  import { paginate } from "../utils/paginate";
+	<pre><code class="hljs"><script type="text/template">// movies.jsx
+import { paginate } from "../utils/paginate";
 ...
-  render() {
-    const { length: count } = this.state.movies;
-    const { pageSize, currentPage, movies: allMovies } = this.state;
+const moviesPaginated = paginate(movies, currentPage, pageSize);
+	</script></code></pre>
+					<pre><code class="js" data-line-numbers="3"><script type="text/template"> <tbody>
+// changing 'movies' to paginated
+ {moviesPaginated.map((movie) => (
+      <tr key={movie._id}>
+		<td>{movie.title}< /td>   </script></code></pre>
 
-    if (count === 0) return <p>There are no movies in the database</p>;
-
-    const movies = paginate(allMovies, currentPage, pageSize);
-
-    return (
-	</code></pre>
-					<pre><code class="js" data-line-numbers="3"> < tbody>
-// changing 'state.movies' to local movies
- {movies.map((movie) => (
-      < tr key={movie._id}>
-        < td>{movie.title}< /td>   </code></pre>
 				</section>
 				<section>
 					<h4>but what if...</h4>
@@ -2341,12 +2329,10 @@ export function paginate(items, pageNumber, pageSize) {
 				<section>
 					<h4><a href="https://reactjs.org/docs/typechecking-with-proptypes.html#proptypes" target="new">prop types</a> to the rescue!</h4>
 					<div>we need type checking</div>
-					<pre><code class="hljs">npm i prop-types</code></pre>
-					<pre><code class="hljs">// pagination.jsx
+					<pre><code class="hljs">> yarn add prop-types // alternatively: npm i prop-types</code></pre>
+					<pre><code class="hljs"><script type="text/template">// pagination.jsx
 import PropTypes from "prop-types";
-
 ...
-
 Pagination.propTypes = {
   itemsCount: PropTypes.number.isRequired,
   pageSize: PropTypes.number.isRequired,
@@ -2354,7 +2340,7 @@ Pagination.propTypes = {
   onPageChange: PropTypes.func.isRequired,
 };
 
-export default Pagination;		</code></pre>
+export default Pagination;		</script></code></pre>
 					<strong class="fragment highlight-red">note: console warnings available in development mode only</strong>
 
 				</section>
