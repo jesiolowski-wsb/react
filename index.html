@@ -1967,11 +1967,11 @@ const handleDecrement = (counter) => {
 };
 ...
   <Counters
-    counters={this.state.counters}
-    onIncrement={this.handleIncrement}
-    onDecrement={this.handleDecrement}
-    onDelete={this.handleDelete}
-    onReset={this.handleReset}
+    counters={counters}
+    onIncrement={handleIncrement}
+    onDecrement={handleDecrement}
+    onDelete={handleDelete}
+    onReset={handleReset}
   />
 				</script></code></pre></section>
 
@@ -2111,6 +2111,37 @@ export default Like;
 
 			</section>
 
+			<section data-background-color="#FFF5BA">
+				<section>
+					<h4>...and how about un-mocking the backend a little bit?</h4>
+					<small>(explore the json-server and use <a href="https://transform.tools/js-object-to-json">transform tools</a>)</small>
+				</section>
+				<section><a href="https://www.npmjs.com/package/json-server">JSON server</a>
+					<pre><code class="js">// installing the server
+npm install -g json-server
+
+// running it
+json-server --watch db.json
+
+// alternative port
+json-server --watch db.json --port 3004
+
+</code></pre></section>
+
+			</section>
+			<section data-background-color="#018786"><h4>TASK:</h4>
+				<ol>
+					<li>add <a href="https://www.npmjs.com/package/axios" target="_new">AXIOS</a> as a dependancy </li>
+					<li>data shall be gathered only on app start (useEffect)</li>
+					<li>data shall be stored in a state (useState)</li>
+					<li>use local endpoint for fetching the data  (<a href="https://www.npmjs.com/package/json-server">json server</a>)</li>
+					<li>create a functionality adding new entry to the data source (pushing new entry to the server)</li>
+					<li>provide basic error handling</li>
+					<li>if no error, update the state with new entry</li>
+					<li>show updated list of entries on the screen</li>
+					<li>implement loading indicator feature (<a href="https://www.npmjs.com/package/react-spinners">react spinners</a>, <a href="https://www.npmjs.com/package/react-loading-indicators">react-loading-indicators</a> or any other lib that you fancy)</li>
+				</ol>
+			</section>
 
 			<section>
 				<section><h4>next: pagination, filtering and sorting</h4></section>
@@ -5032,38 +5063,6 @@ axios.post('https://jsonplaceholder.typicode.com/posts', {
 
 
 			</section>
-			<section>
-				<section>
-				<h4>creating own mock server</h4>
-			</section>
-			<section><a href="https://www.npmjs.com/package/json-server">JSON server</a>
-				<pre><code class="js">// installing the server
-npm install -g json-server
-
-// running it
-json-server --watch db.json
-
-// alternative port
-json-server --watch db.json --port 3004
-
-</code></pre></section>
-			</section>
-
-
-	<section data-background-color="#018786"><h4>TASK:</h4>
-		<div>create an app that:</div><br>
-		<ol>
-			<li>gets POSTS data from <a href="https://jsonplaceholder.typicode.com/posts">JSON placeholder</a> (axios)</li>
-			<li>data shall be gathered only on app start (useEffect)</li>
-			<li>data shall be stored in a state (useState)</li>
-			<li>change the endpoint to local <a href="https://www.npmjs.com/package/json-server">json server</a></li>
-			<li>create a button that pushes new entry to the server</li>
-			<li>provide basic error handling</li>	
-			<li>if no error, update the state with new entry</li>
-			<li>show updated list of entries on the screen (bootstrap table)</li>
-			<li>implement loading indicator feature (<a href="https://www.npmjs.com/package/react-spinners">react spinners</a>)</li>
-		</ol>
-	</section>
 
 			<section data-background-color="#A5A67E">
 				<section>
@@ -5071,7 +5070,7 @@ json-server --watch db.json --port 3004
 				</section>
 				<section>
 					<h4>Environment Variables (<span class="fragment highlight-green"><strong> .env</strong> files</span>)</h4>
-					<div>Every application should run on various environments - development, test and production (eg. to have a different backend connector).<br> i.e. each environment should have its own set of variables</div><br>
+					<small>Every application rusn on various environments - dev, test and prod (has different backend connector). It means each environment should have its own set of variables</small><br>
 					<ul><li>create <strong>.env</strong> and <strong>.env.development</strong> files in a root directory</li>
 						<li>configuration is done using <strong>REACT_APP_</strong> prefix for each parameter</li></ul>
 					<br>
