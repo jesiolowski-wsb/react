@@ -570,8 +570,10 @@ for(i = 0; i < 10; i++) {
 < p class="test"></p>
 			</code></pre>
 					<pre><code class="fragment fade-in">
-
 document.getElementsByClassName("test")[0].innerHTML = "Hello";
+		</code></pre>
+					<pre><code class="fragment fade-in">
+document.querySelectorAll("test")[0].innerHTML = "Hello";
 		</code></pre>
 				</section>
 
@@ -664,6 +666,15 @@ console.log(element);
 				<small>...check the console output (cmd+option+j)</small>
 
 				<pre><code class="fragment fade-up">
+					const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+
+
 ReactDom.render(element, document.getElementById("root"));
 </code></pre>
 			</section>
@@ -1243,23 +1254,12 @@ export default Counter;
 					<pre><code class="hljs">const [tagsList, setTagsList] = useState(["tag1", "tag2", "tag3"]);
 	</code></pre>
 					<pre><code class="fragment fade-in">...
-
+< ul>
 tagsList.map((tag) => (
   <li>{tag}</li>
 ))
+< /ul>
 
-// class
-  render() {
-    return (
-	...
-        < ul>
-          {this.state.tags.map((tag) => (
-            < li>{tag}< /li>
-          ))}
-        < /ul>
-						</React.Fragment>
-						);
-  }
 	</code></pre>
 					<p class="fragment fade-in">BUT: take a look at the JS console:)
 					</p>
@@ -1980,7 +1980,7 @@ const handleDecrement = (counter) => {
 					<pre><code class="js"><script type="text/template">// counter.jsx
 return (
   <div className="row">
-  div.col-1+div.col [tab] // emmet syntax
+  div.col-1+div.col.d-flex.align-items-start [tab] // emmet syntax
   // move span inside the first column, and the buttons to the second one
   // m-2 class added to the 'decrement' btn, removed from the 'delete' btn
 					</script></code></pre>
@@ -1990,12 +1990,38 @@ return (
 <pre><code class="js" data-line-numbers="4"><script type="text/template"><button
 	onClick={() => props.onDecrement(props.counter)}
 	className="btn btn-secondary btn-sm m-2"
-	disabled={props.counter.value === 0 ? "disabled" : ""}
+	disabled={props.counter.value === 0}
   >
 	-
 </button>
 		</script></code></pre>
 		</span>
+				</section>
+			</section>
+
+			<section data-background-color="#aFa5BA">
+				<section>
+					<div>[useState task] Color Palette</div><br>
+					<div>
+						Create a color-palette app giving user ability to pick a color (using either a name, HEX value or color picker)
+					</div><br>
+					<div>after user picks a color, add it to the set of color containers</div><br>
+					<div>after user clicks a color, it gets removed from a set</div><br><small><a target="_new" href="https://github.com/jesiolowski-wsb/color-palette-usestate-exercise">solution</a></small>
+
+				</section>
+				<section>
+					<div>[useState task] Color Palette</div>
+					<img src="img/colorPalette1.png" />
+				</section>
+				<section>
+					<div>[useState task] Color Palette</div>
+					<img src="img/colorPalette2.png" />
+				</section>
+				<section>
+					<div>[useState task] Color Palette</div><br>
+					<div>use useEffect hook to modify tab title in a way that is shows number of colors</div>
+					<code><pre>        document.title = `Color Palette (${colors.length})`;
+</pre></code>
 				</section>
 			</section>
 
@@ -2129,19 +2155,28 @@ json-server --watch db.json --port 3004
 </code></pre></section>
 
 			</section>
-			<section data-background-color="#018786"><h4>TASK:</h4>
-				<ol>
-					<li>add <a href="https://www.npmjs.com/package/axios" target="_new">AXIOS</a> as a dependancy </li>
-					<li>data shall be gathered only on app start (useEffect)</li>
-					<li>data shall be stored in a state (useState)</li>
-					<li>use local endpoint for fetching the data  (<a href="https://www.npmjs.com/package/json-server">json server</a>)</li>
-					<li>create a functionality adding new entry to the data source (pushing new entry to the server)</li>
-					<li>provide basic error handling</li>
-					<li>if no error, update the state with new entry</li>
-					<li>show updated list of entries on the screen</li>
-					<li>implement loading indicator feature (<a href="https://www.npmjs.com/package/react-spinners">react spinners</a>, <a href="https://www.npmjs.com/package/react-loading-indicators">react-loading-indicators</a> or any other lib that you fancy)</li>
-				</ol>
+			<section data-background-color="#018786">
+				<section>
+					<h4>TASK:</h4>
+					<ol>
+						<li>add <a href="https://www.npmjs.com/package/axios" target="_new">AXIOS</a> as a dependancy </li>
+						<li>data shall be gathered only on app start (useEffect)</li>
+						<li>data shall be stored in a state (useState)</li>
+						<li>use local endpoint for fetching the data  (<a href="https://www.npmjs.com/package/json-server">json server</a>)</li>
+						<li>create a functionality adding new entry to the data source (pushing new entry to the server)</li>
+						<li>provide basic error handling</li>
+						<li>if no error, update the state with new entry</li>
+						<li>show updated list of entries on the screen</li>
+						<li>implement loading indicator feature (<a href="https://www.npmjs.com/package/react-spinners">react spinners</a>, <a href="https://www.npmjs.com/package/react-loading-indicators">react-loading-indicators</a> or any other lib that you fancy)</li>
+					</ol>
+				</section>
+				<section>
+					<a target="_new" href="https://github.com/jesiolowski-wsb/vidly/pull/2">solution</a>
+					<img src="img/vidly-new-movie.png" />
+				</section>
+
 			</section>
+
 
 			<section>
 				<section><h4>next: pagination, filtering and sorting</h4></section>
