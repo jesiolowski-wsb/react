@@ -113,12 +113,12 @@
 							return()
 						}
 					</code></pre>
-				<pre><code class="hljs fragment fade-in" data-trim>
-						class Tweet {
-							state = {};
-							render() {
-							}
-						}
+				<pre><code class="hljs fragment fade-in" data-trim>// former way
+class Tweet {
+	state = {};
+	render() {
+	}
+}
 					</code></pre>
 			</section>
 			<section>
@@ -163,6 +163,11 @@
 npm install --global yarn</code></pre>
 					</small></div>
 			</section>
+<section>
+<h4>...and why not to use VITE?</h4>
+<a href="https://www.youtube.com/watch?v=KCrXgy8qtjM" target="_new">fireship YT channel</a>
+	<br><br><small class="fragment">(note: create-react-app uses webpack)</small>
+</section>
 			<section>
 				<h4>dir structure:</h4>
 				<div>
@@ -182,7 +187,7 @@ npm install --global yarn</code></pre>
 				<p>Two types of components
 				<ul>
 					<li>functional</li>
-					<li>class component</li>
+					<li>class component (considered as legacy approach)</li>
 				</ul>
 				</p>
 			</section>
@@ -309,7 +314,7 @@ export default App;
 				</section>
 				<section>
 					<h4>variables</h4>
-					<pre><code class="hljs">
+					<pre><code class="js">
 	// function scope
 	var x;
 	x = 6;
@@ -555,7 +560,7 @@ alert(x != y);
 
 				<section>
 					15. Create a loop that runs from 0 to 9.
-					<pre><code class="fragment fade-in">
+					<pre><code class="js fragment fade-in">
 let i;
 for(i = 0; i < 10; i++) {
   console.log(i);
@@ -647,7 +652,7 @@ export default App;
 
 			<section>
 				<h4>babel</h4>
-				<small><a target="new" href="https://babeljs.io/repl#?browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=MYewdgzgLgBA5gJwKZKgSzHGBeGAeACwEYA-ApAGwpBgHcQEKATPAemJKA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2&prettier=true&targets=&version=7.8.7&externalPlugins=">try it out</a></small>
+				<small><a target="new" href="https://babeljs.io/repl#?browsers=defaults%2C%20not%20ie%2011%2C%20not%20ie_mob%2011&build=&builtIns=false&corejs=3.21&spec=false&loose=false&code_lz=MYewdgzgLgBA5gJwKZNgXhgHgBYEYB8AEkgDYkgwDuICJAJpgPR75A&debug=false&forceAllTransforms=false&modules=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=env%2Creact%2Cstage-2&prettier=false&targets=&version=7.24.0&externalPlugins=&assumptions=%7B%7D">try it out</a></small>
 				<img src="img/babel.png">
 
 			</section>
@@ -665,16 +670,12 @@ console.log(element);
 	</code></pre>
 				<small>...check the console output (cmd+option+j)</small>
 
-				<pre><code class="fragment fade-up">
-					const root = ReactDOM.createRoot(document.getElementById('root'));
+				<pre><code class="fragment fade-up" data-trim>const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>
 );
-
-
-
 ReactDom.render(element, document.getElementById("root"));
 </code></pre>
 			</section>
@@ -762,7 +763,7 @@ const activeJobs = jobs.filter(job => ( {job.isActive} ));
 				<section>
 					<div> <small>ES6:</small> arrow functions and this 1</div>
 					<pre><code>
-const person = {
+let person = {
   talk() {
     console.log("this", this);
   }
@@ -770,7 +771,7 @@ const person = {
 
 person.talk();
 		</code>
-		<code>const person = {
+		<code>let person = {
   talk() {
     setTimeout(function() {
       console.log("this", this);
@@ -783,9 +784,9 @@ person.talk();
 				</section>
 
 				<section>
-					<div> <small>ES6:</small> arrow functions and this 2</div>
+					<div> <small>ES6:</small> arrow functions and this 2 - workaround</div>
 					<pre>
-			<code data-line-numbers="3, 5">const person = {
+			<code data-line-numbers="3, 5">ley person = {
   talk() {
     var self = this;
     setTimeout(function() {
@@ -796,7 +797,7 @@ person.talk();
 person.talk();
 			</code>
 			<code data-line-numbers="4">
-const person = {
+ley person = {
   talk() {
     setTimeout(() => {
       console.log("this", this);
@@ -1267,26 +1268,14 @@ tagsList.map((tag) => (
 
 				<section><h4>conditional rendering</h4>
 					<pre>
-	<code data-line-numbers="6, 11-19">  render() {
-    return (
-      <React.Fragment>
-        <span className={this.getClassNames()}>{this.formatCount()}</span>
-        <button className="btn btn-secondary btn-sm">Increment</button>
-        {this.renderTags()}
-      </React.Fragment>
-    );
-  }
-
-  renderTags() {
-    if (this.state.tags.length === 0) return <p>There are no tags</p>;
-    return (
-      <ul>
-        {this.state.tags.map((tag) => (
-          <li key={tag}>{tag}</li>
-        ))}
-      </ul>
-    );
-  }</code>
+	<code data-line-numbers="5, 10-18">return (
+  <React.Fragment>
+	<span className={getClassNames}>{formatCount()}</span>
+	<button className="btn btn-secondary btn-sm">Increment</button>
+	{renderTags()}
+  </React.Fragment>
+);
+	</code>
 </pre>
 
 				</section>
@@ -1303,7 +1292,7 @@ const renderTags = () =>
 	);
 				</script></code></pre>
 					<p class="fragment">any problem here? (check for no entries in array)</p>
-					<p class="fragment">solution: `.length==0` or <a href="https://lodash.com/docs/4.17.15#isEmpty">lodash</a></p>
+					<p class="fragment">solution: `.length==0` or <a href="https://lodash.com/docs/4.17.15#isEmpty">lodash's</a> isEmpty</p>
 
 				</section>
 
@@ -1320,7 +1309,7 @@ const renderTags = () =>
 
     return (
       <>
-        <span className={this.getClassNames()}>{this.formatCount()}< /span>
+        <span className={getClassNames()}>{formatCount()}< /span>
         <button
           onClick={handleIncrement}
           className="btn btn-secondary btn-sm"
@@ -1415,18 +1404,18 @@ const renderTags = () =>
 				<SECTION>
 					<h4>tips: </h4>
 					<ul>
-						<li>getting the movies <pre><code>state = { movies: getMovies() };
+						<li>getting the movies <pre><code>const [movies, setMovies] =  useState(getMovies());
 	...
-const { length: count } = this.state.movies;
+const { length: count } = movies;
 </code></pre>
 						</li><li>see bootstrap <a href="https://getbootstrap.com/docs/4.4/content/tables/" target="new">table</a> documentation</li>
-						<li>perform delete using <em>.filter</em> method</li></ul>
+						<li>perform delete using <em><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter" target="_blank">.filter</a></em> method</li></ul>
 				</SECTION>
 
 
 			</section>
 			<section>
-
+<section><h4>Storybook</h4></section>
 				<section><h4>composing components
 				</h4>
 					so far we have only one counter, we need more
