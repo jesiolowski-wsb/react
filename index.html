@@ -1254,13 +1254,11 @@ export default Counter;
 					<h4>Rendering lists</h4>
 					<pre><code class="hljs">const [tagsList, setTagsList] = useState(["tag1", "tag2", "tag3"]);
 	</code></pre>
-					<pre><code class="fragment fade-in">...
-< ul>
-tagsList.map((tag) => (
-  <li>{tag}</li>
-))
+					<pre><code class="hljs fragment fade-in">< ul>
+{tagsList.map((tag) => (
+  < li>{tag}/li>
+))}
 < /ul>
-
 	</code></pre>
 					<p class="fragment fade-in">BUT: take a look at the JS console:)
 					</p>
@@ -1298,12 +1296,11 @@ const renderTags = () =>
 
 				<section><h4>Alternative approach - truthy / falsy</h4>
 					<pre><code class="js">// in 'render()'
-{this.state.tags.length === 0 && "Please create a new tag!"}</code></pre>
+{tagsList.length === 0 && "Please create a new tag!"}</code></pre>
 					<img src="img/truthy.png"></section>
 
 				<section><h4>Events handling</h4>
-					<pre><code class="hljs" data-line-numbers="2, 10"><script type="text/template">
-  const handleIncrement = () => {
+					<pre><code class="hljs" data-line-numbers="1-3, 9"><script type="text/template">const handleIncrement = () => {
     console.log("Increment Clicked");
   }
 
@@ -1415,7 +1412,7 @@ const { length: count } = movies;
 
 			</section>
 			<section>
-				<section data-background-color="#faf7f8">
+				<section data-background-color="#fa7f8">
 					<h4>Storybook & atomic design principle</h4>
 					<ul>
 						<li><a href="https://bradfrost.com/blog/post/atomic-web-design/" target="_blank">atomic design</a></li>
@@ -1457,12 +1454,12 @@ return (
 
 				<section><h4>
 				</h4>counters.jsx
-					<pre>  <code> < Counter key={counter.id} value={counter.value} selected={true} />
+					<pre>  <code class="js">< Counter key={counter.id} value={counter.value} selected={true} />
 </code></pre>
 					...still does not work<br>
 					counter.jsx
-					<pre><code>render() {
-    console.log("props", this.props);
+					<pre><code>
+    console.log("props",props);
 </code></pre></section>
 
 				<section><h4>
@@ -1828,6 +1825,16 @@ export default App;
 	</code></pre>
 				</section>
 
+				<section><div>hooks limitation: You cannot use hooks inside:</div>
+					<ul><li>loops</li>
+						<li>conditions</li>
+						<li>nested functions</li>
+					</ul>
+					<div><br>WHY?</div>
+				</section>
+				<section><div>example: useEffect hook</div>
+					<img src="img/cvsf2.png" /><small>logic is all over the place</small>
+				</section>
 
 				<section>
 					<h4>use State</h4>
@@ -1846,7 +1853,7 @@ export default App;
 function CounterFunc(props) {
 
 // compare with
-// const initialStateCalc = console.log("run function");
+// const initialStateCalc = console.log("run function on each render");
   const [count, setCount] = useState(() => {
     // triggered only once
     console.log("run function");
@@ -1873,8 +1880,7 @@ export default CounterFunc;
 				</section>
 				<section>
 					<h4>if initialState = object</h4>
-					<pre><code data-line-numbers="10">
-import React, { useState } from "react";
+					<pre><code data-line-numbers="4, 7,9">import React, { useState } from "react";
 
 function CounterFunc(props) {
   const [count, setCount] = useState({ value: 0, color: "blue" });
@@ -1908,7 +1914,7 @@ export default CounterFunc;
 						<li>when empty, stands for 'initial mount'</li></ul>
 				</section>
 				<section><h4>use Effect</h4>
-					<pre><code class="js">  // only when count value will change
+					<pre><code class="js">  // only when count value changes
   useEffect(() => {
     console.log("useEffect re-render");
   }, [count.value]);</code></pre>
@@ -3307,21 +3313,14 @@ export default UserDetails;
 				<section><h4>advanced topics</h4>
 				</section>
 				<section><h5>overview</h5>
-					<ul><li>Higher order component</li>
-						<li>hooks (useState, useEffect, custom)</li>
-						<li>context (in class component, in functional component)</li>
+					<ul><li>higher order component</li>
+						<li>custom hooks</li>
 					</ul>
 				</section>
 				<section><h4>setting up the environment</h4>
-					<pre><code class="js">
-// no need to store it globally
-npm uninstall - g create-react-app
-
-// node package runner that can run packages on demand (no global installation required)
-npx create-react-app react-advanced
+					<pre><code class="js">npx create-react-app react-advanced
 cd react-advanced
-npm i prettier
-
+yarn add --dev prettier
 </code></pre>
 				</section>
 
@@ -3337,215 +3336,71 @@ npm i prettier
 				<section><div>structure:</div>
 					<pre>
 	HOC
-	|-- movie.jsx ('rcc' using <a href="https://plugins.jetbrains.com/plugin/10113-react-snippets" target="new">code snippets</a>)
+	|-- movie.jsx
 	|-- withTooltip.jsx
 	</pre>
+					note the naming convention i.e. withSomething.jsx
 				</section>
 				<section><div>HOC skeleton</div>
 					<pre><code class="hljs">// withTooltip.jsx
 import React from "react";
 
-function withTooltip(Component) {}
-return class WithTooltip extends React.Component {
-  render() {
-    return (
-      < div>
-        < Component />
-      < /div>
-    );
-  }
+const withTooltip = (Component) => {
+  return (
+    < div style={{ border: "10px solid green" }}>
+      < Component />
+	< /div>
+  );
 };
 
-export default withTooltip;	</code></pre>
+export default withTooltip;
+		</code></pre>
 				</section>
-				<section><ul><li>import Movie in App.js (feel free to clear the rest) </li><li>return withToolip from movie.jsx</li></ul><pre><code class="hljs" data-line-numbers="3, 11">// movie.jsx
-import React, { Component } from "react";
+				<section><ul><li>create Movie component</li><li>return withToolip from movie.jsx</li></ul><pre><code class="hljs">import React from "react";
 import withTooltip from "./withTooltip";
 
-class Movie extends Component {
-  render() {
-    return < div> Movie < /div>;
-  }
-}
+const Movie = () => {
+  return < div>example Movie component< /div>;
+};
 
 export default withTooltip(Movie);
 </code></pre>
 					<div>...check react console</div>
 				</section>
-				<section><div>define props to handle the state</div>
-					<pre><code class="hljs">// withTooltip.jsx
+				<section><img src="img/hoc.png"></section>
+
+				<section>
+					<div>HOC should return a function</div>
+					<small>...thanks to which we can also pass props </small>
+					<pre class="fragment"><code class="hljs">// withTooltip.jsx
 import React from "react";
 
-function withTooltip(Component) {
-  return class WithTooltip extends React.Component {
-    state = { showTooltip: false };
-    mouseOver = () => { this.setState({ showTooltip: true }); };
-    mouseOut = () => { this.setState({ showTooltip: false }); };
-
-    render() {
-      return (
-        < div onMouseOver={this.mouseOver} onMouseOut={this.mouseOut}>
-          < Component showTooltip={this.state.showTooltip} />
-        < /div>
-      );
-    }
-  };
-}
-export default withTooltip;</code></pre></section>
-
-				<section><dir>adding the tooltip</dir>
-					<pre><code class="hljs" data-line-numbers="10">// movie.jsx
-import React, { Component } from "react";
-import withTooltip from "./withTooltip";
-
-class Movie extends Component {
-  render() {
+const withTooltip = (Component) => {
+  return (props) => {
     return (
-      < div>
-        Movie
-        {this.props.showTooltip && < div> some tooltip < /div>}
-      < /div>
-    );
-  }
-}
-
-export default withTooltip(Movie);
-</code></pre>
-					<small>...but there's a problem</small>
-				</section>
-				<section>
-					<div>props added to '< Movie />' are gone</div>
-					<pre><code>// App.js
-< Movie id={1}/></code></pre>
-					<div>how to solve this?</div>
-					<pre><code class="fragment fade-up">// withTooltip.jsx
-< Component {...this.props} showTooltip={this.state.showTooltip} /></code></pre>
-				</section>
-
-				<section><h4>Hooks <small>(starting react 16.8)</small>
-				</h4></section>
-
-				<section><img src="img/cvsf.png" /></section>
-
-
-				<section>
-					<h4>WHY functional?</h4>
-					<ul><li>Classes are a bit difficult for people without OOP background</li>
-						<li>classes in JS are not really classes it's only a syntaxtic sugar over constructor functions</li>
-						<li>THIS keyword is confusing with its changing scope</li>
-						<li>boilerplate code</li>
-					</ul>
-				</section>
-
-				<section><h4>functional vs class</h4>
-					<pre><code class="js">// counter1.jsx
-import React, { Component } from "react";
-
-class Counter1 extends Component {
-  state = { count: 0 };
-  increaseClick = () => {
-    this.setState({ count: this.state.count + 1 });
+      < div style={{ border: "10px solid green" }}>
+        < Component {...props} />
+		< /div>
+	);
   };
-  render() {
-    return (
-      < >
-        < div>Count: {this.state.count}< /div>
-        < button onClick={this.increaseClick}>increment< /button>
-      < />
-    );
-  }
-}
+};
 
-export default Counter1;
-</code></pre></section>
-				<section><h4>functional vs class</h4>
-					<pre><code class="js">// counter2.jsx
-import React, { useState } from "react";
-
-function Counter2(props) {
-  const [count, setCount] = useState(0);
-
-  return (
-    < >
-      < div>Count: {count}< /div>
-      < button onClick={() => setCount(count + 1)}> increments< /button>
-    < />
-  );
-}
-
-export default Counter2;
-</code></pre></section>
-				<section><div>useState hook</div>
-					<pre><code class="js">// useState takes 2 arguments, initialValue & setState function
-// eg:
-const [count, setState] = useState(0)
-const [name, setName] = useState('') </code></pre>
-
-					<pre><code class="fragment fade-in js">// counter2.jsx
-import React, { useState } from "react";
-
-function Counter2(props) {
-  const [count, setCount] = useState(0);
-  const [name, setName] = useState("");
-
-  return (
-    < >
-      < input type="text" onChange={(e) => setName(e.target.value)} />
-      < div>
-        {name} clicked {count} times
-      < /div>
-      < button onClick={() => setCount(count + 1)}> increments< /button>
-    < />
-  );
-}
-
-export default Counter2;
+export default withTooltip;
 </code></pre>
 				</section>
 
-				<section><div>hooks limitation: You cannot use hooks inside:</div>
-					<ul><li>loops</li>
-						<li>conditions</li>
-						<li>nested functions</li>
-					</ul>
-					<div><br>WHY?</div>
-				</section>
-				<section><div>useEffect</div>
-					<img src="img/cvsf2.png" /><small>logic all over the place</small></section>
 				<section>
-					<div>triggered each render (when receives new props or state changes)</div>
-					<pre><code>//counter2.jsx
-  useEffect(() => {
-    document.title = `${name} has clicked ${count} times!`;
-  });
+				<pre class="fragment"><code class="hljs">// App.js
+< Movie color={"deeppink"} />
 
-  // componentDidMount
-  // componentDidUpdate</code></pre>
+// withTooltip.jsx
+< div style={{ border: "10px solid green", color: props.color }}>
+</code></pre>
+
+
 				</section>
+				<section><h4>custom Hooks </h4></section>
 
-				<section><div>second parameter acts as an array of dependancies</div><pre><code>// counter2.jsx
-  // [count] means that only when count changes, hook is triggered
-  useEffect(() => {
-    document.title = `${name} has clicked ${count} times!`;
-  }, [count]);
-
-  // componentDidMount
-  // componentDidUpdate
-</code></pre></section>
-
-				<section><div>where's the componentWillUnmount? </div><pre><code>// counter2.jsx
-  useEffect(() => {
-    document.title = `${name} has clicked ${count} times!`;
-    return () => {
-      console.log("cleanup");
-    };
-  }, [count]);
-
-  // componentDidMount
-  // componentDidUpdate
-
-  // componentWIllUnmount
-</code></pre></section>
 
 				<section><h4>custom reusable hooks</h4><div>we can encapsulate custom logic storing it in a single place and then share it among many components<br><br>create hooks/useDocumentTitle.jsx </div><pre><code>// useDocumentTitle.jsx
 import { useEffect } from "react";
@@ -3555,14 +3410,14 @@ export default function useDocumentTitle(title) {
     document.title = title;
   });
 }
-</code></pre><pre><code>// counter2.jsx
+</code></pre><pre><code>// somewhereElse.jsx
 import useDocumentTitle from "./hooks/useDocumentTitle";
 ...
-useDocumentTitle(`${name} clicked ${count} times!`);
+useDocumentTitle(`custom hook in action`);
 </code></pre></section>
 
-				<section><h4>getching data with hooks</h4><div>Let's get the list of users from <a href="https://jsonplaceholder.typicode.com/" target="new">jsonplaceholder</a> using <a href="https://github.com/axios/axios" target="">axios</a> (npm i axios)</div>
-					<pre><code class="hljs">// hooks/users.jsx (rsf code snippet for stateless functional component)
+				<section><h4>fetching data with hooks</h4><div>Let's get the list of users from <a href="https://jsonplaceholder.typicode.com/" target="new">jsonplaceholder</a> using <a href="https://github.com/axios/axios" target="">axios</a> (npm i axios)</div>
+					<pre><code class="hljs">// hooks/users.jsx
 import React from "react";
 import axios from "axios";
 
@@ -3572,7 +3427,7 @@ function Users(props) {
 
 export default Users;
 </code></pre></section>
-				<section><div>we want to load axios componentDidMount, so while in functional -> useEffect</div><pre><code data-line-numbers="5-7">import React, { useEffect } from "react";
+				<section><div>we want to load axios using useEffect</div><pre><code data-line-numbers="5-7">import React, { useEffect } from "react";
 import axios from "axios";
 
 function Users(props) {
@@ -3617,121 +3472,6 @@ function Users(props) {
 
 export default Users;
 </code></pre></section>
-
-				<section><h4>context</h4>
-				</section>
-				<section>
-					<img src="img/propDrilling.png" />
-				</section>
-				<section>
-					<img src="img/redux.png" />
-				</section>
-				<section>
-					<img src="img/context1.png" />
-				</section>
-
-				<section><h4>context in class components</h4>
-				</section>
-				<section><div>structure</div><pre>
-context
-|-- MovieList.jsx (rcc)
-|-- MoviePage.jsx (rcc implementing < MovieList />)
-|-- userContext.jsx (we can have multiple contexts in one app)
-
-in App.js cmd+a, rcc implementing < MoviePage />
-</pre>
-					<div>Let's assume App.js stores user data, and we want to access it in Movielist</div><pre><code class="js">// App.js
-state = { currentUser: {name: "John"}}</code></pre></section>
-				<section>1. creating a context<pre><code class="js">// UserContext.jsx
-import React from "react";
-
-const UserContext = React.createContext();
-
-export default UserContext;
-</code></pre></section>
-				<section>provide the context to the TOP component<pre><code class="js">// App.js
-import UserContext from "./context/UserContext"</code></pre>
-					Wrap the context inside a provider component<pre><code class="js">    render() {
-        return (
-            < UserContext.Provider>
-                < div>
-                    < MoviePage />
-                < /div>
-            < /UserContext.Provider>
-        );
-    }</code></pre><div>NOTE: Provider object only has 3 properties (<span class="fragment highlight-green">Provider</span>, <span class="fragment highlight-green">Consumer</span> and <span class="fragment highlight-green">displayName</span>)</div></section>
-				<section>Provide desired object to the provider component
-					<pre><code class="js" data-line-numbers="3">// App.js
- 	    return (
-        < UserContext.Provider value={this.state.currentUser}>
-            < div>
-                < MoviePage />
-            < /div>
-        < /UserContext.Provider>
-    );
- 	</code></pre></section>
-				<section>to consume, go to MovieList.jsx, import context and wrap the component with consumer component
-					<pre><code class="js" data-line-numbers="3, 8, 10">// MovieList.jsx
-import React, { Component } from "react";
-import UserContext from "./UserContext";
-
-class MovieList extends Component {
-  render() {
-    return (
-      < UserContext.Consumer>
-        < div>MovieList< /div>
-      < /UserContext.Consumer>
-    );
-  }
-}
-
-export default MovieList;
- 	</code></pre><h4>...BUT :)</h4></section>
-				<section>...comsumer expects a function as a child<pre><code class="js">// MovieList.jsx
-    return (
-  < UserContext.Consumer>
-    {(userContext) => < div> MovieList < /div>}
-  < /UserContext.Consumer>
-);
-</code></pre></section>
-
-				<section><div>final result needs renaming</div>
-					<img src="img/context.png" />
-					<pre><code>// UserContext.jsx
-import React from "react";
-
-const UserContext = React.createContext();
-UserContext.displayName = "UserContext";
-
-export default UserContext;</code></pre></section>
-				<section>usage in render:
-					<pre><code class="js">// MovieList.jsx
-    {(userContext) => < div>MovieList {userContext.name}< /div>}</code></pre>
-				</section>
-				<section>
-					usage outside render (e.g. to be used in a hook)<pre><code class="js" data-line-numbers="1, 2,8,13">// we have no access to Comsumer component
-// so we have to set a STATIC PROPERTY of a class
-import React, { Component } from "react";
-import UserContext from "./UserContext";
-
-class MovieList extends Component {
-  componentDidMount() {
-    console.log("context ", this.context);
-  }
-  render() {}
-}
-
-MovieList.contextType = UserContext;
-
-export default MovieList;
-</code></pre>
-					usage outside render alternative <pre><code class="js" data-line-numbers="2">class MovieList extends Component {
-  static contextType = UserContext;
-
-  componentDidMount() {
-    console.log("context ", this.context);
-  } </code></pre>
-				</section>
 
 
 			</section>
@@ -4132,6 +3872,7 @@ every action - vide redux devtools) </pre>
 				<section>
 					but first...
 					<img src="img/codepen-redux-config.png">
+					<small>https://cdnjs.cloudflare.com/ajax/libs/redux/4.1.0/redux.min.js</small>
 				</section>
 				<section>
 		<pre><code class="js">const {createStore} = Redux
